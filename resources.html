@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - UM6P Africa Initiative</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo"><a href="index.html">UM6P - Africa Initiative</a></div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="resources.html" class="active">Resources</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-container">
+        <div class="about-hero">
+            <div class="section-container">
+                <h1 class="section-title">Resources & Connect</h1>
+                <p class="section-subtitle">Access our newsletters, blog insights, and connect with the Africa Initiative community.</p>
+            </div>
+        </div>
+
+        <!-- Blog/News Section -->
+        <section class="blog-content">
+            <h2>Recent Updates</h2>
+            <!-- Search and Filter -->
+            <div class="blog-filter">
+                <div class="form-group">
+                    <label for="search-posts">Search Articles</label>
+                    <input type="text" id="search-posts" placeholder="Search by keyword..." oninput="filterPosts()">
+                </div>
+                <div class="form-group">
+                    <label for="filter-tags">Filter by Tag</label>
+                    <select id="filter-tags" onchange="filterPosts()">
+                        <option value="">All Tags</option>
+                        <option value="Agriculture">Agriculture</option>
+                        <option value="Community">Community</option>
+                        <option value="Education">Education</option>
+                        <option value="Environment">Environment</option>
+                        <option value="Energy">Energy</option>
+                        <option value="Entrepreneurship">Entrepreneurship</option>
+                        <option value="Health">Health</option>
+                        <option value="Research">Research</option>
+                    </select>
+                </div>
+            </div>
+            <div class="blog-grid" id="blog-grid">
+                <!-- Blog posts will be dynamically inserted here -->
+            </div>
+            <div class="blog-pagination" id="blog-pagination">
+                <button class="btn pagination-btn" onclick="changePage('prev')">Previous</button>
+                <div class="pagination-numbers" id="pagination-numbers"></div>
+                <button class="btn pagination-btn" onclick="changePage('next')">Next</button>
+            </div>
+        </section>
+
+        <!-- Archive -->
+        <section class="section">
+            <div class="section-container">
+                <h2 class="section-title">Archive</h2>
+                <p class="section-subtitle">Access our comprehensive collection of newsletters featuring opportunities, insights, and updates from across Africa's innovation ecosystem.</p>
+                
+                <div class="resources-grid">
+                    <div class="resource-card fade-in">
+                        <div class="resource-icon">📰</div>
+                        <h3>Monthly Newsletters</h3>
+                        <p>Our monthly newsletters featuring curated opportunities, research insights, partnership announcements, and continental innovation updates.</p>
+                        <a href="#" class="resource-link" onclick="openNewsletterArchive()">Browse Archive</a>
+                    </div>
+                    
+                    <div class="resource-card fade-in">
+                        <div class="resource-icon">🔍</div>
+                        <h3>Opportunities Database</h3>
+                        <p>Regularly updated collection of scholarships, grants, fellowships, and calls for proposals from across Africa and international partners.</p>
+                        <a href="#" class="resource-link" onclick="openOpportunitiesDatabase()">View Opportunities</a>
+                    </div>
+                    
+                    <div class="resource-card fade-in">
+                        <div class="resource-icon">📅</div>
+                        <h3>Events Calendar</h3>
+                        <p>Comprehensive calendar of conferences, workshops, symposiums, and networking events across Africa's academic and innovation landscape.</p>
+                        <a href="#" class="resource-link" onclick="openEventsCalendar()">Browse Events</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact & Collaboration -->
+        <section class="section">
+            <div class="section-container">
+                <h2 class="section-title">Connect & Collaborate</h2>
+                <p class="section-subtitle">Ready to join our network? Get in touch to explore collaboration opportunities.</p>
+                
+                <div class="contact-grid">
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">📧</div>
+                        <h3>Email Us</h3>
+                        <p>Get in touch and we'll respond within 24 hours</p>
+                        <a href="mailto:africa.initiative@um6p.ma">africa.initiative@um6p.ma</a>
+                    </div>
+                    
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">📍</div>
+                        <h3>Visit Us</h3>
+                        <p>Meet our team at UM6P campus in Ben Guerir</p>
+                        <a href="#">UM6P Campus, Ben Guerir, Morocco</a>
+                    </div>
+                    
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">🌐</div>
+                        <h3>Follow Us</h3>
+                        <p>Connect with us on social media platforms</p>
+                        <a href="#">LinkedIn & Social Media</a>
+                    </div>
+                </div>
+
+                <!-- Collaboration Form -->
+                <div class="contact-form">
+                    <h3 style="text-align: center; margin-bottom: 2rem; color: var(--primary-black);">Start a Collaboration</h3>
+                    <div class="success-message" id="collaborationSuccess">
+                        Thank you for your collaboration proposal! We will review it and get back to you within 5 business days.
+                    </div>
+                    <form id="collaborationForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="organization">Organization/Institution *</label>
+                                <input type="text" id="organization" name="organization" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="country">Country *</label>
+                                <select id="country" name="country" required>
+                                    <option value="">Select your country</option>
+                                    <option value="algeria">Algeria</option>
+                                    <option value="angola">Angola</option>
+                                    <option value="benin">Benin</option>
+                                    <option value="botswana">Botswana</option>
+                                    <option value="cameroon">Cameroon</option>
+                                    <option value="egypt">Egypt</option>
+                                    <option value="ethiopia">Ethiopia</option>
+                                    <option value="ghana">Ghana</option>
+                                    <option value="kenya">Kenya</option>
+                                    <option value="morocco">Morocco</option>
+                                    <option value="nigeria">Nigeria</option>
+                                    <option value="rwanda">Rwanda</option>
+                                    <option value="senegal">Senegal</option>
+                                    <option value="south-africa">South Africa</option>
+                                    <option value="tunisia">Tunisia</option>
+                                    <option value="uganda">Uganda</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="collaborationType">Collaboration Type *</label>
+                                <select id="collaborationType" name="collaborationType" required>
+                                    <option value="">Select collaboration type</option>
+                                    <option value="research">Research Partnership</option>
+                                    <option value="academic">Academic Exchange</option>
+                                    <option value="innovation">Innovation Project</option>
+                                    <option value="funding">Funding Partnership</option>
+                                    <option value="capacity">Capacity Building</option>
+                                    <option value="startup">Startup Accelerator</option>
+                                    <option value="conference">Conference/Event</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="projectTitle">Project/Collaboration Title *</label>
+                            <input type="text" id="projectTitle" name="projectTitle" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="description">Project Description *</label>
+                            <textarea id="description" name="description" placeholder="Please provide a detailed description of your proposed collaboration, including objectives, expected outcomes, and how it aligns with Africa's development goals..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Submit Collaboration Proposal</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>UM6P - Africa Initiative</h3>
+                <p>Supporting Africa's socio-economic development through collaboration, innovation, and strategic partnerships across the continent.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="initiatives.html">Our Initiatives</a>
+                <a href="resources.html">Resources</a>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <a onclick="openNewsletterArchive()">Newsletter Archive</a>
+                <a onclick="openOpportunitiesDatabase()">Opportunities</a>
+                <a onclick="openEventsCalendar()">Events Calendar</a>
+                <a href="mailto:africa.initiative@um6p.ma">Contact Us</a>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <a href="#">LinkedIn</a>
+                <a href="#">Twitter</a>
+                <a href="#">Annual Report</a>
+                <a href="#">Partnership Guidelines</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 UM6P - Africa Initiative. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

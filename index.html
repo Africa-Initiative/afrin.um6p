@@ -1,0 +1,3359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UM6P - Africa Initiative</title>
+    
+    <!-- SEO and Meta Tags -->
+    <meta name="description" content="UM6P Africa Initiative - Supporting Africa's socio-economic development through collaboration, innovation, and strategic partnerships across the continent.">
+    <meta name="keywords" content="UM6P, Africa, education, research, innovation, partnerships, development">
+    <meta name="author" content="UM6P Africa Initiative">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#D7492A">
+    
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="UM6P - Africa Initiative">
+    <meta property="og:description" content="Shaping Africa's Tomorrow through innovation and collaboration">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://afrin.um6p.ma">
+    <meta property="og:image" content="https://afrin.um6p.ma/images/og-image.jpg">
+    <meta property="og:site_name" content="UM6P Africa Initiative">
+    
+    <!-- Twitter Card tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="UM6P - Africa Initiative">
+    <meta name="twitter:description" content="Shaping Africa's Tomorrow through innovation and collaboration">
+    <meta name="twitter:image" content="https://afrin.um6p.ma/images/twitter-image.jpg">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "UM6P Africa Initiative",
+      "url": "https://afrin.um6p.ma",
+      "logo": "https://afrin.um6p.ma/images/logo.png",
+      "description": "Supporting Africa's socio-economic development through collaboration, innovation, and strategic partnerships",
+      "foundingDate": "2022",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ben Guerir",
+        "addressRegion": "Marrakesh-Safi",
+        "addressCountry": "MA"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/um6p-africa-initiative",
+        "https://x.com/Um6pAfrica",
+        "https://www.instagram.com/um6pafrica"
+      ]
+    }
+    </script>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* CSS Variables and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-red: #D7492A;
+            --primary-black: #1a1a1a;
+            --primary-white: #ffffff;
+            --light-gray: #f8f9fa;
+            --medium-gray: #6c757d;
+            --dark-gray: #333333;
+            --accent-orange: #ff6b35;
+            --shadow: 0 10px 30px rgba(215, 73, 42, 0.1);
+            --hover-shadow: 0 20px 40px rgba(215, 73, 42, 0.2);
+            --gradient-1: linear-gradient(135deg, #D7492A 0%, #ff6b35 100%);
+            --gradient-2: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+            --gradient-3: linear-gradient(135deg, rgba(215, 73, 42, 0.1) 0%, rgba(255, 107, 53, 0.1) 100%);
+            --vh: 1vh;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            overflow-x: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        body.loaded {
+            opacity: 1;
+        }
+
+        /* Skip link for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--primary-red);
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            border-radius: 0 0 4px 4px;
+            z-index: 9999;
+            font-weight: 600;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Header */
+        .header {
+            background: var(--gradient-2);
+            color: var(--primary-white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary-white);
+            cursor: pointer;
+        }
+
+        .logo a {
+            color: var(--primary-white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .logo a:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--primary-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            background: var(--primary-red);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(215, 73, 42, 0.3);
+        }
+
+        /* Mobile menu hamburger button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-white);
+            cursor: pointer;
+            min-width: 44px;
+            min-height: 44px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-white);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .mobile-menu-btn[aria-expanded="true"] .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .mobile-menu-btn[aria-expanded="true"] .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn[aria-expanded="true"] .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Dropdown Menu Styles */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dropdown-toggle i {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-toggle i,
+        .dropdown-toggle[aria-expanded="true"] i {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #000000;
+            border: 1px solid #d7492a;
+            border-radius: 5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            min-width: 150px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-menu,
+        .dropdown-toggle[aria-expanded="true"] + .dropdown-menu {
+            display: block !important;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li {
+            margin: 0;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: #FFFFFF;
+            font-weight: 400;
+            position: relative;
+            transition: background-color 0.3s, color 0.3s;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown-menu a:hover,
+        .dropdown-menu a:focus,
+        .dropdown-menu a.active {
+            background-color: #d7492a;
+            color: #FFFFFF;
+            transform: none;
+        }
+
+        /* Page Container */
+        .page-container {
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        /* Enhanced Hero Carousel Styles */
+        .hero-carousel {
+            position: relative;
+            height: 100vh;
+            height: calc(var(--vh, 1vh) * 100);
+            overflow: hidden;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out, transform 0.8s ease-out;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            will-change: opacity, transform;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .hero-slide:not(.active) {
+            transform: scale(1.02);
+        }
+
+        /* Fallback gradients */
+        .hero-slide:nth-child(1) {
+            background: linear-gradient(135deg, var(--primary-black) 0%, var(--dark-gray) 30%, var(--primary-red) 100%);
+        }
+
+        .hero-slide:nth-child(2) {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+        }
+
+        .hero-slide:nth-child(3) {
+            background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%);
+        }
+
+        .hero-slide:nth-child(4) {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+        }
+
+        /* Enhanced overlay for better text readability */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(0, 0, 0, 0.7) 0%,
+                rgba(26, 26, 26, 0.5) 50%,
+                rgba(215, 73, 42, 0.3) 100%
+            );
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            color: var(--primary-white);
+            min-height: 100vh;
+        }
+
+        .hero-text {
+            z-index: 3;
+        }
+
+        .hero-text h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            animation: slideInLeft 1s ease-out;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-text .highlight {
+            color: var(--primary-red);
+            text-shadow: 0 0 20px rgba(215, 73, 42, 0.8), 2px 2px 8px rgba(0, 0, 0, 0.8);
+            background: linear-gradient(45deg, var(--primary-red), var(--accent-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            animation: slideInLeft 1s ease-out 0.3s both;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+            line-height: 1.6;
+            max-width: 90%;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            animation: slideInLeft 1s ease-out 0.6s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button.primary {
+            background: var(--gradient-1);
+            color: var(--primary-white);
+            box-shadow: var(--shadow);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: var(--primary-white);
+            border-color: var(--primary-white);
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--primary-white);
+            color: var(--primary-black);
+        }
+
+        /* Hero Visual */
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: slideInRight 1s ease-out 0.4s both;
+            z-index: 2;
+        }
+
+        .hero-image-container {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            border: 3px solid rgba(215, 73, 42, 0.4);
+            animation: float 6s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            will-change: transform;
+        }
+
+        .hero-feature-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 17px;
+            transition: all 0.3s ease;
+            filter: brightness(1.1) contrast(1.05);
+        }
+
+        .hero-image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 2rem 1.5rem 1.5rem;
+            border-radius: 0 0 17px 17px;
+        }
+
+        .hero-image-overlay h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-image-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        /* Alternative layout for better image prominence */
+        .hero-content.image-focus {
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 3rem;
+        }
+
+        .hero-content.image-focus .hero-visual {
+            order: -1;
+        }
+
+        .hero-content.image-focus .hero-image-container {
+            max-width: 700px;
+            height: 500px;
+        }
+
+        /* Hero Navigation */
+        .hero-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.15);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(15px);
+            min-width: 44px;
+            min-height: 44px;
+        }
+
+        .hero-nav:hover {
+            background: var(--primary-red);
+            border-color: var(--primary-red);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 8px 25px rgba(215, 73, 42, 0.4);
+        }
+
+        .hero-nav.prev {
+            left: 20px;
+        }
+
+        .hero-nav.next {
+            right: 20px;
+        }
+
+        /* Hero Indicators */
+        .hero-indicators {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+
+        .hero-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255,255,255,0.3);
+            min-width: 44px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-dot.active {
+            background: var(--primary-red);
+            border-color: var(--primary-red);
+            transform: scale(1.2);
+            box-shadow: 0 0 15px rgba(215, 73, 42, 0.6);
+        }
+
+        .hero-dot:hover {
+            background: rgba(215, 73, 42, 0.7);
+            border-color: rgba(215, 73, 42, 0.7);
+            transform: scale(1.1);
+        }
+
+        /* Hero Progress Bar */
+        .hero-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            z-index: 10;
+        }
+
+        .hero-progress-bar {
+            height: 100%;
+            background: var(--gradient-1);
+            width: 0%;
+            transition: width 5s linear;
+            border-radius: 0 2px 2px 0;
+        }
+
+        /* Animations */
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-60px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(60px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg); 
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            }
+            50% { 
+                transform: translateY(-15px) rotate(1deg); 
+                box-shadow: 0 35px 80px rgba(0, 0, 0, 0.4);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideDown {
+            from { 
+                opacity: 0; 
+                transform: translateY(-20px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        /* Enhanced Impact Mission Section */
+        .impact-mission {
+            background: linear-gradient(135deg, var(--primary-white) 0%, var(--light-gray) 100%);
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .impact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .impact-text h2 {
+            font-size: 2.8rem;
+            color: var(--primary-black);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .impact-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-1);
+            border-radius: 2px;
+        }
+
+        .impact-text p {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: var(--medium-gray);
+            margin-bottom: 2rem;
+        }
+
+        .impact-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .impact-stat {
+            background: var(--primary-white);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid var(--primary-red);
+            transition: all 0.3s ease;
+        }
+
+        .impact-stat:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(215, 73, 42, 0.15);
+        }
+
+        .impact-stat-number {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: var(--primary-red);
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-stat-label {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-black);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-1);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            color: var(--medium-gray);
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Workstreams Section */
+        .workstreams-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #D7492A, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #6c757d;
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .workstreams-integrated-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 2rem;
+            align-items: start;
+            margin-bottom: 3rem;
+        }
+
+        .workstreams-left,
+        .workstreams-right {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .workstreams-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 600px;
+        }
+
+        .workstreams-bottom {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .workstream-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .workstream-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #D7492A, #ff6b35);
+            transition: height 0.3s ease;
+        }
+
+        .workstream-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .workstream-card:hover::before {
+            height: 8px;
+        }
+
+        .workstream-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .workstream-icon {
+            font-size: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #D7492A, #ff6b35);
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(215, 73, 42, 0.3);
+        }
+
+        .workstream-header h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin: 0;
+            flex: 1;
+            line-height: 1.3;
+        }
+
+        .workstream-description p {
+            color: #6c757d;
+            line-height: 1.7;
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .fade-in:nth-child(1) { animation-delay: 0.1s; }
+        .fade-in:nth-child(2) { animation-delay: 0.2s; }
+        .fade-in:nth-child(3) { animation-delay: 0.3s; }
+        .fade-in:nth-child(4) { animation-delay: 0.4s; }
+        .fade-in:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .workstream-node {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .workstream-node:hover {
+            transform: scale(1.1);
+            filter: brightness(1.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .workstreams-integrated-layout {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .workstreams-diagram {
+                order: -1;
+                min-height: 500px;
+            }
+            
+            .workstreams-left,
+            .workstreams-right {
+                flex-direction: row;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .workstreams-left,
+            .workstreams-right {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .workstream-card {
+                padding: 1.5rem;
+            }
+            
+            .workstream-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .workstream-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 2rem;
+            }
+            
+            .workstream-header h3 {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-container {
+                padding: 0 15px;
+            }
+            
+            .workstreams-section {
+                padding: 60px 0;
+            }
+            
+            .workstream-card {
+                padding: 1.2rem;
+            }
+            
+            .workstreams-diagram {
+                min-height: 400px;
+            }
+        }
+
+        /* CTA Section */
+
+        /* Enhanced Partners Carousel Styles */
+        .partners-carousel {
+            background: var(--light-gray);
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .partners-carousel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(215, 73, 42, 0.02) 0%, rgba(255, 107, 53, 0.02) 100%);
+        }
+
+        .partners-slider {
+            position: relative;
+            overflow: hidden;
+            margin: 3rem 0;
+        }
+
+        .partners-track {
+            display: flex;
+            animation: slide 30s linear infinite;
+            gap: 3rem;
+            width: calc(200% + 6rem);
+        }
+
+        .partners-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .partner-logo-item {
+            flex: 0 0 200px;
+            height: 120px;
+            background: var(--primary-white);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            padding: 1.5rem;
+            border: 2px solid rgba(215, 73, 42, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .partner-logo-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(215, 73, 42, 0.15);
+            border-color: var(--primary-red);
+        }
+
+        .partner-logo-item a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .partner-logo-item a:focus-visible {
+            outline: 3px solid var(--primary-red);
+            outline-offset: 2px;
+        }
+
+        .partner-logo-item img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .partner-logo-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .partners-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .partner-stat {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(215, 73, 42, 0.1);
+        }
+
+        .partner-stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-red);
+            margin-bottom: 0.5rem;
+        }
+
+        .partner-stat-label {
+            color: var(--medium-gray);
+            font-weight: 500;
+        }
+
+        /* Latest News & Insights Section */
+        .news-section {
+            background: var(--primary-white);
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .news-card {
+            background: var(--primary-white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(215, 73, 42, 0.1);
+            position: relative;
+        }
+
+        .news-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(215, 73, 42, 0.15);
+            border-color: var(--primary-red);
+        }
+
+        .news-image {
+            height: 200px;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .news-placeholder {
+            font-size: 4rem;
+            color: var(--primary-white);
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
+            .news-thumbnail {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+          }
+
+
+        .news-content {
+            padding: 2rem;
+        }
+
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .news-date {
+            color: var(--medium-gray);
+        }
+
+        .news-category {
+            background: var(--gradient-3);
+            color: var(--primary-red);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-weight: 500;
+            font-size: 0.8rem;
+        }
+
+        .news-card h3 {
+            color: var(--primary-black);
+            font-size: 1.3rem;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .news-card p {
+            color: var(--medium-gray);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .news-link {
+            color: var(--primary-red);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .news-link:hover {
+            color: var(--accent-orange);
+            transform: translateX(4px);
+        }
+
+        .news-link i {
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+        }
+
+        .news-link:hover i {
+            transform: translateX(4px);
+        }
+
+        .news-cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        /* Contact Grid */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: var(--primary-white);
+            padding: 3rem 2rem;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .contact-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-card h3 {
+            color: var(--primary-black);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .contact-card p {
+            color: var(--medium-gray);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card a {
+            color: var(--primary-red);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: var(--accent-orange);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: var(--primary-white);
+            padding: 4rem;
+            border-radius: 25px;
+            box-shadow: var(--shadow);
+            max-width: 1000px;
+            margin: 3rem auto 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-1);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--primary-black);
+            font-size: 1.1rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1.2rem;
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--light-gray);
+            min-height: 44px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-red);
+            box-shadow: 0 0 0 4px rgba(215, 73, 42, 0.1);
+            background: var(--primary-white);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .submit-btn {
+            background: var(--gradient-1);
+            color: var(--primary-white);
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 2rem auto 0;
+            box-shadow: var(--shadow);
+            min-width: 44px;
+            min-height: 44px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--gradient-2);
+            color: var(--primary-white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-red);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: block;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-red);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+            color: #888;
+        }
+
+        /* Success Messages */
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border: 1px solid #c3e6cb;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Smooth animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Focus styles for better accessibility */
+        .nav-menu a:focus-visible,
+        .cta-button:focus-visible,
+        .submit-btn:focus-visible,
+        button:focus-visible,
+        .hero-nav:focus-visible,
+        .hero-dot:focus-visible {
+            outline: 3px solid var(--primary-red);
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Enhanced Mobile Responsiveness */
+        @media (max-width: 1024px) {
+            .hero-content {
+                gap: 2rem;
+                padding: 4rem 2rem;
+            }
+            
+            .hero-text h1 {
+                font-size: 3.5rem;
+            }
+            
+            .hero-image-container {
+                max-width: 500px;
+                height: 350px;
+            }
+            
+            .workstreams-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Navigation */
+            .nav-container {
+                padding: 0 1rem;
+            }
+            
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary-black);
+                flex-direction: column;
+                padding: 2rem 1rem;
+                gap: 0.5rem;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+                border-radius: 0 0 15px 15px;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            /* Hero Section */
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+                padding: 4rem 1rem 2rem;
+                min-height: 90vh;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.8rem;
+                line-height: 1.2;
+            }
+            
+            .hero-text p {
+                font-size: 1.2rem;
+                max-width: 100%;
+            }
+            
+            .hero-image-container {
+                max-width: 100%;
+                height: 280px;
+                margin: 0 auto;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-nav {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+            
+            .hero-nav.prev {
+                left: 10px;
+            }
+            
+            .hero-nav.next {
+                right: 10px;
+            }
+
+            /* Impact Section */
+            .impact-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .impact-stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .impact-text h2 {
+                font-size: 2.2rem;
+                text-align: center;
+            }
+            
+            .impact-text h2::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            /* Workstreams Section */
+            .workstreams-integrated-layout {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin: 2rem 0;
+            }
+            
+            .workstreams-left,
+            .workstreams-right {
+                justify-self: center;
+                gap: 1.5rem;
+            }
+            
+            .workstream-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .workstream-header {
+                flex-direction: row;
+                text-align: left;
+                gap: 1rem;
+                align-items: center;
+            }
+            
+            .workstream-header .workstream-icon {
+                font-size: 2.2rem;
+                flex-shrink: 0;
+            }
+            
+            .diagram-image {
+                max-width: 400px;
+            }
+
+            /* News Section */
+            .news-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .news-card {
+                max-width: 100%;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1.1rem;
+            }
+
+            /* Partners Carousel */
+            .partner-logo-item {
+                flex: 0 0 150px;
+                height: 100px;
+            }
+
+            .partners-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            /* Contact Section */
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .contact-form {
+                padding: 2rem;
+            }
+
+            /* Footer */
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Page Container */
+            .page-container {
+                padding-top: 70px;
+            }
+            
+            .section-container {
+                padding: 0 1rem;
+            }
+
+            /* Logo */
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            /* Hero Section */
+            .hero-carousel {
+                height: 85vh;
+                height: calc(var(--vh, 1vh) * 85);
+            }
+            
+            .hero-content {
+                padding: 2rem 1rem;
+                min-height: 80vh;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.2rem;
+                line-height: 1.2;
+            }
+            
+            .hero-text p {
+                font-size: 1.1rem;
+            }
+            
+            .cta-button {
+                padding: 0.8rem 2rem;
+                font-size: 0.9rem;
+            }
+            
+            .hero-image-container {
+                height: 240px;
+                border-radius: 15px;
+            }
+
+            /* Impact Section */
+            .impact-stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .impact-text h2 {
+                font-size: 1.8rem;
+            }
+            
+            .impact-text p {
+                font-size: 1rem;
+            }
+            
+            .impact-stat {
+                padding: 1.5rem;
+            }
+            
+            .impact-stat-number {
+                font-size: 1.8rem;
+            }
+
+            /* Section Titles */
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+            }
+
+            /* Workstreams */
+            .workstream-card {
+                padding: 1.5rem;
+            }
+            
+            .workstream-header .workstream-icon {
+                font-size: 2rem;
+            }
+            
+            .workstream-header h3 {
+                font-size: 1.1rem;
+            }
+            
+            .workstreams-bottom .workstream-card {
+                max-width: 100%;
+            }
+            
+            .diagram-image {
+                max-width: 350px;
+            }
+
+            /* News Section */
+            .news-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .news-card {
+                margin: 0 auto;
+                max-width: 400px;
+            }
+            
+            .news-content {
+                padding: 1.5rem;
+            }
+            
+            .news-card h3 {
+                font-size: 1.1rem;
+            }
+
+            /* Partners */
+            .partners-stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .partner-stat {
+                padding: 1.5rem 1rem;
+            }
+            
+            .partner-stat-number {
+                font-size: 2rem;
+            }
+
+            /* Contact */
+            .contact-form {
+                padding: 1.5rem;
+            }
+            
+            .contact-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .contact-icon {
+                font-size: 3rem;
+            }
+
+            /* Footer */
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+            
+            .footer-section {
+                padding: 1rem 0;
+            }
+        }
+
+        /* Landscape Mobile Orientation */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .hero-carousel {
+                height: 100vh;
+            }
+            
+            .hero-content {
+                grid-template-columns: 1fr 1fr;
+                padding: 2rem 1rem;
+                gap: 2rem;
+                min-height: 90vh;
+            }
+            
+            .hero-text {
+                text-align: left;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-image-container {
+                height: 250px;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html" aria-label="UM6P Africa Initiative Homepage">
+                    UM6P - Africa Initiative
+                </a>
+            </div>
+            <nav role="navigation" aria-label="Main navigation">
+                <ul class="nav-menu">
+                    <li><a href="#home" class="active" aria-current="page">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="#contact">Contact</a></li>
+
+                    <!-- Dropdown for UM6P Links -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+                            Explore UM6P <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="none"><a href="https://www.um6p.ma/en" target="_blank" rel="noopener" role="menuitem">UM6P Official</a></li>
+                            <li role="none"><a href="https://timesofum6p.com/" target="_blank" rel="noopener" role="menuitem">Times of UM6P</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="page-container">
+        <!-- Enhanced Hero Carousel Section -->
+        <main id="main-content">
+            <section class="hero-carousel" id="home" role="region" aria-label="Hero carousel">
+                <!-- Slide 1: Main Mission -->
+                <div class="hero-slide active" data-bg="images/hero/africa-collaboration.jpg">
+                    <div class="hero-overlay"></div>
+                    <div class="hero-content">
+                        <div class="hero-text">
+                            <h1>Shaping <span class="highlight">Africa's</span> Tomorrow</h1>
+                            <p>Supporting Africa's socio-economic development through collaboration, innovation, and strategic partnerships across the continent.</p>
+                            <div class="cta-buttons">
+                                <a href="#about" class="cta-button primary">Learn About Our Mission</a>
+                                <a href="#workstreams" class="cta-button secondary">Explore Our Work</a>
+                            </div>
+                        </div>
+                        <div class="hero-visual">
+                            <div class="hero-image-container">
+                                <img src="images/hero/FLAGS.jpg" alt="African flags representing continental collaboration" class="hero-feature-image" loading="eager">
+                                <div class="hero-image-overlay">
+                                    <h4>Continental Collaboration</h4>
+                                    <p>Uniting Africa through shared vision and strategic partnerships</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2: Research & Innovation -->
+                <div class="hero-slide" data-bg="images/hero/research-innovation.jpg">
+                    <div class="hero-overlay"></div>
+                    <div class="hero-content image-focus">
+                        <div class="hero-text">
+                            <h1>Driving <span class="highlight">Innovation</span> Forward</h1>
+                            <p>Advancing research, fostering entrepreneurship, and building bridges between Africa's brightest minds and global opportunities.</p>
+                            <div class="cta-buttons">
+                                <a href="#workstreams" class="cta-button primary">Explore Research</a>
+                                <a href="#partners" class="cta-button secondary">View Partnerships</a>
+                            </div>
+                        </div>
+                        <div class="hero-visual">
+                            <div class="hero-image-container">
+                                <img src="images/hero/Startgate.jpg" alt="Innovation hub and startup incubation facility" class="hero-feature-image" loading="lazy">
+                                <div class="hero-image-overlay">
+                                    <h4>Innovation Ecosystem</h4>
+                                    <p>Fostering the next generation of African entrepreneurs and innovators</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3: Education Excellence -->
+                <div class="hero-slide" data-bg="images/hero/gallery6.jpg">
+                    <div class="hero-overlay"></div>
+                    <div class="hero-content">
+                        <div class="hero-text">
+                            <h1>Excellence in <span class="highlight">Education</span></h1>
+                            <p>Transforming higher education across Africa through world-class programs, cutting-edge research, and innovative learning approaches.</p>
+                            <div class="cta-buttons">
+                                <a href="#workstreams" class="cta-button primary">Education Programs</a>
+                                <a href="#mission" class="cta-button secondary">Our Impact</a>
+                            </div>
+                        </div>
+                        <div class="hero-visual">
+                            <div class="hero-image-container">
+                                <img src="images/hero/EDUCATION.jpg" alt="Students engaged in collaborative learning environment" class="hero-feature-image" loading="lazy">
+                                <div class="hero-image-overlay">
+                                    <h4>World-Class Education</h4>
+                                    <p>Empowering students with knowledge and skills for the future</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 4: Sustainable Development -->
+                <div class="hero-slide" data-bg="images/hero/GEP.jpg">
+                    <div class="hero-overlay"></div>
+                    <div class="hero-content image-focus">
+                        <div class="hero-text">
+                            <h1>Building a <span class="highlight">Sustainable</span> Future</h1>
+                            <p>Leading Africa's transition to sustainable development through green technologies, renewable energy, and environmental stewardship.</p>
+                            <div class="cta-buttons">
+                                <a href="#workstreams" class="cta-button primary">Sustainability Initiatives</a>
+                                <a href="#partners" class="cta-button secondary">View Impact</a>
+                            </div>
+                        </div>
+                        <div class="hero-visual">
+                            <div class="hero-image-container">
+                                <img src="images/hero/GEP.jpg" alt="Green energy and sustainable technology initiatives" class="hero-feature-image" loading="lazy">
+                                <div class="hero-image-overlay">
+                                    <h4>Green Innovation</h4>
+                                    <p>Pioneering sustainable solutions for Africa's environmental challenges</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Arrows -->
+                <button class="hero-nav prev" onclick="changeHeroSlide(-1)" aria-label="Previous slide">
+                    <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                </button>
+                <button class="hero-nav next" onclick="changeHeroSlide(1)" aria-label="Next slide">
+                    <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                </button>
+
+                <!-- Indicators -->
+                <div class="hero-indicators" role="tablist" aria-label="Carousel slides">
+                    <button class="hero-dot active" onclick="currentHeroSlide(1)" tabindex="0" role="tab" aria-label="Go to slide 1" aria-selected="true"></button>
+                    <button class="hero-dot" onclick="currentHeroSlide(2)" tabindex="0" role="tab" aria-label="Go to slide 2" aria-selected="false"></button>
+                    <button class="hero-dot" onclick="currentHeroSlide(3)" tabindex="0" role="tab" aria-label="Go to slide 3" aria-selected="false"></button>
+                    <button class="hero-dot" onclick="currentHeroSlide(4)" tabindex="0" role="tab" aria-label="Go to slide 4" aria-selected="false"></button>
+                </div>
+
+                <!-- Progress bar -->
+                <div class="hero-progress">
+                    <div class="hero-progress-bar"></div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Impact & Mission Section -->
+        <section class="impact-mission" id="about" role="region" aria-labelledby="mission-title">
+            <div class="section-container">
+                <div class="impact-content">
+                    <div class="impact-text fade-in">
+                        <h2 id="mission-title">Transforming Africa Through Innovation</h2>
+                        <p>The UM6P - Africa Initiative serves as a catalyst for collaboration and innovation across the continent, advancing higher education, research for development, and entrepreneurship.</p>
+                        <p>We connect Africa's brightest minds with global opportunities, creating sustainable solutions for the continent's most pressing challenges while preserving our rich cultural heritage.</p>
+                    </div>
+                    <div class="impact-stats-grid fade-in">
+                        <div class="impact-stat">
+                            <div class="impact-stat-number" data-target="50">0</div>
+                            <div class="impact-stat-label">African Countries Reached</div>
+                        </div>
+                        <div class="impact-stat">
+                            <div class="impact-stat-number" data-target="200">0</div>
+                            <div class="impact-stat-label">Global Partners</div>
+                        </div>
+                        <div class="impact-stat">
+                            <div class="impact-stat-number" data-target="100">0</div>
+                            <div class="impact-stat-label">Research Projects</div>
+                        </div>
+                        <div class="impact-stat">
+                            <div class="impact-stat-number" data-target="1000">0</div>
+                            <div class="impact-stat-label">Students Impacted</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Workstreams Section with 5 Pillars -->
+        
+<!-- Workstreams Section with 5 Pillars -->
+        <section class="workstreams-section" id="workstreams" role="region" aria-labelledby="workstreams-title">
+            <div class="section-container">
+                <h2 class="section-title" id="workstreams-title">Our Strategic Workstreams</h2>
+                <p class="section-subtitle">Five interconnected pillars driving UM6P's impact across Africa through strategic coordination and collaboration.</p>
+                
+                <!-- Integrated Workstreams Layout -->
+                <div class="workstreams-integrated-layout">
+                    <!-- Left Side Cards -->
+                    <div class="workstreams-left">
+                        <div class="workstream-card fade-in" data-workstream="1">
+                            <div class="workstream-header">
+                                <!-- <div class="workstream-icon">🔭</div> -->
+                                <h3>WS 1: Envisioning African futures in science, technology & education</h3>
+                            </div>
+                            <div class="workstream-description">
+                                <p>Developing forward-thinking strategies and frameworks to guide Africa's advancement in science, technology, and educational excellence for future generations.</p>
+                            </div>
+                        </div>
+
+                        <div class="workstream-card fade-in" data-workstream="2">
+                            <div class="workstream-header">
+                                <!-- <div class="workstream-icon">🔍</div> -->
+                                <h3>WS 2: Aligning R4D with development priorities</h3>
+                            </div>
+                            <div class="workstream-description">
+                                <p>Ensuring research for development (R4D) initiatives are strategically aligned with Africa's most pressing development needs and priorities.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Center Diagram -->
+                    <div class="workstreams-diagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="auto" class="diagram-image" role="img" aria-labelledby="diagram-title">
+                            <title id="diagram-title">UM6P Strategic Workstreams Interconnection Diagram</title>
+                            <defs>
+                                <linearGradient id="centerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#D7492A;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#ff6b35;stop-opacity:1" />
+                                </linearGradient>
+                                <linearGradient id="nodeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#1a1a1a;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#333333;stop-opacity:1" />
+                                </linearGradient>
+                                <filter id="glow">
+                                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                    <feMerge> 
+                                        <feMergeNode in="coloredBlur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                            </defs>
+                            
+                            <!-- Background -->
+                            <rect width="100%" height="100%" fill="#f8f9fa"/>
+                            
+                            <!-- Connection Lines -->
+                            <line x1="400" y1="300" x2="200" y2="150" stroke="#D7492A" stroke-width="3" opacity="0.6" stroke-dasharray="5,5">
+                                <animate attributeName="stroke-dashoffset" values="0;10" dur="2s" repeatCount="indefinite"/>
+                            </line>
+                            <line x1="400" y1="300" x2="600" y2="150" stroke="#D7492A" stroke-width="3" opacity="0.6" stroke-dasharray="5,5">
+                                <animate attributeName="stroke-dashoffset" values="0;10" dur="2s" repeatCount="indefinite"/>
+                            </line>
+                            <line x1="400" y1="300" x2="150" y2="400" stroke="#D7492A" stroke-width="3" opacity="0.6" stroke-dasharray="5,5">
+                                <animate attributeName="stroke-dashoffset" values="0;10" dur="2s" repeatCount="indefinite"/>
+                            </line>
+                            <line x1="400" y1="300" x2="650" y2="400" stroke="#D7492A" stroke-width="3" opacity="0.6" stroke-dasharray="5,5">
+                                <animate attributeName="stroke-dashoffset" values="0;10" dur="2s" repeatCount="indefinite"/>
+                            </line>
+                            <line x1="400" y1="300" x2="400" y2="500" stroke="#D7492A" stroke-width="3" opacity="0.6" stroke-dasharray="5,5">
+                                <animate attributeName="stroke-dashoffset" values="0;10" dur="2s" repeatCount="indefinite"/>
+                            </line>
+                            
+                            <!-- Central Hub -->
+                            <circle cx="400" cy="300" r="90" fill="url(#centerGrad)" filter="url(#glow)">
+                                <animate attributeName="r" values="90;95;90" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                            <text x="400" y="270" text-anchor="middle" fill="white" font-size="14">Strengthen UM6P's</text>
+                            <text x="400" y="285" text-anchor="middle" fill="white" font-size="14">leading position in</text>
+                            <text x="400" y="300" text-anchor="middle" fill="white" font-size="14">higher education, R4D,</text>
+                            <text x="400" y="315" text-anchor="middle" fill="white" font-size="14">innovation &</text>
+                            <text x="400" y="330" text-anchor="middle" fill="white" font-size="14">entrepreneurship on the</text>
+                            <text x="400" y="345" text-anchor="middle" fill="white" font-size="14">continent</text>
+                            
+                            <!-- Workstream Nodes -->
+                            <!-- WS 1: Envisioning African futures -->
+                            <circle cx="200" cy="150" r="45" fill="url(#nodeGrad)" stroke="#ff8c00" stroke-width="3" class="workstream-node"/>
+                            <text x="200" y="140" text-anchor="middle" fill="white" font-size="20">🔭</text>
+                            <text x="200" y="160" text-anchor="middle" fill="white" font-size="10" font-weight="bold">WS 1</text>
+                            <text x="200" y="175" text-anchor="middle" fill="white" font-size="9">Envisioning</text>
+                            
+                            <!-- WS 2: Aligning R4D -->
+                            <circle cx="600" cy="150" r="45" fill="url(#nodeGrad)" stroke="#4CAF50" stroke-width="3" class="workstream-node"/>
+                            <text x="600" y="140" text-anchor="middle" fill="white" font-size="20">🔍</text>
+                            <text x="600" y="160" text-anchor="middle" fill="white" font-size="10" font-weight="bold">WS 2</text>
+                            <text x="600" y="175" text-anchor="middle" fill="white" font-size="9">Aligning R4D</text>
+                            
+                            <!-- WS 3: Fostering academic excellence -->
+                            <circle cx="150" cy="400" r="45" fill="url(#nodeGrad)" stroke="#2196F3" stroke-width="3" class="workstream-node"/>
+                            <text x="150" y="390" text-anchor="middle" fill="white" font-size="20">✏️</text>
+                            <text x="150" y="410" text-anchor="middle" fill="white" font-size="10" font-weight="bold">WS 3</text>
+                            <text x="150" y="425" text-anchor="middle" fill="white" font-size="9">Academic Excellence</text>
+                            
+                            <!-- WS 4: Connecting the dots -->
+                            <circle cx="650" cy="400" r="45" fill="url(#nodeGrad)" stroke="#00BCD4" stroke-width="3" class="workstream-node"/>
+                            <text x="650" y="390" text-anchor="middle" fill="white" font-size="20">🤝</text>
+                            <text x="650" y="410" text-anchor="middle" fill="white" font-size="10" font-weight="bold">WS 4</text>
+                            <text x="650" y="425" text-anchor="middle" fill="white" font-size="9">Connecting Dots</text>
+                            
+                            <!-- WS 5: Communication and outreach -->
+                            <circle cx="400" cy="500" r="45" fill="url(#nodeGrad)" stroke="#FFC107" stroke-width="3" class="workstream-node"/>
+                            <text x="400" y="490" text-anchor="middle" fill="white" font-size="20">📢</text>
+                            <text x="400" y="510" text-anchor="middle" fill="white" font-size="10" font-weight="bold">WS 5</text>
+                            <text x="400" y="525" text-anchor="middle" fill="white" font-size="9">Communication</text>
+                            
+                            <!-- Title -->
+                            <text x="400" y="50" text-anchor="middle" fill="#1a1a1a" font-size="24" font-weight="bold">Strategic Workstreams</text>
+                            <text x="400" y="75" text-anchor="middle" fill="#6c757d" font-size="16">Five Interconnected Pillars</text>
+                        </svg>
+                    </div>
+
+                    <!-- Right Side Cards -->
+                    <div class="workstreams-right">
+                        <div class="workstream-card fade-in" data-workstream="3">
+                            <div class="workstream-header">
+                                <!-- <div class="workstream-icon">✏️</div> -->
+                                <h3>WS 3: Fostering academic excellence through partnerships and Networks</h3>
+                            </div>
+                            <div class="workstream-description">
+                                <p>Building strategic academic partnerships and networks to enhance research capabilities and foster collaborative excellence across institutions.</p>
+                            </div>
+                        </div>
+
+                        <div class="workstream-card fade-in" data-workstream="4">
+                            <div class="workstream-header">
+                                <!-- <div class="workstream-icon">🤝</div> -->
+                                <h3>WS 4: Connecting the dots on innovation & entrepreneurship</h3>
+                            </div>
+                            <div class="workstream-description">
+                                <p>Creating synergies between innovation initiatives and entrepreneurial ventures to build a comprehensive ecosystem for sustainable development.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Center Card -->
+                <div class="workstreams-bottom">
+                    <div class="workstream-card fade-in" data-workstream="5">
+                        <div class="workstream-header">
+                            <!-- <div class="workstream-icon">📢</div> -->
+                            <h3>WS 5: Communication and outreach</h3>
+                        </div>
+                        <div class="workstream-description">
+                            <p>Developing comprehensive communication strategies and outreach programs to amplify UM6P's impact and engage diverse stakeholders across Africa.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Latest News & Insights Section -->
+        <section class="news-section" id="news" role="region" aria-labelledby="news-title">
+            <div class="section-container">
+                <h2 class="section-title" id="news-title">Latest News & Insights</h2>
+                <p class="section-subtitle">Stay updated with our latest developments, research breakthroughs, and stories from across Africa's innovation landscape.</p>
+                
+                <div class="news-grid">
+                    <article class="news-card fade-in">
+                        <div class="news-image">
+                            <img src="images/Healthcare.jpg" alt="AI-Driven Healthcare Innovation in Africa" class="news-thumbnail" loading="lazy">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-date">March 1, 2025</span>
+                                <span class="news-category">Research</span>
+                            </div>
+                            <h3>Advancing Healthcare in Africa: UM6P's Vision for AI-Driven Innovation</h3>
+                            <p>Learn how UM6P leverages AI to transform healthcare in Africa, addressing challenges and improving access during Science Week.</p>
+                            <a href="news.html" class="news-link">Read More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="news-card fade-in">
+                        <div class="news-image">
+                            <img src="images/For Africa.png" alt="AI-Driven Healthcare Innovation in Africa" class="news-thumbnail" loading="lazy">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-date">February 27, 2025</span>
+                                <span class="news-category">Energy</span>
+                            </div>
+                            <h3>Why Africa Must Do More on Energy Research</h3>
+                            <p>Discover why Africa must prioritize energy research to address access gaps and climate challenges, with insights on sustainable solutions.</p>
+                            <a href="news.html" class="news-link">Read More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="news-card fade-in">
+                        <div class="news-image">
+                            <img src="images/NextAfrica.jpeg" alt="AI-Driven Healthcare Innovation in Africa" class="news-thumbnail" loading="lazy">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-date">February 28, 2025</span>
+                                <span class="news-category">Innovation</span>
+                            </div>
+                            <h3>NextAfrica: Bridging Europe and Africa Through Innovation</h3>
+                            <p>Learn how UM6P's NextAfrica program accelerates Greentech, Agritech, and Healthtech startups, connecting continents for innovation.</p>
+                            <a href="news.html" class="news-link">Read More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="news-cta fade-in">
+                    <a href="news.html" class="cta-button primary">View All News & Updates</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partners Carousel -->
+        <section class="partners-carousel" id="partners" role="region" aria-labelledby="partners-title">
+            <div class="section-container">
+                <h2 class="section-title" id="partners-title">Our Global Network</h2>
+                <p class="section-subtitle">Collaborating with leading organizations worldwide to drive Africa's development and innovation.</p>
+                
+                <div class="partners-slider" role="region" aria-label="Partner organizations carousel">
+                    <div class="partners-track">
+                        <!-- First set of partner logos -->
+                        <div class="partner-logo-item">
+                            <a href="https://www.ocpgroup.ma/en" target="_blank" rel="noopener" aria-label="Visit OCP Group website">
+                                <img src="images/OCPA.png" alt="OCP Group" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="partner-logo-item">
+                            <a href="https://www.afdb.org/" target="_blank" rel="noopener" aria-label="Visit African Development Bank website">
+                                <img src="images/AfDB.png" alt="African Development Bank" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="partner-logo-item">
+                            <a href="https://arua.org.za/" target="_blank" rel="noopener" aria-label="Visit ARUA website">
+                                <img src="images/arua.webp" alt="ARUA" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="partner-logo-item">
+                            <a href="https://www.ruforum.org/" target="_blank" rel="noopener" aria-label="Visit RUFORUM website">
+                                <img src="images/RUFORUM.jpg" alt="RUFORUM" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="partner-logo-item">
+                            <a href="https://aceimpact.org/" target="_blank" rel="noopener" aria-label="Visit ACE IMPACT website">
+                                <img src="images/ACE-IMPACT.jpg" alt="ACE IMPACT" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="partner-logo-item">
+                            <a href="https://www.fao.org/" target="_blank" rel="noopener" aria-label="Visit FAO website">
+                                <img src="images/FAO.png" alt="FAO" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="partner-logo-item">
+                            <a href="https://au.int/" target="_blank" rel="noopener" aria-label="Visit African Union website">
+                                <img src="images/AAU.png" alt="African Union" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="partner-logo-item">
+                            <a href="https://www.rescif.org/" target="_blank" rel="noopener" aria-label="Visit RESCIF website">
+                                <img src="images/RESCIF.webp" alt="RESCIF" loading="lazy">
+                            </a>
+                        </div>
+                        
+                        <!-- Duplicate set for seamless loop -->
+                        <div class="partner-logo-item">
+                            <a href="https://www.ocpgroup.ma/en" target="_blank" rel="noopener" aria-label="Visit OCP Group website">
+                                <img src="images/OCPA.png" alt="OCP Group" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="partner-logo-item">
+                            <a href="https://www.afdb.org/" target="_blank" rel="noopener" aria-label="Visit African Development Bank website">
+                                <img src="images/AfDB.png" alt="African Development Bank" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="partner-logo-item">
+                            <a href="https://arua.org.za/" target="_blank" rel="noopener" aria-label="Visit ARUA website">
+                                <img src="images/arua.webp" alt="ARUA" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="partner-logo-item">
+                            <a href="https://www.ruforum.org/" target="_blank" rel="noopener" aria-label="Visit RUFORUM website">
+                                <img src="images/RUFORUM.jpg" alt="RUFORUM" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="partner-logo-item">
+                            <a href="https://aceimpact.org/" target="_blank" rel="noopener" aria-label="Visit ACE IMPACT website">
+                                <img src="images/ACE-IMPACT.jpg" alt="ACE IMPACT" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="partner-logo-item">
+                            <a href="https://www.fao.org/" target="_blank" rel="noopener" aria-label="Visit FAO website">
+                                <img src="images/FAO.png" alt="FAO" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="partner-logo-item">
+                            <a href="https://au.int/" target="_blank" rel="noopener" aria-label="Visit African Union website">
+                                <img src="images/AAU.png" alt="African Union" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="partner-logo-item">
+                            <a href="https://www.rescif.org/" target="_blank" rel="noopener" aria-label="Visit RESCIF website">
+                                <img src="images/RESCIF.webp" alt="RESCIF" loading="lazy">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="partners-stats">
+                    <div class="partner-stat">
+                        <div class="partner-stat-number">50+</div>
+                        <div class="partner-stat-label">African institutions engaged</div>
+                    </div>
+                    <div class="partner-stat">
+                        <div class="partner-stat-number">20+</div>
+                        <div class="partner-stat-label">African Countries</div>
+                    </div>
+                </div> -->
+            </div>
+        </section>
+
+        <!-- Partnership Philosophy -->
+        <section class="section" style="background: var(--gradient-3);" role="region" aria-labelledby="philosophy-title">
+            <div class="section-container">
+                <h2 class="section-title" id="philosophy-title">Partnership Philosophy</h2>
+                <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                    <p style="font-size: 1.2rem; line-height: 1.8; color: var(--dark-gray); margin-bottom: 2rem;">
+                        We believe that Africa's greatest strength lies in its diversity of perspectives, experiences, and innovations. Our approach to partnerships is built on mutual respect, shared learning, and collaborative problem-solving.
+                    </p>
+                    <p style="font-size: 1.2rem; line-height: 1.8; color: var(--dark-gray);">
+                        By connecting institutions, researchers, entrepreneurs, and policymakers across the continent and beyond, we create an ecosystem where knowledge flows freely, innovations emerge organically, and solutions are designed by and for African communities.
+                    </p>
+                    <br> 
+                    <h3>Interested in Partnership?</h3>
+                    <p style="font-size: 1.2rem; line-height: 1.8; color: var(--dark-gray);">
+                        Join our network of organizations working to transform Africa's innovation landscape.</p>
+                    <br>
+                    <a href="#contact" class="cta-button primary">Explore Partnership Opportunities</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section" id="contact" role="region" aria-labelledby="contact-title">
+            <div class="section-container">
+                <h2 class="section-title" id="contact-title">Get In Touch</h2>
+                <p class="section-subtitle">Ready to collaborate? Let's discuss how we can work together to advance Africa's development goals.</p>
+                
+                <div class="contact-grid">
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon" aria-hidden="true">📧</div>
+                        <h3>Email Us</h3>
+                        <p>Send us a message and we'll respond within 24 hours.</p>
+                        <a href="mailto:africa.initiative@um6p.ma">africa.initiative@um6p.ma</a>
+                    </div>
+                    
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon" aria-hidden="true">📍</div>
+                        <h3>Visit Us</h3>
+                        <p>Come see our campus and meet our team in person.</p>
+                        <a href="https://maps.google.com/?q=UM6P+Ben+Guerir" target="_blank" rel="noopener">Ben Guerir, Morocco</a>
+                    </div>
+                    
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon" aria-hidden="true">💬</div>
+                        <h3>Connect</h3>
+                        <p>Follow us on social media for daily updates and insights.</p>
+                        <a href="https://www.linkedin.com/company/um6p-africa-initiative" target="_blank" rel="noopener">LinkedIn</a>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <form class="contact-form fade-in" id="collaborationForm" aria-label="Contact form">
+                    <h3 style="text-align: center; margin-bottom: 2rem; color: var(--primary-black);">Start a Conversation</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required autocomplete="given-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required autocomplete="family-name">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required autocomplete="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="organization">Organization</label>
+                            <input type="text" id="organization" name="organization" autocomplete="organization">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a topic</option>
+                            <option value="partnership">Partnership Opportunity</option>
+                            <option value="research">Research Collaboration</option>
+                            <option value="education">Education Programs</option>
+                            <option value="innovation">Innovation & Entrepreneurship</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Tell us about your idea, project, or how you'd like to collaborate..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message</button>
+                    
+                    <div class="success-message" id="collaborationSuccess" role="alert" aria-live="polite">
+                        Thank you for your message! We'll get back to you within 48 hours.
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>UM6P - Africa Initiative</h3>
+                <p>Supporting Africa's socio-economic development through collaboration, innovation, and strategic partnerships across the continent.</p>
+                <br>
+                <p><strong>Address:</strong><br>
+                Mohammed VI Polytechnic University<br>
+                Ben Guerir, Morocco</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#home">Home</a>
+                <a href="#about">About Us</a>
+                <a href="#mission">Our Mission</a>
+                <a href="#workstreams">Workstreams</a>
+                <a href="#partners">Partners</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <a href="#" onclick="openNewsletterArchive()">Newsletter Archive</a>
+                <a href="#" onclick="openOpportunitiesDatabase()">Opportunities</a>
+                <a href="#" onclick="openEventsCalendar()">Events Calendar</a>
+                <a href="mailto:africa.initiative@um6p.ma">Contact Us</a>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <a href="https://www.linkedin.com/company/um6p-africa-initiative" target="_blank" rel="noopener">
+                    <i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn
+                </a>
+                <a href="https://x.com/Um6pAfrica" target="_blank" rel="noopener">
+                    <i class="fab fa-x-twitter" aria-hidden="true"></i> X (Twitter)
+                </a>
+                <a href="https://www.instagram.com/um6pafrica" target="_blank" rel="noopener">
+                    <i class="fab fa-instagram" aria-hidden="true"></i> Instagram
+                </a>
+                <a href="https://www.um6p.ma/en" target="_blank" rel="noopener">
+                    <i class="fas fa-globe" aria-hidden="true"></i> UM6P Official
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 UM6P - Africa Initiative. All rights reserved. | 
+               <a href="#" style="color: #ccc;">Privacy Policy</a> | 
+               <a href="#" style="color: #ccc;">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
+    
+    <!-- Complete JavaScript -->
+    <script>
+        // Hero Carousel Variables
+        let currentHeroSlideIndex = 0;
+        const totalHeroSlides = 4;
+        let heroAutoplayInterval;
+        const autoplayDuration = 6000; // 6 seconds per slide
+
+        // Performance optimization variables
+        let isReducedMotion = false;
+
+        // Initialize reduced motion preference
+        function initReducedMotion() {
+            isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        }
+
+        // Hero Carousel Functions
+        function changeHeroSlide(direction) {
+            const slides = document.querySelectorAll('.hero-slide');
+            const dots = document.querySelectorAll('.hero-dot');
+            
+            if (!slides.length) return;
+            
+            // Remove active class from current slide and dot
+            slides[currentHeroSlideIndex].classList.remove('active');
+            if (dots[currentHeroSlideIndex]) {
+                dots[currentHeroSlideIndex].classList.remove('active');
+                dots[currentHeroSlideIndex].setAttribute('aria-selected', 'false');
+            }
+            
+            // Calculate next slide index
+            currentHeroSlideIndex += direction;
+            
+            if (currentHeroSlideIndex >= totalHeroSlides) {
+                currentHeroSlideIndex = 0;
+            } else if (currentHeroSlideIndex < 0) {
+                currentHeroSlideIndex = totalHeroSlides - 1;
+            }
+            
+            // Add active class to new slide and dot
+            slides[currentHeroSlideIndex].classList.add('active');
+            if (dots[currentHeroSlideIndex]) {
+                dots[currentHeroSlideIndex].classList.add('active');
+                dots[currentHeroSlideIndex].setAttribute('aria-selected', 'true');
+            }
+            
+            // Update progress bar
+            updateHeroProgress();
+            
+            // Reset autoplay
+            resetHeroAutoplay();
+            
+            // Announce slide change for screen readers
+            announceSlideChange(currentHeroSlideIndex + 1);
+        }
+
+        function currentHeroSlide(slideIndex) {
+            const slides = document.querySelectorAll('.hero-slide');
+            const dots = document.querySelectorAll('.hero-dot');
+            
+            if (!slides.length) return;
+            
+            // Remove active class from all slides and dots
+            slides[currentHeroSlideIndex].classList.remove('active');
+            if (dots[currentHeroSlideIndex]) {
+                dots[currentHeroSlideIndex].classList.remove('active');
+                dots[currentHeroSlideIndex].setAttribute('aria-selected', 'false');
+            }
+            
+            // Set new slide index
+            currentHeroSlideIndex = slideIndex - 1;
+            
+            // Add active class to new slide and dot
+            slides[currentHeroSlideIndex].classList.add('active');
+            if (dots[currentHeroSlideIndex]) {
+                dots[currentHeroSlideIndex].classList.add('active');
+                dots[currentHeroSlideIndex].setAttribute('aria-selected', 'true');
+            }
+            
+            // Update progress bar
+            updateHeroProgress();
+            
+            // Reset autoplay
+            resetHeroAutoplay();
+            
+            // Announce slide change for screen readers
+            announceSlideChange(slideIndex);
+        }
+
+        function updateHeroProgress() {
+            const progressBar = document.querySelector('.hero-progress-bar');
+            if (progressBar) {
+                progressBar.style.width = '0%';
+                // Small delay to ensure smooth animation
+                setTimeout(() => {
+                    progressBar.style.width = '100%';
+                }, 50);
+            }
+        }
+
+        function announceSlideChange(slideNumber) {
+            const announcement = `Slide ${slideNumber} of ${totalHeroSlides}`;
+            const announcer = document.getElementById('slide-announcer');
+            if (announcer) {
+                announcer.textContent = announcement;
+            }
+        }
+
+        function autoplayHeroSlides() {
+            if (!isReducedMotion) {
+                changeHeroSlide(1);
+            }
+        }
+
+        function startHeroAutoplay() {
+            if (!isReducedMotion) {
+                heroAutoplayInterval = setInterval(autoplayHeroSlides, autoplayDuration);
+                updateHeroProgress();
+            }
+        }
+
+        function stopHeroAutoplay() {
+            clearInterval(heroAutoplayInterval);
+            const progressBar = document.querySelector('.hero-progress-bar');
+            if (progressBar) {
+                progressBar.style.width = '0%';
+            }
+        }
+
+        function resetHeroAutoplay() {
+            stopHeroAutoplay();
+            startHeroAutoplay();
+        }
+
+        // Enhanced mobile menu toggle
+        function toggleMobileMenu() {
+            const navMenu = document.querySelector('.nav-menu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (navMenu && menuBtn) {
+                const isExpanded = navMenu.classList.contains('active');
+                
+                navMenu.classList.toggle('active');
+                menuBtn.setAttribute('aria-expanded', !isExpanded);
+                
+                // Focus management
+                if (!isExpanded) {
+                    // Menu opened - focus first menu item
+                    const firstMenuItem = navMenu.querySelector('a');
+                    if (firstMenuItem) {
+                        setTimeout(() => firstMenuItem.focus(), 100);
+                    }
+                }
+            }
+        }
+
+        // Enhanced stats animation for impact section
+        function animateImpactStats() {
+            const statNumbers = document.querySelectorAll('.impact-stat-number');
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.dataset.target || stat.textContent);
+                const suffix = stat.textContent.includes('+') ? '+' : '';
+                let current = 0;
+                const increment = target / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    stat.textContent = Math.floor(current) + suffix;
+                }, 30);
+            });
+        }
+
+        // Enhanced viewport height calculation for mobile browsers
+        function setViewportHeight() {
+            const vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+
+        // Enhanced accessibility features
+        function initAccessibility() {
+            // Create live region for announcements
+            const announcer = document.createElement('div');
+            announcer.id = 'slide-announcer';
+            announcer.setAttribute('aria-live', 'polite');
+            announcer.setAttribute('aria-atomic', 'true');
+            announcer.style.cssText = `
+                position: absolute;
+                left: -10000px;
+                width: 1px;
+                height: 1px;
+                overflow: hidden;
+            `;
+            document.body.appendChild(announcer);
+            
+            // Skip link functionality
+            const skipLink = document.querySelector('.skip-link');
+            if (skipLink) {
+                skipLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = document.querySelector(skipLink.getAttribute('href'));
+                    if (target) {
+                        target.focus();
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            }
+            
+            // Enhanced keyboard navigation for hero carousel
+            document.addEventListener('keydown', (e) => {
+                if (e.target.closest('.hero-carousel') || document.activeElement.closest('.hero-carousel')) {
+                    switch(e.key) {
+                        case 'ArrowLeft':
+                            e.preventDefault();
+                            changeHeroSlide(-1);
+                            break;
+                        case 'ArrowRight':
+                            e.preventDefault();
+                            changeHeroSlide(1);
+                            break;
+                        case 'Home':
+                            e.preventDefault();
+                            currentHeroSlide(1);
+                            break;
+                        case 'End':
+                            e.preventDefault();
+                            currentHeroSlide(totalHeroSlides);
+                            break;
+                        case 'Escape':
+                            e.preventDefault();
+                            stopHeroAutoplay();
+                            break;
+                        case ' ':
+                        case 'Enter':
+                            if (e.target.classList.contains('hero-dot')) {
+                                e.preventDefault();
+                                const index = Array.from(document.querySelectorAll('.hero-dot')).indexOf(e.target) + 1;
+                                currentHeroSlide(index);
+                            }
+                            break;
+                    }
+                }
+            });
+
+            // Enhanced dropdown keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.target.classList.contains('dropdown-toggle')) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        const dropdown = e.target.closest('.dropdown');
+                        const menu = dropdown.querySelector('.dropdown-menu');
+                        const isExpanded = e.target.getAttribute('aria-expanded') === 'true';
+                        
+                        e.target.setAttribute('aria-expanded', !isExpanded);
+                        
+                        if (!isExpanded) {
+                            menu.style.display = 'block';
+                            const firstMenuItem = menu.querySelector('a');
+                            if (firstMenuItem) firstMenuItem.focus();
+                        } else {
+                            menu.style.display = '';
+                        }
+                    }
+                }
+            });
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Unobserve after animation to improve performance
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        function observeElements() {
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Enhanced form validation with accessibility improvements
+        function validateForm(formElement) {
+            const inputs = formElement.querySelectorAll('input[required], textarea[required], select[required]');
+            let isValid = true;
+            let firstErrorField = null;
+            
+            inputs.forEach(input => {
+                const errorElement = input.parentNode.querySelector('.error-message');
+                
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.classList.add('error');
+                    input.setAttribute('aria-invalid', 'true');
+                    
+                    if (!firstErrorField) firstErrorField = input;
+                    
+                    if (!errorElement) {
+                        const error = document.createElement('div');
+                        error.className = 'error-message';
+                        error.id = `error-${input.id || 'field'}`;
+                        error.textContent = `${input.labels[0]?.textContent || 'This field'} is required`;
+                        error.setAttribute('role', 'alert');
+                        error.style.cssText = `
+                            background: #f8d7da;
+                            color: #721c24;
+                            padding: 0.5rem;
+                            border-radius: 5px;
+                            margin-top: 0.5rem;
+                            font-size: 0.9rem;
+                            border: 1px solid #f5c6cb;
+                        `;
+                        input.parentNode.appendChild(error);
+                        input.setAttribute('aria-describedby', error.id);
+                    }
+                } else {
+                    input.classList.remove('error');
+                    input.setAttribute('aria-invalid', 'false');
+                    if (errorElement) {
+                        errorElement.remove();
+                        input.removeAttribute('aria-describedby');
+                    }
+                }
+                
+                // Enhanced email validation
+                if (input.type === 'email' && input.value) {
+                    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailPattern.test(input.value)) {
+                        isValid = false;
+                        input.classList.add('error');
+                        input.setAttribute('aria-invalid', 'true');
+                        
+                        if (!firstErrorField) firstErrorField = input;
+                        
+                        if (!errorElement) {
+                            const error = document.createElement('div');
+                            error.className = 'error-message';
+                            error.id = `error-${input.id || 'email'}`;
+                            error.textContent = 'Please enter a valid email address';
+                            error.setAttribute('role', 'alert');
+                            error.style.cssText = `
+                                background: #f8d7da;
+                                color: #721c24;
+                                padding: 0.5rem;
+                                border-radius: 5px;
+                                margin-top: 0.5rem;
+                                font-size: 0.9rem;
+                                border: 1px solid #f5c6cb;
+                            `;
+                            input.parentNode.appendChild(error);
+                            input.setAttribute('aria-describedby', error.id);
+                        }
+                    }
+                }
+            });
+            
+            // Focus first error field if validation fails
+            if (!isValid && firstErrorField) {
+                firstErrorField.focus();
+            }
+            
+            return isValid;
+        }
+
+        // Enhanced header background on scroll with throttling
+        let ticking = false;
+
+        function updateHeader() {
+            const header = document.querySelector('.header');
+            if (header) {
+                if (window.scrollY > 100) {
+                    header.style.background = 'linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(51, 51, 51, 0.95) 100%)';
+                    header.style.backdropFilter = 'blur(15px)';
+                } else {
+                    header.style.background = 'linear-gradient(135deg, var(--primary-black) 0%, var(--dark-gray) 100%)';
+                    header.style.backdropFilter = 'blur(10px)';
+                }
+            }
+            ticking = false;
+        }
+
+        function requestHeaderUpdate() {
+            if (!ticking) {
+                requestAnimationFrame(updateHeader);
+                ticking = true;
+            }
+        }
+
+        // Newsletter Archive function
+        function openNewsletterArchive() {
+            window.open('https://um6p-my.sharepoint.com/:f:/g/personal/africa_initiative_um6p_ma/EiUh9bIHpQtAp_LLH5GFMyYBh5fBjEG5EgKPdKgFyF_0fg?e=8WDMVP', '_blank', 'noopener,noreferrer');
+        }
+
+        // Opportunities Database function
+        function openOpportunitiesDatabase() {
+            window.open('https://um6p-my.sharepoint.com/:x:/g/personal/africa_initiative_um6p_ma/EQGcCw_ppm1CibdnKt4GqloBTxM22yZ4HLBZOSG3ox9ULw?e=coKt3e&nav=MTVfezAwMDAwMDAwLTAwMDEtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMH0', '_blank', 'noopener,noreferrer');
+        }
+
+        // Events Calendar function
+        function openEventsCalendar() {
+            window.open('https://um6p-my.sharepoint.com/:x:/g/personal/africa_initiative_um6p_ma/EdKkT38UIMJKnWRJJ6od7mMBMmYwY8G8cp4V6WHHEdCZew?e=aH35dW&nav=MTVfezAwMDAwMDAwLTAwMDEtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMH0', '_blank', 'noopener,noreferrer');
+        }
+
+        // Enhanced smooth scrolling for navigation links
+        function initSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        
+                        // Update active navigation
+                        document.querySelectorAll('.nav-menu a').forEach(link => {
+                            link.classList.remove('active');
+                            link.removeAttribute('aria-current');
+                        });
+                        this.classList.add('active');
+                        this.setAttribute('aria-current', 'page');
+                        
+                        // Close mobile menu if open
+                        const navMenu = document.querySelector('.nav-menu');
+                        const menuBtn = document.querySelector('.mobile-menu-btn');
+                        if (navMenu && navMenu.classList.contains('active')) {
+                            navMenu.classList.remove('active');
+                            menuBtn.setAttribute('aria-expanded', 'false');
+                        }
+                    }
+                });
+            });
+        }
+
+        // Enhanced touch/swipe support for hero carousel
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let touchStartY = 0;
+        let touchEndY = 0;
+
+        function initTouchSupport() {
+            const heroCarousel = document.querySelector('.hero-carousel');
+            if (heroCarousel) {
+                heroCarousel.addEventListener('touchstart', function(e) {
+                    touchStartX = e.changedTouches[0].screenX;
+                    touchStartY = e.changedTouches[0].screenY;
+                }, { passive: true });
+
+                heroCarousel.addEventListener('touchend', function(e) {
+                    touchEndX = e.changedTouches[0].screenX;
+                    touchEndY = e.changedTouches[0].screenY;
+                    handleSwipe();
+                }, { passive: true });
+            }
+        }
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const horizontalDistance = touchStartX - touchEndX;
+            const verticalDistance = Math.abs(touchStartY - touchEndY);
+            
+            // Only trigger swipe if horizontal movement is greater than vertical
+            if (Math.abs(horizontalDistance) > swipeThreshold && Math.abs(horizontalDistance) > verticalDistance) {
+                if (horizontalDistance > 0) {
+                    // Swipe left - next slide
+                    changeHeroSlide(1);
+                } else {
+                    // Swipe right - previous slide
+                    changeHeroSlide(-1);
+                }
+            }
+        }
+
+        // Enhanced page initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize reduced motion detection
+            initReducedMotion();
+            
+            // Initialize all core functionality
+            initAccessibility();
+            initSmoothScrolling();
+            initTouchSupport();
+            
+            // Observe all fade-in elements
+            observeElements();
+            
+            // Initialize hero carousel if it exists
+            const heroCarousel = document.querySelector('.hero-carousel');
+            if (heroCarousel) {
+                // Start hero carousel autoplay
+                startHeroAutoplay();
+                
+                // Pause carousel on hover/focus
+                heroCarousel.addEventListener('mouseenter', stopHeroAutoplay);
+                heroCarousel.addEventListener('mouseleave', startHeroAutoplay);
+                heroCarousel.addEventListener('focusin', stopHeroAutoplay);
+                heroCarousel.addEventListener('focusout', startHeroAutoplay);
+                
+                // Add ARIA labels to hero elements
+                const heroDots = document.querySelectorAll('.hero-dot');
+                heroDots.forEach((dot, index) => {
+                    dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+                });
+                
+                const heroNavs = document.querySelectorAll('.hero-nav');
+                heroNavs.forEach(nav => {
+                    nav.setAttribute('aria-label', nav.classList.contains('prev') ? 'Previous slide' : 'Next slide');
+                });
+            }
+
+            // Initialize impact stats animation on scroll
+            const impactSection = document.querySelector('.impact-mission');
+            if (impactSection) {
+                const impactObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            animateImpactStats();
+                            impactObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.3 });
+                impactObserver.observe(impactSection);
+            }
+            
+            // Enhanced form handling for all forms
+            const forms = document.querySelectorAll('form');
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    if (!validateForm(this)) {
+                        e.preventDefault();
+                    }
+                });
+                
+                // Add real-time validation
+                const inputs = form.querySelectorAll('input, textarea, select');
+                inputs.forEach(input => {
+                    input.addEventListener('blur', function() {
+                        // Clear previous errors
+                        const errorElement = this.parentNode.querySelector('.error-message');
+                        if (errorElement) {
+                            errorElement.remove();
+                            this.removeAttribute('aria-describedby');
+                        }
+                        this.classList.remove('error');
+                        this.setAttribute('aria-invalid', 'false');
+                        
+                        // Validate single field
+                        if (this.hasAttribute('required') && !this.value.trim()) {
+                            this.classList.add('error');
+                            this.setAttribute('aria-invalid', 'true');
+                        } else if (this.type === 'email' && this.value) {
+                            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                            if (!emailPattern.test(this.value)) {
+                                this.classList.add('error');
+                                this.setAttribute('aria-invalid', 'true');
+                                const error = document.createElement('div');
+                                error.className = 'error-message';
+                                error.id = `error-${this.id || 'email'}`;
+                                error.textContent = 'Please enter a valid email address';
+                                error.setAttribute('role', 'alert');
+                                error.style.cssText = `
+                                    background: #f8d7da;
+                                    color: #721c24;
+                                    padding: 0.5rem;
+                                    border-radius: 5px;
+                                    margin-top: 0.5rem;
+                                    font-size: 0.9rem;
+                                    border: 1px solid #f5c6cb;
+                                `;
+                                this.parentNode.appendChild(error);
+                                this.setAttribute('aria-describedby', error.id);
+                            }
+                        }
+                    });
+                });
+            });
+            
+            // Enhanced collaboration form submission
+            const collaborationForm = document.getElementById('collaborationForm');
+            if (collaborationForm) {
+                collaborationForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    if (validateForm(this)) {
+                        const submitBtn = this.querySelector('.submit-btn');
+                        const successMessage = document.getElementById('collaborationSuccess');
+                        const originalText = submitBtn.textContent;
+                        
+                        submitBtn.textContent = 'Submitting...';
+                        submitBtn.style.opacity = '0.7';
+                        submitBtn.disabled = true;
+                        submitBtn.setAttribute('aria-busy', 'true');
+                        
+                        // Simulate form submission
+                        setTimeout(() => {
+                            this.reset();
+                            if (successMessage) {
+                                successMessage.classList.add('show');
+                                successMessage.style.display = 'block';
+                                successMessage.setAttribute('role', 'alert');
+                                successMessage.focus();
+                            }
+                            submitBtn.textContent = originalText;
+                            submitBtn.style.opacity = '1';
+                            submitBtn.disabled = false;
+                            submitBtn.setAttribute('aria-busy', 'false');
+                            
+                            // Hide success message after 5 seconds
+                            setTimeout(() => {
+                                if (successMessage) {
+                                    successMessage.classList.remove('show');
+                                    successMessage.style.display = 'none';
+                                }
+                            }, 5000);
+                        }, 2000);
+                    }
+                });
+            }
+            
+            // Enhanced navigation active state management
+            const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
+            const sections = document.querySelectorAll('section[id]');
+            
+            if (sections.length > 0 && navLinks.length > 0) {
+                const navObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const id = entry.target.getAttribute('id');
+                            navLinks.forEach(link => {
+                                link.classList.remove('active');
+                                link.removeAttribute('aria-current');
+                                if (link.getAttribute('href') === `#${id}`) {
+                                    link.classList.add('active');
+                                    link.setAttribute('aria-current', 'page');
+                                }
+                            });
+                        }
+                    });
+                }, { threshold: 0.6 });
+                
+                sections.forEach(section => {
+                    navObserver.observe(section);
+                });
+            }
+            
+            // Enhanced scroll event with throttling
+            window.addEventListener('scroll', requestHeaderUpdate, { passive: true });
+            
+            // Set initial viewport height
+            setViewportHeight();
+        });
+
+        // Mobile menu close on outside click
+        document.addEventListener('click', function(e) {
+            const navMenu = document.querySelector('.nav-menu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (navMenu && menuBtn && !navMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+                navMenu.classList.remove('active');
+                menuBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Close mobile menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const navMenu = document.querySelector('.nav-menu');
+                const menuBtn = document.querySelector('.mobile-menu-btn');
+                if (navMenu && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    menuBtn.setAttribute('aria-expanded', 'false');
+                    menuBtn.focus();
+                }
+                
+                // Close dropdowns
+                const dropdowns = document.querySelectorAll('.dropdown');
+                dropdowns.forEach(dropdown => {
+                    const toggle = dropdown.querySelector('.dropdown-toggle');
+                    const menu = dropdown.querySelector('.dropdown-menu');
+                    if (toggle && menu && toggle.getAttribute('aria-expanded') === 'true') {
+                        toggle.setAttribute('aria-expanded', 'false');
+                        menu.style.display = '';
+                        toggle.focus();
+                    }
+                });
+                
+                // Stop hero carousel autoplay
+                if (document.querySelector('.hero-carousel')) {
+                    stopHeroAutoplay();
+                }
+            }
+        });
+
+        // Update viewport height on resize and orientation change
+        window.addEventListener('resize', setViewportHeight, { passive: true });
+        window.addEventListener('orientationchange', setViewportHeight, { passive: true });
+
+        // Enhanced touch event handling to prevent zoom on double tap
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function (event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, { passive: false });
+
+        // Enhanced loading state management
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+        });
+
+        // Add proper focus management for dropdown menus
+        document.addEventListener('click', (e) => {
+            // Close dropdowns when clicking outside
+            const dropdowns = document.querySelectorAll('.dropdown');
+            dropdowns.forEach(dropdown => {
+                if (!dropdown.contains(e.target)) {
+                    const toggle = dropdown.querySelector('.dropdown-toggle');
+                    const menu = dropdown.querySelector('.dropdown-menu');
+                    if (toggle && menu) {
+                        toggle.setAttribute('aria-expanded', 'false');
+                        // Only hide if it was expanded via click, not hover
+                        if (menu.style.display === 'block') {
+                            menu.style.display = '';
+                        }
+                    }
+                }
+            });
+        });
+
+        // Enhanced dropdown click handling
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.dropdown-toggle')) {
+                e.preventDefault();
+                const toggle = e.target.closest('.dropdown-toggle');
+                const dropdown = toggle.closest('.dropdown');
+                const menu = dropdown.querySelector('.dropdown-menu');
+                const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+                
+                toggle.setAttribute('aria-expanded', !isExpanded);
+                
+                if (!isExpanded) {
+                    menu.style.display = 'block';
+                    const firstMenuItem = menu.querySelector('a');
+                    if (firstMenuItem) firstMenuItem.focus();
+                } else {
+                    menu.style.display = '';
+                }
+            }
+        });
+
+        // Make global functions available
+        window.changeHeroSlide = changeHeroSlide;
+        window.currentHeroSlide = currentHeroSlide;
+        window.toggleMobileMenu = toggleMobileMenu;
+        window.openNewsletterArchive = openNewsletterArchive;
+        window.openOpportunitiesDatabase = openOpportunitiesDatabase;
+        window.openEventsCalendar = openEventsCalendar;
+    </script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        // Register service worker if available
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then((registration) => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch((registrationError) => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Updates - UM6P Africa Initiative</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Stay informed about the latest developments, announcements, and insights from the UM6P Africa Initiative. Discover our impact across the continent.">
+    <meta name="keywords" content="UM6P news, Africa Initiative updates, research news, innovation updates, partnerships, education news">
+    <meta name="author" content="UM6P Africa Initiative">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="News & Updates - UM6P Africa Initiative">
+    <meta property="og:description" content="Latest developments and insights from UM6P's Africa Initiative">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com/news.html">
+    <meta property="og:image" content="https://your-domain.com/images/news-og-image.jpg">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="News & Updates - UM6P Africa Initiative">
+    <meta name="twitter:description" content="Latest developments and insights from UM6P's Africa Initiative">
+    <meta name="twitter:image" content="https://your-domain.com/images/news-twitter-image.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://your-domain.com/news.html">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Structured Data for News -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "UM6P Africa Initiative News",
+      "description": "Latest news and updates from the UM6P Africa Initiative",
+      "url": "https://your-domain.com/news.html",
+      "mainEntity": {
+        "@type": "ItemList",
+        "name": "News Articles",
+        "description": "Collection of news articles and updates"
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://your-domain.com"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "News",
+            "item": "https://your-domain.com/news.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html" aria-label="UM6P Africa Initiative Homepage">
+                    UM6P - Africa Initiative
+                </a>
+            </div>
+            <nav role="navigation" aria-label="Main navigation">
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="news.html" class="active" aria-current="page">News</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    
+                    <!-- Dropdown for UM6P Links -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+                            Explore UM6P <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="none"><a href="https://www.um6p.ma/en" target="_blank" rel="noopener" role="menuitem">UM6P Official</a></li>
+                            <li role="none"><a href="https://timesofum6p.com/" target="_blank" rel="noopener" role="menuitem">Times of UM6P</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-container">
+        <!-- Breadcrumb Navigation -->
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+            <div class="section-container">
+                <ol class="breadcrumb-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li aria-current="page">News & Updates</li>
+                </ol>
+            </div>
+        </nav>
+        
+        <!-- Hero Section -->
+        <main id="main-content">
+            <div class="about-hero">
+                <div class="section-container">
+                    <h1 class="section-title">News & Updates</h1>
+                    <p class="section-subtitle">Stay informed about the latest developments, announcements, and insights from the UM6P Africa Initiative as we drive innovation and collaboration across the continent.</p>
+                </div>
+            </div>
+
+            <!-- Blog/News Section -->
+            <section class="blog-content" role="region" aria-labelledby="news-heading">
+                <h2 id="news-heading">Latest News</h2>
+                
+                <!-- Enhanced Search and Filter -->
+                <div class="blog-filter" role="search" aria-label="Filter news articles">
+                    <div class="form-group">
+                        <label for="search-posts">Search Articles</label>
+                        <input 
+                            type="text" 
+                            id="search-posts" 
+                            placeholder="Search by keyword..." 
+                            oninput="filterPosts()"
+                            aria-describedby="search-help"
+                            autocomplete="off"
+                        >
+                        <div id="search-help" class="sr-only">
+                            Search through article titles, content, and author names
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="filter-tags">Filter by Category</label>
+                        <select id="filter-tags" onchange="filterPosts()" aria-describedby="filter-help">
+                            <option value="">All Categories</option>
+                            <option value="Agriculture">Agriculture</option>
+                            <option value="Community">Community</option>
+                            <option value="Education">Education</option>
+                            <option value="Environment">Environment</option>
+                            <option value="Energy">Energy</option>
+                            <option value="Entrepreneurship">Entrepreneurship</option>
+                            <option value="Health">Health</option>
+                            <option value="Research">Research</option>
+                            <option value="Partnership">Partnership</option>
+                            <option value="Innovation">Innovation</option>
+                        </select>
+                        <div id="filter-help" class="sr-only">
+                            Filter articles by topic category
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Results Summary -->
+                <div id="results-summary" class="results-summary" role="status" aria-live="polite">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+                
+                <!-- Blog Grid -->
+                <div class="blog-grid" id="blog-grid" role="feed" aria-label="News articles">
+                    <!-- Blog posts will be dynamically inserted here -->
+                </div>
+                
+                <!-- Enhanced Pagination -->
+                <nav class="blog-pagination" id="blog-pagination" role="navigation" aria-label="News pagination">
+                    <button class="btn pagination-btn" onclick="changePage('prev')" aria-label="Go to previous page">
+                        <i class="fas fa-chevron-left" aria-hidden="true"></i> Previous
+                    </button>
+                    <div class="pagination-numbers" id="pagination-numbers" role="list">
+                        <!-- Page numbers will be inserted here -->
+                    </div>
+                    <button class="btn pagination-btn" onclick="changePage('next')" aria-label="Go to next page">
+                        Next <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                    </button>
+                </nav>
+            </section>
+
+            <!-- Featured Categories Section -->
+            <section class="featured-categories" role="region" aria-labelledby="categories-heading">
+                <div class="section-container">
+                    <h2 class="section-title" id="categories-heading">Explore by Category</h2>
+                    <div class="categories-grid">
+                        <div class="category-card fade-in" data-category="Research">
+                            <div class="category-icon" aria-hidden="true">🔬</div>
+                            <h3>Research Excellence</h3>
+                            <p>Cutting-edge research initiatives and scientific breakthroughs across Africa.</p>
+                            <button class="category-filter-btn" onclick="filterByCategory('Research')" aria-label="Filter news by Research category">
+                                View Research News
+                            </button>
+                        </div>
+                        
+                        <div class="category-card fade-in" data-category="Innovation">
+                            <div class="category-icon" aria-hidden="true">💡</div>
+                            <h3>Innovation & Startups</h3>
+                            <p>Entrepreneurship, innovation hubs, and startup ecosystem developments.</p>
+                            <button class="category-filter-btn" onclick="filterByCategory('Innovation')" aria-label="Filter news by Innovation category">
+                                View Innovation News
+                            </button>
+                        </div>
+                        
+                        <div class="category-card fade-in" data-category="Education">
+                            <div class="category-icon" aria-hidden="true">🎓</div>
+                            <h3>Education Programs</h3>
+                            <p>Academic excellence, educational partnerships, and student achievements.</p>
+                            <button class="category-filter-btn" onclick="filterByCategory('Education')" aria-label="Filter news by Education category">
+                                View Education News
+                            </button>
+                        </div>
+                        
+                        <div class="category-card fade-in" data-category="Partnership">
+                            <div class="category-icon" aria-hidden="true">🤝</div>
+                            <h3>Strategic Partnerships</h3>
+                            <p>Collaboration announcements and partnership developments across the continent.</p>
+                            <button class="category-filter-btn" onclick="filterByCategory('Partnership')" aria-label="Filter news by Partnership category">
+                                View Partnership News
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Newsletter Subscription -->
+            <section class="newsletter-section" role="region" aria-labelledby="newsletter-heading">
+                <div class="newsletter-content">
+                    <h2 id="newsletter-heading">Stay Updated</h2>
+                    <p>Subscribe to our newsletter to receive the latest news, opportunities, and insights directly in your inbox.</p>
+                    <form class="newsletter-form" id="newsletterForm" aria-label="Newsletter subscription">
+                        <label for="newsletter-email" class="sr-only">Email address</label>
+                        <input 
+                            type="email" 
+                            id="newsletter-email" 
+                            placeholder="Enter your email address" 
+                            required 
+                            aria-label="Email address for newsletter subscription"
+                            autocomplete="email"
+                        >
+                        <button type="submit">Subscribe</button>
+                    </form>
+                    <div class="success-message" id="newsletterSuccess" role="alert" aria-live="assertive">
+                        Thank you for subscribing! You'll receive our latest updates.
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>UM6P - Africa Initiative</h3>
+                <p>Supporting Africa's socio-economic development through collaboration, innovation, and strategic partnerships across the continent.</p>
+                <br>
+                <address>
+                    <strong>Address:</strong><br>
+                    Mohammed VI Polytechnic University<br>
+                    Ben Guerir, Morocco
+                </address>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="index.html#about">About Us</a>
+                <a href="index.html#mission">Our Mission</a>
+                <a href="index.html#workstreams">Workstreams</a>
+                <a href="index.html#partners">Partners</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <a href="#" onclick="openNewsletterArchive()">Newsletter Archive</a>
+                <a href="#" onclick="openOpportunitiesDatabase()">Opportunities</a>
+                <a href="#" onclick="openEventsCalendar()">Events Calendar</a>
+                <a href="mailto:africa.initiative@um6p.ma">Contact Us</a>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <a href="https://www.linkedin.com/company/um6p-africa-initiative" target="_blank" rel="noopener">
+                    <i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn
+                </a>
+                <a href="https://x.com/Um6pAfrica" target="_blank" rel="noopener">
+                    <i class="fab fa-x-twitter" aria-hidden="true"></i> X (Twitter)
+                </a>
+                <a href="https://www.instagram.com/um6pafrica" target="_blank" rel="noopener">
+                    <i class="fab fa-instagram" aria-hidden="true"></i> Instagram
+                </a>
+                <a href="https://www.um6p.ma/en" target="_blank" rel="noopener">
+                    <i class="fas fa-globe" aria-hidden="true"></i> UM6P Official
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 UM6P - Africa Initiative. All rights reserved. | 
+               <a href="#" style="color: #ccc;">Privacy Policy</a> | 
+               <a href="#" style="color: #ccc;">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- News Page Styles with Fixed Link Styling -->
+    <style>
+        /* Screen reader only styles */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        /* Breadcrumb Navigation */
+        .breadcrumb {
+            background: var(--light-gray);
+            padding: 1rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .breadcrumb-list {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .breadcrumb-list li {
+            display: flex;
+            align-items: center;
+        }
+        
+        .breadcrumb-list li:not(:last-child)::after {
+            content: '/';
+            margin-left: 0.5rem;
+            color: var(--medium-gray);
+        }
+        
+        .breadcrumb-list a {
+            color: var(--primary-red);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+        
+        .breadcrumb-list a:hover {
+            color: var(--accent-orange);
+            background-color: rgba(215, 73, 42, 0.1);
+        }
+        
+        .breadcrumb-list a:focus-visible {
+            outline: 2px solid var(--primary-red);
+            outline-offset: 2px;
+        }
+        
+        .breadcrumb-list li[aria-current="page"] {
+            color: var(--medium-gray);
+            font-weight: 500;
+        }
+        
+        /* About Hero Section */
+        .about-hero {
+            background: linear-gradient(135deg, var(--primary-black) 0%, var(--dark-gray) 100%);
+            color: var(--primary-white);
+            padding: 6rem 0 4rem;
+            text-align: center;
+        }
+        
+        .about-hero .section-title {
+            color: var(--primary-white);
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-hero .section-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Results Summary */
+        .results-summary {
+            text-align: center;
+            margin: 1rem 0 2rem;
+            padding: 1rem;
+            background: var(--light-gray);
+            border-radius: 10px;
+            color: var(--medium-gray);
+            font-style: italic;
+        }
+        
+        /* Enhanced Blog Meta Links - FIXED STYLING */
+        .blog-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--medium-gray);
+            flex-wrap: wrap;
+        }
+        
+        .blog-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .blog-meta i {
+            color: var(--primary-red);
+            font-size: 0.8rem;
+        }
+        
+        .blog-meta a {
+            color: var(--primary-red);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        
+        .blog-meta a:hover {
+            color: var(--accent-orange);
+            background-color: rgba(215, 73, 42, 0.1);
+            text-decoration: underline;
+        }
+        
+        .blog-meta a:focus-visible {
+            outline: 2px solid var(--primary-red);
+            outline-offset: 2px;
+            background-color: rgba(215, 73, 42, 0.1);
+        }
+        
+        .blog-meta a:visited {
+            color: #a53b2a;
+        }
+        
+        .blog-meta a:visited:hover {
+            color: var(--accent-orange);
+        }
+        
+        /* Enhanced Blog Post Title Links - FIXED STYLING */
+        .blog-post h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .blog-post h3 a {
+            color: var(--primary-black);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 0.5rem 0;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        .blog-post h3 a:hover {
+            color: var(--primary-red);
+            text-decoration: underline;
+            transform: translateX(4px);
+        }
+        
+        .blog-post h3 a:focus-visible {
+            outline: 2px solid var(--primary-red);
+            outline-offset: 2px;
+            background-color: rgba(215, 73, 42, 0.05);
+        }
+        
+        .blog-post h3 a:visited {
+            color: var(--dark-gray);
+        }
+        
+        .blog-post h3 a:visited:hover {
+            color: var(--primary-red);
+        }
+        
+        /* Enhanced Blog Tags */
+        .blog-tags {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .tag {
+            background: var(--gradient-3);
+            color: var(--primary-red);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(215, 73, 42, 0.2);
+            min-height: 32px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .tag:hover {
+            background: var(--primary-red);
+            color: var(--primary-white);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(215, 73, 42, 0.3);
+        }
+        
+        .tag:focus-visible {
+            outline: 2px solid var(--primary-red);
+            outline-offset: 2px;
+        }
+        
+        /* Featured Categories */
+        .featured-categories {
+            background: var(--light-gray);
+            padding: 4rem 0;
+            margin: 4rem 0 0;
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .category-card {
+            background: var(--primary-white);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(215, 73, 42, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(215, 73, 42, 0.05) 0%, transparent 60%);
+            transform: scale(0);
+            transition: transform 0.4s ease;
+        }
+        
+        .category-card:hover::before {
+            transform: scale(1);
+        }
+        
+        .category-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--hover-shadow);
+        }
+        
+        .category-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 2px 4px rgba(215, 73, 42, 0.3));
+        }
+        
+        .category-card h3 {
+            color: var(--primary-black);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .category-card p {
+            color: var(--medium-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .category-filter-btn {
+            background: var(--gradient-1);
+            color: var(--primary-white);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+            min-height: 44px;
+        }
+        
+        .category-filter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        
+        .category-filter-btn:focus-visible {
+            outline: 2px solid var(--primary-red);
+            outline-offset: 2px;
+        }
+        
+        
+        /* Mobile Responsive Adjustments */
+        @media (max-width: 768px) {
+            .breadcrumb {
+                padding: 0.5rem 0;
+            }
+            
+            .breadcrumb-list {
+                font-size: 0.9rem;
+            }
+            
+            .about-hero {
+                padding: 4rem 0 3rem;
+            }
+            
+            .about-hero .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .category-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .category-icon {
+                font-size: 3rem;
+            }
+            
+            .featured-categories {
+                padding: 3rem 0;
+            }
+            
+            
+            .blog-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .about-hero .section-title {
+                font-size: 2rem;
+            }
+            
+            .about-hero .section-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .blog-post h3 a {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    
+    <!-- Enhanced Blog Functionality -->
+    <script>
+        // Enhanced filter by category function
+        function filterByCategory(category) {
+            const filterSelect = document.getElementById('filter-tags');
+            const searchInput = document.getElementById('search-posts');
+            
+            if (filterSelect) {
+                filterSelect.value = category;
+            }
+            if (searchInput) {
+                searchInput.value = '';
+            }
+            
+            // Scroll to blog section
+            const blogSection = document.querySelector('.blog-content');
+            if (blogSection) {
+                blogSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            
+            // Trigger filter
+            filterPosts();
+            
+            // Update results summary
+            updateResultsSummary(category);
+        }
+        
+        // Update results summary
+        function updateResultsSummary(category = '') {
+            const summary = document.getElementById('results-summary');
+            if (summary) {
+                if (category) {
+                    summary.textContent = `Showing articles in "${category}" category`;
+                } else {
+                    summary.textContent = 'Showing all articles';
+                }
+                summary.style.display = 'block';
+            }
+        }
+        
+        // Enhanced search functionality with real-time updates
+        function setupEnhancedSearch() {
+            const searchInput = document.getElementById('search-posts');
+            const filterSelect = document.getElementById('filter-tags');
+            
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    const query = this.value.trim();
+                    const category = filterSelect ? filterSelect.value : '';
+                    
+                    if (query || category) {
+                        updateResultsSummary(category, query);
+                    } else {
+                        updateResultsSummary();
+                    }
+                });
+            }
+            
+            if (filterSelect) {
+                filterSelect.addEventListener('change', function() {
+                    const category = this.value;
+                    const query = searchInput ? searchInput.value.trim() : '';
+                    
+                    updateResultsSummary(category, query);
+                });
+            }
+        }
+        
+        // Enhanced results summary with search query
+        function updateResultsSummary(category = '', query = '') {
+            const summary = document.getElementById('results-summary');
+            if (summary) {
+                let text = 'Showing all articles';
+                
+                if (category && query) {
+                    text = `Showing "${category}" articles matching "${query}"`;
+                } else if (category) {
+                    text = `Showing articles in "${category}" category`;
+                } else if (query) {
+                    text = `Showing articles matching "${query}"`;
+                }
+                
+                summary.textContent = text;
+                summary.style.display = 'block';
+            }
+        }
+        
+        // Initialize enhanced search on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            setupEnhancedSearch();
+            
+            // Set initial results summary
+            updateResultsSummary();
+            
+            // Add keyboard navigation for category cards
+            const categoryBtns = document.querySelectorAll('.category-filter-btn');
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            });
+            
+            // Add keyboard navigation for blog tags
+            const blogTags = document.querySelectorAll('.tag');
+            blogTags.forEach(tag => {
+                tag.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            });
+        });
+        
+        // Enhanced performance tracking for news page
+        if ('performance' in window) {
+            window.addEventListener('load', () => {
+                const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+                console.log('News page load time:', loadTime + 'ms');
+            });
+        }
+    </script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then((registration) => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch((registrationError) => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
