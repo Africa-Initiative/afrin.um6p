@@ -896,56 +896,6 @@
             }
         }
 
-        @media (max-width: 768px) {
-            .section-title {
-                font-size: 2.5rem;
-            }
-            
-            .workstreams-left,
-            .workstreams-right {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-            
-            .workstream-card {
-                padding: 1.5rem;
-            }
-            
-            .workstream-header {
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
-            }
-            
-            .workstream-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 2rem;
-            }
-            
-            .workstream-header h3 {
-                font-size: 1.2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .section-container {
-                padding: 0 15px;
-            }
-            
-            .workstreams-section {
-                padding: 60px 0;
-            }
-            
-            .workstream-card {
-                padding: 1.2rem;
-            }
-            
-            .workstreams-diagram {
-                min-height: 400px;
-            }
-        }
-
         /* CTA Section */
 
         /* Enhanced Partners Carousel Styles */
@@ -1114,13 +1064,12 @@
             filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
         }
 
-            .news-thumbnail {
+        .news-thumbnail {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
-          }
-
+        }
 
         .news-content {
             padding: 2rem;
@@ -1497,13 +1446,19 @@
                 font-size: 1.4rem;
             }
 
-            /* Hero Section */
-            .hero-content {
-                grid-template-columns: 1fr;
+            /* Hero Section - Override all hero content layouts for mobile */
+            .hero-content,
+            .hero-content.image-focus {
+                grid-template-columns: 1fr !important;
                 text-align: center;
                 gap: 3rem;
                 padding: 4rem 1rem 2rem;
                 min-height: 90vh;
+            }
+            
+            /* Reset hero visual order for mobile */
+            .hero-content.image-focus .hero-visual {
+                order: 0 !important;
             }
             
             .hero-text h1 {
@@ -1661,15 +1616,24 @@
                 font-size: 1.2rem;
             }
 
-            /* Hero Section */
+            /* Hero Section - Ensure all hero slides behave consistently */
             .hero-carousel {
                 height: 85vh;
                 height: calc(var(--vh, 1vh) * 85);
             }
             
-            .hero-content {
+            .hero-content,
+            .hero-content.image-focus {
+                grid-template-columns: 1fr !important;
+                text-align: center;
                 padding: 2rem 1rem;
                 min-height: 80vh;
+                gap: 2rem;
+            }
+            
+            /* Reset hero visual order for mobile */
+            .hero-content.image-focus .hero-visual {
+                order: 0 !important;
             }
             
             .hero-text h1 {
@@ -1807,11 +1771,17 @@
                 height: 100vh;
             }
             
-            .hero-content {
-                grid-template-columns: 1fr 1fr;
+            .hero-content,
+            .hero-content.image-focus {
+                grid-template-columns: 1fr 1fr !important;
                 padding: 2rem 1rem;
                 gap: 2rem;
                 min-height: 90vh;
+            }
+            
+            /* Reset hero visual order for landscape mobile */
+            .hero-content.image-focus .hero-visual {
+                order: 0 !important;
             }
             
             .hero-text {
