@@ -1399,9 +1399,10 @@
                 font-size: 3.5rem;
             }
             
-            .hero-image-container {
-                max-width: 500px;
-                height: 350px;
+            .hero-image-container,
+            .hero-content.image-focus .hero-image-container {
+                max-width: 500px !important;
+                height: 350px !important;
             }
             
             .workstreams-grid {
@@ -1471,9 +1472,10 @@
                 max-width: 100%;
             }
             
-            .hero-image-container {
-                max-width: 100%;
-                height: 280px;
+            .hero-image-container,
+            .hero-content.image-focus .hero-image-container {
+                max-width: 100% !important;
+                height: 280px !important;
                 margin: 0 auto;
             }
             
@@ -1650,9 +1652,11 @@
                 font-size: 0.9rem;
             }
             
-            .hero-image-container {
-                height: 240px;
+            .hero-image-container,
+            .hero-content.image-focus .hero-image-container {
+                height: 240px !important;
                 border-radius: 15px;
+                max-width: 100% !important;
             }
 
             /* Impact Section */
@@ -1792,8 +1796,10 @@
                 font-size: 2.5rem;
             }
             
-            .hero-image-container {
-                height: 250px;
+            .hero-image-container,
+            .hero-content.image-focus .hero-image-container {
+                height: 250px !important;
+                max-width: 100% !important;
             }
         }
 

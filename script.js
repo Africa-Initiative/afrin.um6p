@@ -1,10 +1,10 @@
-// Enhanced script.js with image-based hero carousel and performance optimizations
+// Enhanced script.js with fixed carousel timing and performance optimizations
 
-// Hero Carousel Variables
+// Hero Carousel Variables with Better Interval Management
 let currentHeroSlideIndex = 0;
 const totalHeroSlides = 4;
-let heroAutoplayInterval;
-let heroProgressInterval;
+let heroAutoplayInterval = null; // Changed to null for better checking
+let heroProgressInterval = null;
 const autoplayDuration = 6000; // 6 seconds per slide
 
 // Gallery Carousel Variables
@@ -14,6 +14,10 @@ const totalSlides = 6;
 // Performance optimization variables
 let isReducedMotion = false;
 let imageLoadPromises = [];
+
+// Debouncing variables
+let resetTimeout = null;
+let isResetting = false;
 
 // Initialize reduced motion preference
 function initReducedMotion() {
@@ -49,11 +53,58 @@ function preloadHeroImages() {
     return Promise.allSettled(imageLoadPromises);
 }
 
+// Improved function to clear all intervals safely
+function stopHeroAutoplay() {
+    if (heroAutoplayInterval) {
+        clearInterval(heroAutoplayInterval);
+        heroAutoplayInterval = null;
+    }
+    if (heroProgressInterval) {
+        clearInterval(heroProgressInterval);
+        heroProgressInterval = null;
+    }
+    const progressBar = document.querySelector('.hero-progress-bar');
+    if (progressBar) {
+        progressBar.style.width = '0%';
+        progressBar.style.transition = 'none';
+    }
+}
+
+// Improved function to start autoplay with safety checks
+function startHeroAutoplay() {
+    // Always stop any existing interval first
+    stopHeroAutoplay();
+    
+    if (!isReducedMotion && !document.hidden) {
+        heroAutoplayInterval = setInterval(() => {
+            if (!isResetting && document.visibilityState === 'visible') {
+                changeHeroSlide(1);
+            }
+        }, autoplayDuration);
+        updateHeroProgress();
+    }
+}
+
+// Improved reset function with debouncing
+function resetHeroAutoplay() {
+    if (isResetting) return;
+    
+    clearTimeout(resetTimeout);
+    resetTimeout = setTimeout(() => {
+        isResetting = true;
+        stopHeroAutoplay();
+        setTimeout(() => {
+            startHeroAutoplay();
+            isResetting = false;
+        }, 200); // Small delay to prevent rapid resets
+    }, 100);
+}
+
 function changeHeroSlide(direction) {
     const slides = document.querySelectorAll('.hero-slide');
     const dots = document.querySelectorAll('.hero-dot');
     
-    if (!slides.length) return;
+    if (!slides.length || isResetting) return;
     
     // Remove active class from current slide and dot
     slides[currentHeroSlideIndex].classList.remove('active');
@@ -81,7 +132,7 @@ function changeHeroSlide(direction) {
     // Update progress bar
     updateHeroProgress();
     
-    // Reset autoplay
+    // Reset autoplay with debouncing
     resetHeroAutoplay();
     
     // Announce slide change for screen readers
@@ -92,7 +143,7 @@ function currentHeroSlide(slideIndex) {
     const slides = document.querySelectorAll('.hero-slide');
     const dots = document.querySelectorAll('.hero-dot');
     
-    if (!slides.length) return;
+    if (!slides.length || isResetting) return;
     
     // Remove active class from all slides and dots
     slides[currentHeroSlideIndex].classList.remove('active');
@@ -114,7 +165,7 @@ function currentHeroSlide(slideIndex) {
     // Update progress bar
     updateHeroProgress();
     
-    // Reset autoplay
+    // Reset autoplay with debouncing
     resetHeroAutoplay();
     
     // Announce slide change for screen readers
@@ -123,10 +174,12 @@ function currentHeroSlide(slideIndex) {
 
 function updateHeroProgress() {
     const progressBar = document.querySelector('.hero-progress-bar');
-    if (progressBar) {
+    if (progressBar && !isReducedMotion) {
+        progressBar.style.transition = 'none';
         progressBar.style.width = '0%';
         // Small delay to ensure smooth animation
         setTimeout(() => {
+            progressBar.style.transition = `width ${autoplayDuration}ms linear`;
             progressBar.style.width = '100%';
         }, 50);
     }
@@ -138,33 +191,6 @@ function announceSlideChange(slideNumber) {
     if (announcer) {
         announcer.textContent = announcement;
     }
-}
-
-function autoplayHeroSlides() {
-    if (!isReducedMotion) {
-        changeHeroSlide(1);
-    }
-}
-
-function startHeroAutoplay() {
-    if (!isReducedMotion) {
-        heroAutoplayInterval = setInterval(autoplayHeroSlides, autoplayDuration);
-        updateHeroProgress();
-    }
-}
-
-function stopHeroAutoplay() {
-    clearInterval(heroAutoplayInterval);
-    clearInterval(heroProgressInterval);
-    const progressBar = document.querySelector('.hero-progress-bar');
-    if (progressBar) {
-        progressBar.style.width = '0%';
-    }
-}
-
-function resetHeroAutoplay() {
-    stopHeroAutoplay();
-    startHeroAutoplay();
 }
 
 // Enhanced image loading with better error handling and lazy loading
@@ -1054,6 +1080,15 @@ function initFloatingLinks() {
     }
 }
 
+// Enhanced visibility change handler for carousel management
+function handleVisibilityChange() {
+    if (document.hidden) {
+        stopHeroAutoplay();
+    } else if (!isReducedMotion && !isResetting) {
+        startHeroAutoplay();
+    }
+}
+
 // Enhanced page initialization
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize reduced motion detection
@@ -1080,13 +1115,37 @@ document.addEventListener('DOMContentLoaded', function() {
     const heroCarousel = document.querySelector('.hero-carousel');
     if (heroCarousel) {
         // Start hero carousel autoplay
-        startHeroAutoplay();
+        setTimeout(() => {
+            startHeroAutoplay();
+        }, 1000); // Delay to ensure page is fully loaded
         
-        // Pause carousel on hover/focus
-        heroCarousel.addEventListener('mouseenter', stopHeroAutoplay);
-        heroCarousel.addEventListener('mouseleave', startHeroAutoplay);
-        heroCarousel.addEventListener('focusin', stopHeroAutoplay);
-        heroCarousel.addEventListener('focusout', startHeroAutoplay);
+        // Enhanced hover/focus event handling with better debouncing
+        let hoverTimeout;
+        heroCarousel.addEventListener('mouseenter', () => {
+            clearTimeout(hoverTimeout);
+            stopHeroAutoplay();
+        });
+        
+        heroCarousel.addEventListener('mouseleave', () => {
+            clearTimeout(hoverTimeout);
+            hoverTimeout = setTimeout(() => {
+                if (!document.hidden && !isReducedMotion) {
+                    startHeroAutoplay();
+                }
+            }, 500);
+        });
+        
+        heroCarousel.addEventListener('focusin', () => {
+            stopHeroAutoplay();
+        });
+        
+        heroCarousel.addEventListener('focusout', () => {
+            setTimeout(() => {
+                if (!heroCarousel.contains(document.activeElement) && !document.hidden) {
+                    startHeroAutoplay();
+                }
+            }, 100);
+        });
         
         // Add ARIA labels to hero elements
         const heroDots = document.querySelectorAll('.hero-dot');
@@ -1099,6 +1158,9 @@ document.addEventListener('DOMContentLoaded', function() {
             nav.setAttribute('aria-label', nav.classList.contains('prev') ? 'Previous slide' : 'Next slide');
         });
     }
+    
+    // Add visibility change listener for better carousel management
+    document.addEventListener('visibilitychange', handleVisibilityChange);
     
     // Initialize workstream interactions if workstreams section exists
     if (document.querySelector('.workstreams-section')) {
@@ -1398,175 +1460,6 @@ document.addEventListener('touchend', function (event) {
     lastTouchEnd = now;
 }, { passive: false });
 
-// Enhanced scrollbar styles injection
-const scrollbarStyles = `
-    ::-webkit-scrollbar {
-        width: 8px;
-    }
-    
-    ::-webkit-scrollbar-track {
-        background: #f1f1f1;
-        border-radius: 4px;
-    }
-    
-    ::-webkit-scrollbar-thumb {
-        background: var(--primary-red);
-        border-radius: 4px;
-        transition: background-color 0.3s ease;
-    }
-    
-    ::-webkit-scrollbar-thumb:hover {
-        background: var(--accent-orange);
-    }
-    
-    ::-webkit-scrollbar-corner {
-        background: #f1f1f1;
-    }
-`;
-
-// Inject scrollbar styles
-const styleSheet = document.createElement('style');
-styleSheet.textContent = scrollbarStyles;
-document.head.appendChild(styleSheet);
-
-// Enhanced print-friendly styles
-const printStyles = `
-    @media print {
-        .header,
-        .footer,
-        .hero-nav,
-        .hero-indicators,
-        .hero-progress,
-        .floating-social-links,
-        .mobile-menu-btn,
-        .newsletter-section,
-        .contact-form {
-            display: none !important;
-        }
-        
-        .hero-carousel {
-            height: auto !important;
-            page-break-inside: avoid;
-        }
-        
-        .hero-slide {
-            position: static !important;
-            opacity: 1 !important;
-            page-break-inside: avoid;
-            margin-bottom: 2rem;
-        }
-        
-        .hero-slide:not(.active) {
-            display: block !important;
-            opacity: 1 !important;
-        }
-        
-        .hero-overlay {
-            display: none !important;
-        }
-        
-        .section {
-            page-break-inside: avoid;
-            padding: 1rem 0;
-        }
-        
-        .page-container {
-            padding-top: 0;
-        }
-        
-        .workstream-card,
-        .partner-card,
-        .mission-card {
-            page-break-inside: avoid;
-            margin-bottom: 1rem;
-        }
-        
-        * {
-            background: white !important;
-            color: black !important;
-            box-shadow: none !important;
-            text-shadow: none !important;
-        }
-        
-        .hero-text .highlight {
-            color: #D7492A !important;
-            -webkit-text-fill-color: #D7492A !important;
-        }
-    }
-`;
-
-// Inject print styles
-const printStyleSheet = document.createElement('style');
-printStyleSheet.textContent = printStyles;
-document.head.appendChild(printStyleSheet);
-
-// Enhanced service worker registration for PWA features
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .then((registration) => {
-                console.log('SW registered: ', registration);
-                
-                // Check for updates
-                registration.addEventListener('updatefound', () => {
-                    const newWorker = registration.installing;
-                    newWorker.addEventListener('statechange', () => {
-                        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                            // New content available, show update notification
-                            console.log('New content available! Please refresh.');
-                        }
-                    });
-                });
-            })
-            .catch((registrationError) => {
-                console.log('SW registration failed: ', registrationError);
-            });
-    });
-}
-
-// Enhanced performance monitoring with User Timing API
-function markPerformance(name) {
-    if ('performance' in window && 'mark' in window.performance) {
-        performance.mark(name);
-    }
-}
-
-function measurePerformance(name, startMark, endMark) {
-    if ('performance' in window && 'measure' in window.performance) {
-        try {
-            performance.measure(name, startMark, endMark);
-            const measure = performance.getEntriesByName(name)[0];
-            console.log(`${name}: ${measure.duration.toFixed(2)}ms`);
-        } catch (e) {
-            console.warn('Performance measurement failed:', e);
-        }
-    }
-}
-
-// Mark key performance points
-markPerformance('script-start');
-
-// Add to page load event
-window.addEventListener('load', () => {
-    markPerformance('page-loaded');
-    measurePerformance('total-load-time', 'script-start', 'page-loaded');
-});
-
-// Enhanced error reporting (optional - for production)
-window.addEventListener('error', (e) => {
-    console.error('JavaScript Error:', {
-        message: e.message,
-        filename: e.filename,
-        lineno: e.lineno,
-        colno: e.colno,
-        stack: e.error?.stack
-    });
-});
-
-window.addEventListener('unhandledrejection', (e) => {
-    console.error('Unhandled Promise Rejection:', e.reason);
-});
-
 // Export enhanced functions for global access
 window.UM6P = {
     // Hero carousel functions
@@ -1590,10 +1483,6 @@ window.UM6P = {
     openNewsletterArchive,
     openOpportunitiesDatabase,
     openEventsCalendar,
-    
-    // Performance functions
-    markPerformance,
-    measurePerformance,
     
     // Accessibility functions
     announceSlideChange
