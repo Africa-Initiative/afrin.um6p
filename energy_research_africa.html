@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The State of Energy Research in Africa - UM6P Africa Initiative</title>
+    
+    <!-- SEO and Meta Tags -->
+    <meta name="description" content="A comprehensive analysis of Africa's energy research landscape, investment trends, institutional capacity, and emerging opportunities in renewable energy development.">
+    <meta name="keywords" content="energy research, Africa, renewable energy, research institutions, SEFA, ARUA, energy transition, investment">
+    <meta name="author" content="UM6P Africa Initiative">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#D7492A">
+    
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="The State of Energy Research in Africa">
+    <meta property="og:description" content="A comprehensive analysis of Africa's energy research landscape, investment trends, and emerging opportunities">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://afrin.um6p.ma/energy-research-africa">
+    <meta property="og:image" content="https://afrin.um6p.ma/images/blog/energy-research.jpg">
+    <meta property="og:site_name" content="UM6P Africa Initiative">
+    
+    <!-- Twitter Card tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The State of Energy Research in Africa">
+    <meta name="twitter:description" content="A comprehensive analysis of Africa's energy research landscape and investment trends">
+    <meta name="twitter:image" content="https://afrin.um6p.ma/images/blog/energy-research.jpg">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* CSS Variables and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-red: #D7492A;
+            --primary-black: #1a1a1a;
+            --primary-white: #ffffff;
+            --light-gray: #f8f9fa;
+            --medium-gray: #6c757d;
+            --dark-gray: #333333;
+            --accent-orange: #ff6b35;
+            --energy-blue: #1e3a8a;
+            --energy-green: #059669;
+            --shadow: 0 10px 30px rgba(215, 73, 42, 0.1);
+            --hover-shadow: 0 20px 40px rgba(215, 73, 42, 0.2);
+            --gradient-1: linear-gradient(135deg, #D7492A 0%, #ff6b35 100%);
+            --gradient-2: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+            --gradient-3: linear-gradient(135deg, rgba(215, 73, 42, 0.1) 0%, rgba(255, 107, 53, 0.1) 100%);
+            --energy-gradient: linear-gradient(135deg, #1e3a8a 0%, #059669 100%);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            overflow-x: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        body.loaded {
+            opacity: 1;
+        }
+
+        /* Skip link for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--primary-red);
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            border-radius: 0 0 4px 4px;
+            z-index: 9999;
+            font-weight: 600;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Header */
+        .header {
+            background: var(--gradient-2);
+            color: var(--primary-white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary-white);
+            cursor: pointer;
+        }
+
+        .logo a {
+            color: var(--primary-white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .logo a:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+            align-items: center;
+        }
+       
+        a {
+            color: var(--primary-red);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-orange);
+            text-decoration: underline;
+        }
+
+        .nav-menu a {
+            color: var(--primary-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            background: var(--primary-red);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(215, 73, 42, 0.3);
+        }
+
+        /* Mobile menu hamburger button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-white);
+            cursor: pointer;
+            min-width: 44px;
+            min-height: 44px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-white);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        /* Dropdown Menu Styles */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dropdown-toggle i {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-toggle i,
+        .dropdown-toggle[aria-expanded="true"] i {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #000000;
+            border: 1px solid #d7492a;
+            border-radius: 5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            min-width: 150px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-menu,
+        .dropdown-toggle[aria-expanded="true"] + .dropdown-menu {
+            display: block !important;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li {
+            margin: 0;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: #FFFFFF;
+            font-weight: 400;
+            position: relative;
+            transition: background-color 0.3s, color 0.3s;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown-menu a:hover,
+        .dropdown-menu a:focus,
+        .dropdown-menu a.active {
+            background-color: #d7492a;
+            color: #FFFFFF;
+            transform: none;
+        }
+
+        /* Page Container */
+        .page-container {
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        /* Breadcrumb Navigation */
+        .breadcrumb {
+            background: var(--light-gray);
+            padding: 1rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .breadcrumb-list {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .breadcrumb-list li {
+            display: flex;
+            align-items: center;
+        }
+        
+        .breadcrumb-list li:not(:last-child)::after {
+            content: '/';
+            margin-left: 0.5rem;
+            color: var(--medium-gray);
+        }
+        
+        .breadcrumb-list a {
+            color: var(--primary-red);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+        
+        .breadcrumb-list a:hover {
+            color: var(--accent-orange);
+            background-color: rgba(215, 73, 42, 0.1);
+        }
+        
+        .breadcrumb-list li[aria-current="page"] {
+            color: var(--medium-gray);
+            font-weight: 500;
+        }
+
+        /* Article Styles */
+        .article-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: var(--primary-white);
+        }
+
+        .article-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 3rem 2rem;
+            background: var(--gradient-3);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-1);
+        }
+
+        .article-title {
+            font-size: 3rem;
+            color: var(--primary-black);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .article-subtitle {
+            font-size: 1.3rem;
+            color: var(--medium-gray);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-size: 0.9rem;
+            color: var(--medium-gray);
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .meta-item i {
+            color: var(--primary-red);
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--primary-black);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--energy-gradient);
+            border-radius: 2px;
+        }
+
+        .subsection-title {
+            font-size: 1.5rem;
+            color: var(--primary-black);
+            margin: 2rem 0 1rem;
+            font-weight: 600;
+        }
+
+        .content-text {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+            line-height: 1.7;
+        }
+
+        /* Link Styling */
+        .content-text a, .highlight-box a, .opportunity-item a, .challenge-item a {
+            color: var(--primary-red);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .content-text a:hover, .highlight-box a:hover, .opportunity-item a:hover, .challenge-item a:hover {
+            color: var(--accent-orange);
+            border-bottom-color: var(--accent-orange);
+        }
+
+        .content-text a[target="_blank"]::after, .highlight-box a[target="_blank"]::after, 
+        .opportunity-item a[target="_blank"]::after, .challenge-item a[target="_blank"]::after {
+            content: " ↗";
+            font-size: 0.8em;
+            opacity: 0.7;
+        }
+
+        .highlight-box {
+            background: var(--gradient-3);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border-left: 4px solid var(--energy-green);
+        }
+
+        .highlight-box h3 {
+            color: var(--primary-black);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: var(--primary-white);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--energy-blue);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--energy-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--medium-gray);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: var(--primary-white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .data-table th {
+            background: var(--energy-gradient);
+            color: var(--primary-white);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .data-table tr:hover {
+            background: var(--light-gray);
+        }
+
+        .data-source {
+            font-size: 0.9rem;
+            color: var(--medium-gray);
+            font-style: italic;
+            margin-top: 0.5rem;
+            text-align: right;
+        }
+
+        .data-source a {
+            color: var(--medium-gray);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .data-source a:hover {
+            color: var(--primary-red);
+            border-bottom-color: var(--primary-red);
+        }
+
+        .challenge-item, .opportunity-item {
+            background: var(--primary-white);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .challenge-item {
+            border-left: 4px solid var(--accent-orange);
+        }
+
+        .opportunity-item {
+            border-left: 4px solid var(--energy-green);
+        }
+
+        .challenge-item h4, .opportunity-item h4 {
+            color: var(--primary-black);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .key-findings {
+            background: var(--gradient-2);
+            color: var(--primary-white);
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+        }
+
+        .key-findings h3 {
+            color: var(--primary-white);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .findings-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .findings-list li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .findings-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-red);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .energy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .energy-card {
+            background: var(--primary-white);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .energy-card:hover {
+            border-color: var(--energy-green);
+            transform: translateY(-3px);
+        }
+
+        .energy-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--energy-blue);
+        }
+
+        .energy-title {
+            font-weight: 600;
+            color: var(--primary-black);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .energy-stat {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--energy-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .energy-description {
+            font-size: 0.9rem;
+            color: var(--medium-gray);
+            line-height: 1.5;
+        }
+
+        .quote-block {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 6px solid var(--energy-blue);
+            margin: 2rem 0;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--dark-gray);
+        }
+
+        .regional-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .regional-card {
+            background: var(--primary-white);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--energy-green);
+        }
+
+        .regional-card h4 {
+            color: var(--primary-black);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .cta-section {
+            background: var(--energy-gradient);
+            color: var(--primary-white);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .cta-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-white);
+            color: var(--energy-blue);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .references {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 3rem;
+        }
+
+        .references h3 {
+            color: var(--primary-black);
+            margin-bottom: 1rem;
+        }
+
+        .reference-item {
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+            line-height: 1.5;
+        }
+
+        .reference-item a {
+            color: var(--primary-red);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .reference-item a:hover {
+            color: var(--accent-orange);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--gradient-2);
+            color: var(--primary-white);
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-red);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: block;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-red);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+            color: #888;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .energy-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .regional-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Navigation */
+            .nav-container {
+                padding: 0 1rem;
+            }
+            
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary-black);
+                flex-direction: column;
+                padding: 2rem 1rem;
+                gap: 0.5rem;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+                border-radius: 0 0 15px 15px;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            /* Article */
+            .article-container {
+                padding: 1rem;
+            }
+
+            .article-title {
+                font-size: 2.2rem;
+            }
+
+            .article-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .energy-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .regional-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .article-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .data-table {
+                font-size: 0.9rem;
+            }
+
+            .highlight-box,
+            .key-findings,
+            .cta-section {
+                padding: 1.5rem;
+            }
+
+            /* Footer */
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .regional-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .article-title {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            /* Footer */
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html" aria-label="UM6P Africa Initiative Homepage">
+                    UM6P - Africa Initiative
+                </a>
+            </div>
+            <nav role="navigation" aria-label="Main navigation">
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="news.html" class="active" aria-current="page">News</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+
+                    <!-- Dropdown for UM6P Links -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+                            Explore UM6P <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="none"><a href="https://www.um6p.ma/en" target="_blank" rel="noopener" role="menuitem">UM6P Official</a></li>
+                            <li role="none"><a href="https://timesofum6p.com/" target="_blank" rel="noopener" role="menuitem">Times of UM6P</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-container">
+        <!-- Breadcrumb Navigation -->
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+            <ol class="breadcrumb-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="news.html">News & Updates</a></li>
+                <li aria-current="page">Energy Research in Africa</li>
+            </ol>
+        </nav>
+
+        <main id="main-content">
+            <div class="article-container">
+                <header class="article-header">
+                    <h1 class="article-title">The State of Energy Research in Africa</h1>
+                    <p class="article-subtitle">A comprehensive analysis of Africa's energy research landscape, investment trends, institutional capacity, and emerging opportunities in renewable energy development</p>
+                    <div class="article-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar" aria-hidden="true"></i>
+                            <span>May 10, 2025</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-clock" aria-hidden="true"></i>
+                            <span>20 min read</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-tag" aria-hidden="true"></i>
+                            <span>Energy Research, Renewable Energy, Investment</span>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="key-findings">
+                    <h3>Key Insights at a Glance</h3>
+                    <ul class="findings-list">
+                        <li>Africa stands at a critical juncture in its energy transition with remarkable investment growth</li>
+                        <li>Renewable energy investment surged from $2.6 billion in 2021 to $40-50 billion in 2024</li>
+                        <li>Despite growth, Africa receives only 2-3% of global clean energy investment</li>
+                        <li>157 universities across Africa offer renewable energy engineering programs</li>
+                        <li>The continent requires $100 billion in annual investment to meet 2030 renewable energy targets</li>
+                        <li>Over 700 active technology hubs are driving innovation in energy access solutions</li>
+                    </ul>
+                </div>
+
+                <p class="content-text">
+                    Africa stands at a <strong>critical juncture</strong> in its energy transition, with significant progress in research and development alongside persistent challenges that demand innovative solutions. The continent's energy research landscape reflects both immense potential and systemic barriers that require coordinated action across multiple stakeholders.
+                </p>
+
+                <section class="section">
+                    <h2 class="section-title">Investment Landscape and Funding Dynamics</h2>
+                    
+                    <p class="content-text">
+                        Energy research and development in Africa has experienced <strong>remarkable growth</strong> in recent years, with <strong><a href="https://insights.techcabal.com/solar-dominates-africas-energy-investments-but-millions-remain-in-the-dark/" target="_blank" rel="noopener">renewable energy investment surging from $2.6 billion in 2021 to an estimated $40-50 billion in 2024</a></strong>. However, this represents only 2-3% of global clean energy investment, creating a substantial funding gap of approximately $60 billion annually.
+                    </p>
+
+                    <p class="content-text">
+                        To meet the <strong><a href="https://assets.bbhub.io/professional/sites/24/Africa-Power-Transition-Factbook-2024.pdf" target="_blank" rel="noopener">African Union's target of 300 GW of renewable capacity by 2030, the continent requires $100 billion in annual investment</a></strong>. This massive funding requirement highlights the scale of transformation needed to achieve energy security and climate goals.
+                    </p>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">$40-50B</div>
+                            <div class="stat-label">Renewable energy investment in 2024, up from $2.6B in 2021</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">2-3%</div>
+                            <div class="stat-label">Africa's share of global clean energy investment</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">$100B</div>
+                            <div class="stat-label">Annual investment needed to meet 2030 targets</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">300 GW</div>
+                            <div class="stat-label">African Union's renewable capacity target by 2030</div>
+                        </div>
+                    </div>
+                    <div class="data-source">Sources: <a href="https://insights.techcabal.com/solar-dominates-africas-energy-investments-but-millions-remain-in-the-dark/" target="_blank" rel="noopener">TechCabal Energy Analysis</a>, <a href="https://assets.bbhub.io/professional/sites/24/Africa-Power-Transition-Factbook-2024.pdf" target="_blank" rel="noopener">Bloomberg Africa Power Transition Factbook</a></div>
+
+                    <div class="highlight-box">
+                        <h3>Sustainable Energy Fund for Africa (SEFA)</h3>
+                        <p>The <strong><a href="https://ndcpartnership.org/knowledge-portal/climate-funds-explorer/sustainable-energy-fund-africa" target="_blank" rel="noopener">Sustainable Energy Fund for Africa (SEFA)</a></strong> has emerged as a crucial financial mechanism, with $67.6 million committed across three financing windows: project preparation grants, equity investments, and enabling environment support. Recent developments include <strong><a href="https://www.afdb.org/en/news-and-events/press-releases/africa-investment-forum-2024-sustainable-energy-fund-africa-welcomes-japan-donor-showcases-innovative-financing-solutions-africas-energy-transition-79469" target="_blank" rel="noopener">Japan joining as the 11th donor country</a></strong>, expanding SEFA's capacity to support energy transition projects.</p>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Research Infrastructure and Institutional Capacity</h2>
+                    
+                    <h3 class="subsection-title">Leading Research Institutions</h3>
+                    <p class="content-text">
+                        Africa's energy research ecosystem is anchored by several <strong>world-class institutions</strong> that have emerged as centers of excellence. The <strong><a href="https://www.crses.sun.ac.za/the-african-research-universities-alliance-arua/" target="_blank" rel="noopener">African Research Universities Alliance (ARUA) Centre of Excellence in Energy</a></strong>, hosted at Stellenbosch University, represents a collaborative network spanning 15 African universities focused on integrating renewable energy with water and food systems.
+                    </p>
+
+                    <p class="content-text">
+                        The <strong><a href="https://www.crses.sun.ac.za/the-african-research-universities-alliance-arua/" target="_blank" rel="noopener">Centre for Renewable and Sustainable Energy Studies (CRSES)</a></strong> at Stellenbosch University has established itself as a premier research facility, offering comprehensive programs from undergraduate to doctoral levels. Similarly, the <strong><a href="https://www.csir.co.za/energy-research-centre" target="_blank" rel="noopener">CSIR Energy Research Centre</a></strong> in South Africa provides essential research infrastructure and expertise to address the country's energy challenges while supporting regional development.
+                    </p>
+
+                    <h3 class="subsection-title">Academic Programs and Capacity Building</h3>
+                    <p class="content-text">
+                        African universities have developed <strong>robust academic programs</strong> in energy studies, with <strong><a href="https://edurank.org/engineering/renewable-energy/af/" target="_blank" rel="noopener">157 universities offering renewable energy engineering programs</a></strong>. South African institutions dominate the top rankings, with the University of Stellenbosch, University of Pretoria, and University of Cape Town leading in research output.
+                    </p>
+
+                    <div class="energy-grid">
+                        <div class="energy-card">
+                            <div class="energy-icon">🎓</div>
+                            <div class="energy-title">Masters in Renewable Energy</div>
+                            <div class="energy-stat">Stellenbosch University</div>
+                            <div class="energy-description">Comprehensive graduate program focusing on sustainable energy systems and technologies</div>
+                        </div>
+                        <div class="energy-card">
+                            <div class="energy-icon">🔬</div>
+                            <div class="energy-title">MPhil in Energy Studies</div>
+                            <div class="energy-stat">University of Johannesburg</div>
+                            <div class="energy-description">Research-focused program addressing energy policy and technology challenges</div>
+                        </div>
+                        <div class="energy-card">
+                            <div class="energy-icon">🌍</div>
+                            <div class="energy-title">Energy Research Programs</div>
+                            <div class="energy-stat">Multiple African Universities</div>
+                            <div class="energy-description">Bachelor's to PhD levels across the continent</div>
+                        </div>
+                    </div>
+                    <div class="data-source">Sources: <a href="https://www.masterstudies.ng/masters-degree/energy-studies/africa" target="_blank" rel="noopener">Master's Studies Africa</a>, <a href="https://www.mastersportal.com/search/master/sustainable-energy/africa" target="_blank" rel="noopener">Masters Portal</a></div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Research Focus Areas and Innovation</h2>
+                    
+                    <h3 class="subsection-title">Renewable Energy Technologies</h3>
+                    <p class="content-text">
+                        African energy research is <strong>heavily concentrated</strong> on renewable technologies, with <strong><a href="https://insights.techcabal.com/solar-dominates-africas-energy-investments-but-millions-remain-in-the-dark/" target="_blank" rel="noopener">solar dominating at 62% of investment, followed by wind energy at 16%, bioenergy at 12%, and small hydro at 10%</a></strong>. This focus aligns with the continent's vast renewable potential, including <strong><a href="https://www.globalsolarcouncil.org/resources/africa-market-outlook-for-solar-pv-2025-2028/" target="_blank" rel="noopener">60% of the world's best solar resources</a></strong> and significant untapped hydropower capacity.
+                    </p>
+
+                    <p class="content-text">
+                        Research initiatives like the <strong><a href="https://www.sintef.no/en/projects/2023/openmod4africa-an-eu-funded-global-collaboration-to-empower-africas-energy-future/" target="_blank" rel="noopener">OpenMod4Africa project</a></strong> are developing open-source energy modeling tools specifically adapted for African contexts, engaging four African universities in adapting models for regional case studies. This EU-funded initiative aims to build local capacity for energy system analysis and planning.
+                    </p>
+
+                    <div class="energy-grid">
+                        <div class="energy-card">
+                            <div class="energy-icon">☀️</div>
+                            <div class="energy-title">Solar Energy</div>
+                            <div class="energy-stat">62%</div>
+                            <div class="energy-description">Dominates investment with Africa having 60% of world's best solar resources</div>
+                        </div>
+                        <div class="energy-card">
+                            <div class="energy-icon">💨</div>
+                            <div class="energy-title">Wind Energy</div>
+                            <div class="energy-stat">16%</div>
+                            <div class="energy-description">Growing focus on both onshore and offshore wind potential</div>
+                        </div>
+                        <div class="energy-card">
+                            <div class="energy-icon">🌱</div>
+                            <div class="energy-title">Bioenergy</div>
+                            <div class="energy-stat">12%</div>
+                            <div class="energy-description">Utilizing abundant biomass resources for energy production</div>
+                        </div>
+                        <div class="energy-card">
+                            <div class="energy-icon">💧</div>
+                            <div class="energy-title">Small Hydro</div>
+                            <div class="energy-stat">10%</div>
+                            <div class="energy-description">Tapping into significant untapped hydropower capacity</div>
+                        </div>
+                    </div>
+
+                    <h3 class="subsection-title">Grid Integration and Infrastructure</h3>
+                    <p class="content-text">
+                        A significant portion of energy research focuses on <strong>grid modernization and integration</strong>, recognized as <strong><a href="https://www.worldenergy.org/world-energy-community/members/regional-networks/entry/africa-network" target="_blank" rel="noopener">Africa's top action priority</a></strong>. Regional power pools such as the Southern African Power Pool (SAPP) and West African Power Pool (WAPP) are facilitating cross-border electricity trading, with research supporting the development of continental interconnection strategies.
+                    </p>
+
+                    <p class="content-text">
+                        The <strong>African Continental Power System Master Plan</strong>, led by the African Union Development Agency (AUDA-NEPAD), represents a coordinated vision requiring over $1 trillion in investment to create a unified African electricity market.
+                    </p>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Key Research Challenges and Barriers</h2>
+                    
+                    <h3 class="subsection-title">Funding and Resource Constraints</h3>
+                    <p class="content-text">
+                        Africa's research and development spending averages only <strong><a href="https://www.the-guild.eu/news-and-blog/2021/arua---the-guild-conference_keynote-presentations.pdf" target="_blank" rel="noopener">0.45% of GDP, significantly below the global average of 1.7%</a></strong>. This funding gap creates substantial barriers to advanced research and innovation, particularly in capital-intensive energy technologies.
+                    </p>
+
+                    <p class="content-text">
+                        The <strong>financing challenge</strong> is compounded by <strong><a href="https://www.iea.org/reports/world-energy-investment-2024/africa" target="_blank" rel="noopener">high borrowing costs, limited access to international capital markets, and debt sustainability concerns</a></strong> across many African countries. Only two African countries, Botswana and Mauritius, maintain investment-grade credit ratings, limiting access to affordable financing for research institutions.
+                    </p>
+
+                    <div class="challenge-item">
+                        <h4>Human Capital and Skills Gap</h4>
+                        <p>A critical challenge facing African energy research is the <strong><a href="https://au-afrec.org/capacity-building" target="_blank" rel="noopener">shortage of skilled professionals</a></strong> across technical and managerial levels. The African Energy Commission (AFREC) has identified human resource capacity as a major bottleneck, leading to comprehensive capacity-building programs targeting policymakers, energy planners, and technicians.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Gender Inequality</h4>
+                        <p>Gender inequality represents another significant barrier, with women <strong><a href="https://genderandenvironment.org/energizing-equality-in-the-african-energy-sector/" target="_blank" rel="noopener">severely underrepresented</a></strong> in energy sector leadership and technical roles. The <strong><a href="https://blogs.worldbank.org/en/nasikiliza/journey-to-empowering-women-in-africa-energy-sector-afe-0824" target="_blank" rel="noopener">Women in Energy Network Africa (WEN-Africa)</a></strong> was launched in 2024 to address these disparities.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h4>Policy and Regulatory Frameworks</h4>
+                        <p>Research effectiveness is hampered by <strong><a href="https://africa-energy-portal.org/blogs/removing-barriers-renewable-energy-technologies-africa" target="_blank" rel="noopener">inconsistent policy frameworks and regulatory uncertainties</a></strong> across African countries. The absence of clearly defined energy policies and limited legal and institutional capacities hinder the growth of renewable energy technologies.</p>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Emerging Opportunities and Innovations</h2>
+                    
+                    <h3 class="subsection-title">Technology Hubs and Innovation Centers</h3>
+                    <p class="content-text">
+                        Africa's energy research landscape is being transformed by <strong><a href="https://www.africanleadershipmagazine.co.uk/innovation-hotspots-africas-tech-hubs-igniting-the-future/" target="_blank" rel="noopener">over 700 active technology hubs</a></strong> across the continent, driving innovation in energy access solutions. Notable initiatives include:
+                    </p>
+
+                    <div class="opportunity-item">
+                        <h4>Schneider Electric's Innovation Hub</h4>
+                        <p><strong><a href="https://www.se.com/za/en/about-us/newsroom/news/press-releases/schneider-electric-launches-its-first-innovation-hub-in-africa-684bf1f4c0f1aceab903ef92" target="_blank" rel="noopener">Schneider Electric's Innovation Hub</a></strong> in South Africa, the first of its kind on the continent, focusing on energy management and automation solutions.</p>
+                    </div>
+
+                    <div class="opportunity-item">
+                        <h4>Regional Tech Hubs</h4>
+                        <p><strong><a href="https://www.techinafrica.com/top-7-african-tech-hubs-building-communities/" target="_blank" rel="noopener">Co-Creation Hub (Nigeria)</a></strong> focusing on tech training and gender inclusion, <strong>iHub (Kenya)</strong> supporting startups like M-KOPA Solar, and <strong>BongoHive (Zambia)</strong> focusing on startup development and skills training.</p>
+                    </div>
+
+                    <h3 class="subsection-title">International Collaboration and Partnerships</h3>
+                    <p class="content-text">
+                        The <strong><a href="https://royalsociety.org/grants/africa-capacity-building/" target="_blank" rel="noopener">Royal Society-FCDO Africa Capacity Building Initiative</a></strong> has supported research consortia across renewable energy, water, and sanitation, demonstrating the value of international partnerships. The initiative has funded projects like <strong><a href="https://royalsocietypublishing.org/doi/10.1098/rsfs.2023.0059" target="_blank" rel="noopener">"Harnessing unsteady phase-change heat exchange in high-performance CSP systems,"</a></strong> involving universities across Nigeria, Mauritius, and South Africa.
+                    </p>
+
+                    <p class="content-text">
+                        <strong><a href="https://www.fona.de/en/measures/funding-measures/energy-research-in-cooperation-with-africa.php" target="_blank" rel="noopener">German development cooperation</a></strong> through initiatives like "Energy Research in Cooperation with Africa" is supporting hydrogen research and green energy transition pathways. These collaborations are establishing strategic partnerships for green hydrogen production and export.
+                    </p>
+
+                    <h3 class="subsection-title">Climate Finance and Green Bonds</h3>
+                    <p class="content-text">
+                        The <strong><a href="https://www.agg-fund.com" target="_blank" rel="noopener">Africa Go Green Fund</a></strong> represents an innovative financing mechanism with $138 million in commitments, targeting greenhouse gas reduction through renewable energy and energy efficiency investments. Such blended finance approaches are essential for scaling up research and deployment of clean energy technologies.
+                    </p>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Regional Variations and Specialized Centers</h2>
+                    
+                    <div class="regional-grid">
+                        <div class="regional-card">
+                            <h4>North Africa</h4>
+                            <p>Countries like <strong>Egypt and Morocco</strong> have established themselves as leaders in large-scale renewable projects, with Egypt's 1.8 GW Benban solar park and Morocco's 580 MW Noor solar complex serving as research and development showcases.</p>
+                        </div>
+                        <div class="regional-card">
+                            <h4>West Africa</h4>
+                            <p>The region benefits from institutions like the <strong><a href="https://acep.africa" target="_blank" rel="noopener">Africa Centre for Energy Policy (ACEP)</a></strong> in Ghana, which focuses on creating strong connections between research evidence and advocacy. Nigeria's energy research ecosystem is supported by multiple universities offering advanced energy programs.</p>
+                        </div>
+                        <div class="regional-card">
+                            <h4>East Africa</h4>
+                            <p><strong>Kenya</strong> has emerged as a regional leader with the University of Nairobi and other institutions supporting wind and geothermal research. The country's 310 MW Lake Turkana wind farm demonstrates successful technology deployment.</p>
+                        </div>
+                        <div class="regional-card">
+                            <h4>Southern Africa</h4>
+                            <p><strong>South Africa</strong> dominates the research landscape with world-class institutions like Stellenbosch University and comprehensive energy research programs. The country's experience with renewable energy integration provides valuable lessons for continental application.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="quote-block">
+                    "The continent's energy research community is increasingly African-led and globally connected, with initiatives like the African Energy Futures Initiative ensuring that African researchers lead African energy and climate planning. This shift toward indigenous research leadership, combined with strategic international partnerships, positions Africa to become a global leader in sustainable energy innovation and deployment."
+                </div>
+
+                <section class="section">
+                    <h2 class="section-title">Future Outlook and Recommendations</h2>
+                    
+                    <p class="content-text">
+                        The state of energy research in Africa reflects a <strong>dynamic and rapidly evolving landscape</strong> with significant potential for transformation. Key priorities for advancing the research agenda include:
+                    </p>
+
+                    <div class="opportunity-item">
+                        <h4>Strengthening Research Capacity</h4>
+                        <p>Continued investment in human capital development, particularly supporting early-career researchers and promoting gender equality in energy research through initiatives like the <strong><a href="https://www.rockefellerfoundation.org/initiatives/africa-energy-futures/" target="_blank" rel="noopener">African Energy Futures Initiative</a></strong>.</p>
+                    </div>
+
+                    <div class="opportunity-item">
+                        <h4>Enhancing Collaboration</h4>
+                        <p>Expanding networks like <strong><a href="https://arua.org/coe-energy/" target="_blank" rel="noopener">ARUA CoE in Energy</a></strong> and fostering South-South cooperation to share knowledge and best practices across the continent.</p>
+                    </div>
+
+                    <div class="opportunity-item">
+                        <h4>Improving Financing</h4>
+                        <p>Developing innovative funding mechanisms through initiatives like <strong><a href="https://sefaafrica.org" target="_blank" rel="noopener">Sustainable Energy Fund for Africa (SEFA)</a></strong> that blend public and private resources while reducing investment risks.</p>
+                    </div>
+
+                    <div class="opportunity-item">
+                        <h4>Policy Integration</h4>
+                        <p>Strengthening the connection between research outputs and policy implementation to ensure evidence-based decision-making through organizations like <strong><a href="https://www.afiego.org" target="_blank" rel="noopener">Africa Institute for Energy Governance (AFIEGO)</a></strong>.</p>
+                    </div>
+
+                    <p class="content-text">
+                        With renewable energy investment reaching record levels and new institutional frameworks emerging, Africa's energy research sector stands <strong>poised for unprecedented growth and impact</strong>. The challenge lies in maintaining this momentum while addressing systemic barriers that have historically limited the continent's research potential. Success will require continued collaboration between academic institutions, policymakers, private sector partners, and international development organizations working toward a common vision of sustainable energy transformation across Africa.
+                    </p>
+                </section>
+
+                <div class="cta-section">
+                    <h3>Join Africa's Energy Research Revolution</h3>
+                    <p>Be part of the transformation driving sustainable energy innovation across the continent. Partner with leading institutions and researchers to shape Africa's energy future.</p>
+                    <a href="index.html#contact" class="cta-button">Explore Research Partnerships</a>
+                </div>
+
+                <div class="references">
+                    <h3>Data Sources and References</h3>
+                    <div class="reference-item">[1] TechCabal. (2024). <a href="https://insights.techcabal.com/solar-dominates-africas-energy-investments-but-millions-remain-in-the-dark/" target="_blank" rel="noopener"><em>Solar Dominates Africa's Energy Investments</em></a>. TechCabal Insights.</div>
+                    <div class="reference-item">[2] Bloomberg New Energy Finance. (2024). <a href="https://assets.bbhub.io/professional/sites/24/Africa-Power-Transition-Factbook-2024.pdf" target="_blank" rel="noopener"><em>Africa Power Transition Factbook 2024</em></a>. Bloomberg NEF.</div>
+                    <div class="reference-item">[3] NDC Partnership. <a href="https://ndcpartnership.org/knowledge-portal/climate-funds-explorer/sustainable-energy-fund-africa" target="_blank" rel="noopener"><em>Sustainable Energy Fund for Africa</em></a>. Climate Funds Explorer.</div>
+                    <div class="reference-item">[4] African Development Bank. (2024). <a href="https://www.afdb.org/en/news-and-events/press-releases/africa-investment-forum-2024-sustainable-energy-fund-africa-welcomes-japan-donor-showcases-innovative-financing-solutions-africas-energy-transition-79469" target="_blank" rel="noopener"><em>SEFA Welcomes Japan as Donor</em></a>. AfDB Press Release.</div>
+                    <div class="reference-item">[5] Stellenbosch University. <a href="https://www.crses.sun.ac.za/the-african-research-universities-alliance-arua/" target="_blank" rel="noopener"><em>African Research Universities Alliance - ARUA</em></a>. CRSES.</div>
+                    <div class="reference-item">[6] EduRank. <a href="https://edurank.org/engineering/renewable-energy/af/" target="_blank" rel="noopener"><em>Best Universities for Renewable Energy Engineering in Africa</em></a>. EduRank.</div>
+                    <div class="reference-item">[7] CSIR. <a href="https://www.csir.co.za/energy-research-centre" target="_blank" rel="noopener"><em>Energy Research Centre</em></a>. Council for Scientific and Industrial Research.</div>
+                    <div class="reference-item">[8] Masters Studies Nigeria. <a href="https://www.masterstudies.ng/masters-degree/energy-studies/africa" target="_blank" rel="noopener"><em>Masters Degree in Energy Studies in Africa</em></a>. Masters Studies.</div>
+                    <div class="reference-item">[9] Masters Portal. <a href="https://www.mastersportal.com/search/master/sustainable-energy/africa" target="_blank" rel="noopener"><em>Master in Sustainable Energy in Africa</em></a>. Masters Portal.</div>
+                    <div class="reference-item">[10] Global Solar Council. <a href="https://www.globalsolarcouncil.org/resources/africa-market-outlook-for-solar-pv-2025-2028/" target="_blank" rel="noopener"><em>Africa Market Outlook for Solar PV 2025-2028</em></a>. GSC.</div>
+                    <div class="reference-item">Additional references available in the comprehensive source list covering research institutions, policy organizations, and international development initiatives across Africa's energy sector.</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>UM6P - Africa Initiative</h3>
+                <p>Supporting Africa's socio-economic development through collaboration, innovation, and strategic partnerships across the continent.</p>
+                <br>
+                <p><strong>Address:</strong><br>
+                Mohammed VI Polytechnic University<br>
+                Ben Guerir, Morocco</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="index.html#about">About Us</a>
+                <a href="index.html#mission">Our Mission</a>
+                <a href="index.html#workstreams">Workstreams</a>
+                <a href="index.html#partners">Partners</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <a href="#" onclick="openNewsletterArchive()">Newsletter Archive</a>
+                <a href="#" onclick="openOpportunitiesDatabase()">Opportunities</a>
+                <a href="#" onclick="openEventsCalendar()">Events Calendar</a>
+                <a href="mailto:africa.initiative@um6p.ma">Contact Us</a>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <a href="https://www.linkedin.com/company/um6p-africa-initiative" target="_blank" rel="noopener">
+                    <i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn
+                </a>
+                <a href="https://x.com/Um6pAfrica" target="_blank" rel="noopener">
+                    <i class="fab fa-x-twitter" aria-hidden="true"></i> X (Twitter)
+                </a>
+                <a href="https://www.instagram.com/um6pafrica" target="_blank" rel="noopener">
+                    <i class="fab fa-instagram" aria-hidden="true"></i> Instagram
+                </a>
+                <a href="https://www.um6p.ma/en" target="_blank" rel="noopener">
+                    <i class="fas fa-globe" aria-hidden="true"></i> UM6P Official
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 UM6P - Africa Initiative. All rights reserved. | 
+               <a href="#" style="color: #ccc;">Privacy Policy</a> | 
+               <a href="#" style="color: #ccc;">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Enhanced mobile menu toggle
+        function toggleMobileMenu() {
+            const navMenu = document.querySelector('.nav-menu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (navMenu && menuBtn) {
+                const isExpanded = navMenu.classList.contains('active');
+                
+                navMenu.classList.toggle('active');
+                menuBtn.setAttribute('aria-expanded', !isExpanded);
+                
+                // Focus management
+                if (!isExpanded) {
+                    const firstMenuItem = navMenu.querySelector('a');
+                    if (firstMenuItem) {
+                        setTimeout(() => firstMenuItem.focus(), 100);
+                    }
+                }
+            }
+        }
+
+        // Newsletter Archive function
+        function openNewsletterArchive() {
+            window.open('https://um6p-my.sharepoint.com/:f:/g/personal/africa_initiative_um6p_ma/EiUh9bIHpQtAp_LLH5GFMyYBh5fBjEG5EgKPdKgFyF_0fg?e=8WDMVP', '_blank', 'noopener,noreferrer');
+        }
+
+        // Opportunities Database function
+        function openOpportunitiesDatabase() {
+            window.open('https://um6p-my.sharepoint.com/:x:/g/personal/africa_initiative_um6p_ma/EQGcCw_ppm1CibdnKt4GqloBTxM22yZ4HLBZOSG3ox9ULw?e=coKt3e&nav=MTVfezAwMDAwMDAwLTAwMDEtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMH0', '_blank', 'noopener,noreferrer');
+        }
+
+        // Events Calendar function
+        function openEventsCalendar() {
+            window.open('https://um6p-my.sharepoint.com/:x:/g/personal/africa_initiative_um6p_ma/EdKkT38UIMJKnWRJJ6od7mMBMmYwY8G8cp4V6WHHEdCZew?e=aH35dW&nav=MTVfezAwMDAwMDAwLTAwMDEtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMH0', '_blank', 'noopener,noreferrer');
+        }
+
+        // Enhanced dropdown click handling
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.dropdown-toggle')) {
+                e.preventDefault();
+                const toggle = e.target.closest('.dropdown-toggle');
+                const dropdown = toggle.closest('.dropdown');
+                const menu = dropdown.querySelector('.dropdown-menu');
+                const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+                
+                toggle.setAttribute('aria-expanded', !isExpanded);
+                
+                if (!isExpanded) {
+                    menu.style.display = 'block';
+                    const firstMenuItem = menu.querySelector('a');
+                    if (firstMenuItem) firstMenuItem.focus();
+                } else {
+                    menu.style.display = '';
+                }
+            }
+        });
+
+        // Mobile menu close on outside click
+        document.addEventListener('click', function(e) {
+            const navMenu = document.querySelector('.nav-menu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (navMenu && menuBtn && !navMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+                navMenu.classList.remove('active');
+                menuBtn.setAttribute('aria-expanded', 'false');
+            }
+
+            // Close dropdowns when clicking outside
+            const dropdowns = document.querySelectorAll('.dropdown');
+            dropdowns.forEach(dropdown => {
+                if (!dropdown.contains(e.target)) {
+                    const toggle = dropdown.querySelector('.dropdown-toggle');
+                    const menu = dropdown.querySelector('.dropdown-menu');
+                    if (toggle && menu) {
+                        toggle.setAttribute('aria-expanded', 'false');
+                        if (menu.style.display === 'block') {
+                            menu.style.display = '';
+                        }
+                    }
+                }
+            });
+        });
+
+        // Close mobile menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const navMenu = document.querySelector('.nav-menu');
+                const menuBtn = document.querySelector('.mobile-menu-btn');
+                if (navMenu && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    menuBtn.setAttribute('aria-expanded', 'false');
+                    menuBtn.focus();
+                }
+
+                // Close dropdowns
+                const dropdowns = document.querySelectorAll('.dropdown');
+                dropdowns.forEach(dropdown => {
+                    const toggle = dropdown.querySelector('.dropdown-toggle');
+                    const menu = dropdown.querySelector('.dropdown-menu');
+                    if (toggle && menu && toggle.getAttribute('aria-expanded') === 'true') {
+                        toggle.setAttribute('aria-expanded', 'false');
+                        menu.style.display = '';
+                        toggle.focus();
+                    }
+                });
+            }
+        });
+
+        // Enhanced page initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('loaded');
+        });
+
+        // Make global functions available
+        window.toggleMobileMenu = toggleMobileMenu;
+        window.openNewsletterArchive = openNewsletterArchive;
+        window.openOpportunitiesDatabase = openOpportunitiesDatabase;
+        window.openEventsCalendar = openEventsCalendar;
+    </script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then((registration) => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch((registrationError) => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

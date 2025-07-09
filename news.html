@@ -591,6 +591,45 @@
             line-height: 1.6;
         }
 
+        /* News Link Styles */
+        .news-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--gradient-1);
+            color: var(--primary-white);
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            margin-top: 1rem;
+            cursor: pointer;
+        }
+
+        .news-link:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--hover-shadow);
+            text-decoration: none;
+            color: var(--primary-white);
+        }
+
+        .news-link:focus-visible {
+            outline: 2px solid var(--primary-red);
+            outline-offset: 2px;
+        }
+
+        .news-link i {
+            transition: transform 0.3s ease;
+            font-size: 0.8rem;
+        }
+
+        .news-link:hover i {
+            transform: translateX(4px);
+        }
+
         .blog-pagination {
             margin-top: 3rem;
             display: flex;
@@ -883,6 +922,12 @@
                 max-width: 400px;
             }
 
+            /* Read More Link Mobile */
+            .news-link {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
+
             /* Newsletter */
             .newsletter-form {
                 flex-direction: column;
@@ -949,6 +994,12 @@
             
             .footer-section {
                 padding: 1rem 0;
+            }
+
+            /* Read More Link Mobile Small */
+            .news-link {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
             }
         }
 
@@ -1153,9 +1204,9 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 UM6P - Africa Initiative. All rights reserved. | 
+            <p>&copy; 2025 UM6P - Africa Initiative. All rights reserved. <!-- | 
                <a href="#" style="color: #ccc;">Privacy Policy</a> | 
-               <a href="#" style="color: #ccc;">Terms of Service</a>
+               <a href="#" style="color: #ccc;">Terms of Service</a> -->
             </p>
         </div>
     </footer>
@@ -1192,16 +1243,29 @@
             },
             {
                 image: "images/startup.jpg",
-                date: "February 28, 2025",
+                date: "June 07, 2025",
                 author: "Azeez Hamzat",
                 authorLink: "https://www.linkedin.com/in/azeezhamzat",
                 title: "The Rise of Entrepreneurial Universities in Africa",
-                excerpt: "Learn how UM6P's NextAfrica program at Station F accelerates Greentech, Agritech, and Healthtech startups, connecting Europe and Africa for sustainable innovation.",
+                excerpt: "Discover how African universities are transforming from traditional knowledge centers into engines of economic development, creating job creators rather than job seekers and driving innovation across the continent.",
                 link: "entrepreneurial_universities_africa.html",
-                tags: ["Innovation", "Entrepreneurship", "Environment", "Agriculture", "Health"],
+                tags: ["Entrepreneurship", "Universities", "Innovation", "Economic Development", "Youth Employment"],
                 year: 2025,
-                month: "February",
-                sortDate: new Date("2025-02-28")
+                month: "June",
+                sortDate: new Date("2025-06-07")
+            },
+           {
+                image: "images/blog/energy-research.jpg",
+                date: "May 10, 2025",
+                author: "UM6P Africa Initiative",
+                authorLink: "https://www.um6p.ma/en",
+                title: "The State of Energy Research in Africa",
+                excerpt: "A comprehensive analysis of Africa's energy research landscape, investment trends, institutional capacity, and emerging opportunities in renewable energy development across the continent.",
+                link: "energy_research_africa.html",
+                tags: ["Energy Research", "Renewable Energy", "Investment", "Research Institutions", "SEFA", "ARUA"],
+                year: 2025,
+                month: "May",
+                sortDate: new Date("2025-05-10")
             }
         ];
 
@@ -1295,6 +1359,9 @@
                             </div>
                             <h3><a href="${post.link}" aria-describedby="excerpt-${start + index}">${post.title}</a></h3>
                             <p id="excerpt-${start + index}">${post.excerpt}</p>
+                            <a href="${post.link}" class="news-link" aria-label="Read more about ${post.title}">
+                                Read More <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                            </a>
                         `;
                         
                         // Append image and content to article
