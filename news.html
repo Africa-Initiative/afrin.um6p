@@ -1162,113 +1162,56 @@
 
     <!-- Complete JavaScript -->
     <script>
-        // Blog posts data with real images
+        // Blog posts data with real images - Sorted by date (newest first)
         const blogPosts = [
             {
-                image: "images/Healthcare.jpg",
-                date: "March 1, 2025",
+                image: "images/higher-education.jpg",
+                date: "July 09, 2025",
                 author: "Azeez Hamzat",
                 authorLink: "https://www.linkedin.com/in/azeezhamzat",
-                title: "Advancing Healthcare in Africa: UM6P's Vision for AI-Driven Innovation",
-                excerpt: "Learn how UM6P leverages AI to transform healthcare in Africa, addressing challenges and improving access during Science Week.",
-                link: "#",
-                tags: ["Health", "AI", "Innovation", "Africa"],
+                title: "The State of African Higher Education: Trends and Opportunities",
+                excerpt: "A comprehensive analysis of Africa's evolving educational landscape based on empirical data from UNESCO, World Bank, and African Union sources.",
+                link: "african_higher_education.html",
+                tags: ["Higher Education", "Africa", "Research", "Data Analysis"],
                 year: 2025,
-                month: "March"
+                month: "July",
+                sortDate: new Date("2025-07-09")
             },
             {
-                image: "images/Energy-Research.jpg",
-                date: "February 27, 2025",
+                image: "images/skills.jpg",
+                date: "June 15, 2025",
                 author: "Azeez Hamzat",
                 authorLink: "https://www.linkedin.com/in/azeezhamzat",
-                title: "Why Africa Must Do More on Energy Research",
-                excerpt: "Learn why Africa must prioritize energy research to address access gaps and climate challenges, with insights on the €30M EU-AU fund boosting sustainable solutions.",
-                link: "#",
-                tags: ["Energy", "Research", "Environment", "Innovation"],
+                title: "Skills for Tomorrow: Preparing African Students for the Future Economy",
+                excerpt: "Skills development trends across Africa. Preparing students for tomorrow's economy.",
+                link: "skills_future_economy.html",
+                tags: ["Skills Development", "Future Economy", "Education", "Digital Skills", "Industry 4.0"],
                 year: 2025,
-                month: "February"
+                month: "June",
+                sortDate: new Date("2025-06-15")
             },
             {
-                image: "images/NextAfrica.jpeg",
+                image: "images/startup.jpg",
                 date: "February 28, 2025",
                 author: "Azeez Hamzat",
                 authorLink: "https://www.linkedin.com/in/azeezhamzat",
-                title: "NextAfrica: Bridging Europe and Africa Through Innovation at Station F",
+                title: "The Rise of Entrepreneurial Universities in Africa",
                 excerpt: "Learn how UM6P's NextAfrica program at Station F accelerates Greentech, Agritech, and Healthtech startups, connecting Europe and Africa for sustainable innovation.",
-                link: "#",
+                link: "entrepreneurial_universities_africa.html",
                 tags: ["Innovation", "Entrepreneurship", "Environment", "Agriculture", "Health"],
                 year: 2025,
-                month: "February"
-            },
-            {
-                image: "images/Startgate.jpg",
-                date: "December 15, 2024",
-                author: "Azeez Hamzat",
-                authorLink: "https://www.linkedin.com/in/azeezhamzat",
-                title: "Unleashing Africa's Entrepreneurial Spirit: How UM6P is Shaping the Future Through Innovation",
-                excerpt: "Discover how UM6P is empowering Africa's youth to tackle challenges through entrepreneurship and innovation.",
-                link: "#",
-                tags: ["Entrepreneurship", "Innovation", "Education"],
-                year: 2024,
-                month: "December"
-            },
-            {
-                image: "images/diversity-um6p.jpg",
-                date: "January 7, 2025",
-                author: "Azeez Hamzat",
-                authorLink: "https://www.linkedin.com/in/azeezhamzat",
-                title: "Embracing Diversity: How UM6P is Building a Pan-African Community of Innovators",
-                excerpt: "Discover how UM6P fosters a diverse, multicultural student body to drive innovation and collaboration across Africa.",
-                link: "#",
-                tags: ["Community", "Education", "Partnership"],
-                year: 2025,
-                month: "January"
-            },
-            {
-                image: "images/For Africa.png",
-                date: "January 10, 2025",
-                author: "Azeez Hamzat",
-                authorLink: "https://www.linkedin.com/in/azeezhamzat",
-                title: "For Africa: UM6P's Commitment to Industry, Research, and Business Innovation",
-                excerpt: "Discover how UM6P drives excellence through AAIT, AIRESS, ABS, and the Center for African Studies, fostering innovation and African perspectives.",
-                link: "#",
-                tags: ["Research", "Education", "Partnership"],
-                year: 2025,
-                month: "January"
-            },
-            {
-                image: "images/excellence-in-africa.jpg",
-                date: "January 23, 2024",
-                author: "Azeez Hamzat",
-                authorLink: "https://www.linkedin.com/in/azeezhamzat",
-                title: "Excellence in Africa: UM6P and EPFL's Collaborative Push for Academic Innovation",
-                excerpt: "Explore how UM6P and EPFL are advancing academic excellence in Africa through the Excellence in Africa initiative.",
-                link: "#",
-                tags: ["Education", "Research", "Partnership"],
-                year: 2024,
-                month: "January"
-            },
-            {
-                image: "images/um6pv.png",
-                date: "February 16, 2025",
-                author: "Azeez Hamzat",
-                authorLink: "https://www.linkedin.com/in/azeezhamzat",
-                title: "UM6P Ventures: Investing in Africa's Future Through Science and Innovation",
-                excerpt: "Explore how UM6P Ventures supports Digital Transformation and Deeptech startups, driving innovation in Agriculture, GreenTech, and Healthtech across Africa.",
-                link: "#",
-                tags: ["Innovation", "Entrepreneurship", "Agriculture", "Health"],
-                year: 2025,
-                month: "February"
+                month: "February",
+                sortDate: new Date("2025-02-28")
             }
         ];
+
+        // Sort blog posts by date (newest to oldest) and ensure proper initialization
+        blogPosts.sort((a, b) => b.sortDate - a.sortDate);
 
         // Pagination variables
         const postsPerPage = 6;
         let currentPage = 1;
-        let filteredPosts = [...blogPosts];
-
-        // Sort blogPosts by date (newest to oldest)
-        blogPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+        let filteredPosts = [...blogPosts]; // Copy sorted array
 
         // Enhanced mobile menu toggle
         function toggleMobileMenu() {
@@ -1326,32 +1269,41 @@
                 // Add loading state
                 blogGrid.setAttribute('aria-busy', 'true');
                 
-                postsToDisplay.forEach((post, index) => {
-                    const article = document.createElement('article');
-                    article.className = 'blog-post fade-in';
-                    article.setAttribute('role', 'article');
-                    
-                    // Create image element
-                    const imageElement = createImageElement(post);
-                    
-                    // Create content wrapper
-                    const contentWrapper = document.createElement('div');
-                    contentWrapper.className = 'blog-content-wrapper';
-                    contentWrapper.innerHTML = `
-                        <div class="blog-meta">
-                            <span><i class="fas fa-calendar-alt" aria-hidden="true"></i> <time datetime="${new Date(post.date).toISOString()}">${post.date}</time></span>
-                            <span><i class="fas fa-user" aria-hidden="true"></i> <a href="${post.authorLink}" target="_blank" rel="noopener">${post.author}</a></span>
-                        </div>
-                        <h3><a href="${post.link}" aria-describedby="excerpt-${start + index}">${post.title}</a></h3>
-                        <p id="excerpt-${start + index}">${post.excerpt}</p>
-                    `;
-                    
-                    // Append image and content to article
-                    article.appendChild(imageElement);
-                    article.appendChild(contentWrapper);
-                    
-                    blogGrid.appendChild(article);
-                });
+                if (postsToDisplay.length === 0) {
+                    // Show no results message
+                    const noResults = document.createElement('div');
+                    noResults.className = 'no-results';
+                    noResults.style.cssText = 'grid-column: 1 / -1; text-align: center; padding: 2rem; color: var(--medium-gray);';
+                    noResults.innerHTML = '<h3>No articles found</h3><p>Try adjusting your search terms or filters.</p>';
+                    blogGrid.appendChild(noResults);
+                } else {
+                    postsToDisplay.forEach((post, index) => {
+                        const article = document.createElement('article');
+                        article.className = 'blog-post fade-in';
+                        article.setAttribute('role', 'article');
+                        
+                        // Create image element
+                        const imageElement = createImageElement(post);
+                        
+                        // Create content wrapper
+                        const contentWrapper = document.createElement('div');
+                        contentWrapper.className = 'blog-content-wrapper';
+                        contentWrapper.innerHTML = `
+                            <div class="blog-meta">
+                                <span><i class="fas fa-calendar-alt" aria-hidden="true"></i> <time datetime="${post.sortDate.toISOString()}">${post.date}</time></span>
+                                <span><i class="fas fa-user" aria-hidden="true"></i> <a href="${post.authorLink}" target="_blank" rel="noopener">${post.author}</a></span>
+                            </div>
+                            <h3><a href="${post.link}" aria-describedby="excerpt-${start + index}">${post.title}</a></h3>
+                            <p id="excerpt-${start + index}">${post.excerpt}</p>
+                        `;
+                        
+                        // Append image and content to article
+                        article.appendChild(imageElement);
+                        article.appendChild(contentWrapper);
+                        
+                        blogGrid.appendChild(article);
+                    });
+                }
                 
                 // Remove loading state
                 blogGrid.setAttribute('aria-busy', 'false');
@@ -1365,55 +1317,119 @@
         function updatePagination(posts) {
             const totalPages = Math.ceil(posts.length / postsPerPage);
             const paginationNumbers = document.getElementById('pagination-numbers');
+            const pagination = document.getElementById('blog-pagination');
+            
+            // Hide pagination if only one page or no posts
+            if (totalPages <= 1) {
+                if (pagination) {
+                    pagination.style.display = 'none';
+                }
+                return;
+            } else {
+                if (pagination) {
+                    pagination.style.display = 'flex';
+                }
+            }
             
             if (paginationNumbers) {
                 paginationNumbers.innerHTML = '';
-                paginationNumbers.setAttribute('role', 'navigation');
-                paginationNumbers.setAttribute('aria-label', 'Blog pagination');
                 
-                for (let i = 1; i <= totalPages; i++) {
-                    const pageBtn = document.createElement('button');
-                    pageBtn.className = `btn pagination-btn ${i === currentPage ? 'active' : ''}`;
-                    pageBtn.textContent = i;
-                    pageBtn.setAttribute('aria-label', `Go to page ${i}`);
-                    pageBtn.setAttribute('aria-current', i === currentPage ? 'page' : 'false');
-                    pageBtn.onclick = () => {
-                        currentPage = i;
-                        renderPosts(filteredPosts, currentPage);
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                    };
+                // Generate page numbers with ellipsis for large page counts
+                const maxVisiblePages = 5;
+                let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+                let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+                
+                if (endPage - startPage + 1 < maxVisiblePages) {
+                    startPage = Math.max(1, endPage - maxVisiblePages + 1);
+                }
+                
+                // First page
+                if (startPage > 1) {
+                    const firstBtn = createPageButton(1, 1 === currentPage);
+                    paginationNumbers.appendChild(firstBtn);
+                    
+                    if (startPage > 2) {
+                        const ellipsis = document.createElement('span');
+                        ellipsis.textContent = '...';
+                        ellipsis.className = 'pagination-ellipsis';
+                        ellipsis.style.cssText = 'padding: 0.75rem; color: var(--medium-gray);';
+                        paginationNumbers.appendChild(ellipsis);
+                    }
+                }
+                
+                // Page range
+                for (let i = startPage; i <= endPage; i++) {
+                    const pageBtn = createPageButton(i, i === currentPage);
                     paginationNumbers.appendChild(pageBtn);
+                }
+                
+                // Last page
+                if (endPage < totalPages) {
+                    if (endPage < totalPages - 1) {
+                        const ellipsis = document.createElement('span');
+                        ellipsis.textContent = '...';
+                        ellipsis.className = 'pagination-ellipsis';
+                        ellipsis.style.cssText = 'padding: 0.75rem; color: var(--medium-gray);';
+                        paginationNumbers.appendChild(ellipsis);
+                    }
+                    
+                    const lastBtn = createPageButton(totalPages, totalPages === currentPage);
+                    paginationNumbers.appendChild(lastBtn);
                 }
             }
 
             // Update prev/next buttons
-            const pagination = document.getElementById('blog-pagination');
             if (pagination) {
                 const prevBtn = pagination.querySelector('button:first-child');
                 const nextBtn = pagination.querySelector('button:last-child');
                 if (prevBtn) {
                     prevBtn.disabled = currentPage === 1;
-                    prevBtn.setAttribute('aria-label', 'Go to previous page');
                 }
                 if (nextBtn) {
                     nextBtn.disabled = currentPage === totalPages;
-                    nextBtn.setAttribute('aria-label', 'Go to next page');
                 }
             }
+        }
+        
+        // Helper function to create page buttons
+        function createPageButton(pageNum, isActive) {
+            const pageBtn = document.createElement('button');
+            pageBtn.className = `btn pagination-btn ${isActive ? 'active' : ''}`;
+            pageBtn.textContent = pageNum;
+            pageBtn.setAttribute('aria-label', `Go to page ${pageNum}`);
+            pageBtn.setAttribute('aria-current', isActive ? 'page' : 'false');
+            pageBtn.onclick = () => {
+                if (pageNum !== currentPage) {
+                    currentPage = pageNum;
+                    renderPosts(filteredPosts, currentPage);
+                    window.scrollTo({ top: document.querySelector('.blog-content').offsetTop - 100, behavior: 'smooth' });
+                }
+            };
+            return pageBtn;
         }
 
         // Enhanced change page function
         function changePage(direction) {
             const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+            
             if (direction === 'prev' && currentPage > 1) {
                 currentPage--;
             } else if (direction === 'next' && currentPage < totalPages) {
                 currentPage++;
+            } else {
+                return; // No change needed
             }
+            
             renderPosts(filteredPosts, currentPage);
             
-            // Smooth scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Smooth scroll to blog content
+            const blogContent = document.querySelector('.blog-content');
+            if (blogContent) {
+                window.scrollTo({ 
+                    top: blogContent.offsetTop - 100, 
+                    behavior: 'smooth' 
+                });
+            }
             
             // Announce page change
             updateResultsSummary();
@@ -1428,17 +1444,51 @@
                 const selectedTag = document.getElementById('filter-tags')?.value || '';
 
                 filteredPosts = blogPosts.filter(post => {
-                    const matchesSearch = post.title.toLowerCase().includes(searchQuery) || 
+                    const matchesSearch = searchQuery === '' || 
+                                        post.title.toLowerCase().includes(searchQuery) || 
                                         post.excerpt.toLowerCase().includes(searchQuery) ||
-                                        post.author.toLowerCase().includes(searchQuery);
+                                        post.author.toLowerCase().includes(searchQuery) ||
+                                        post.tags.some(tag => tag.toLowerCase().includes(searchQuery));
+                    
                     const matchesTag = selectedTag === '' || post.tags.includes(selectedTag);
+                    
                     return matchesSearch && matchesTag;
                 });
 
+                // Reset to first page when filtering
                 currentPage = 1;
                 renderPosts(filteredPosts, currentPage);
                 updateResultsSummary();
             }, 300); // 300ms debounce
+        }
+
+        // Update results summary
+        function updateResultsSummary() {
+            const summary = document.getElementById('results-summary');
+            if (summary) {
+                const searchQuery = document.getElementById('search-posts')?.value.trim();
+                const category = document.getElementById('filter-tags')?.value;
+                const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+                
+                let text = `Showing ${filteredPosts.length} article${filteredPosts.length !== 1 ? 's' : ''}`;
+                
+                if (totalPages > 1) {
+                    const start = (currentPage - 1) * postsPerPage + 1;
+                    const end = Math.min(currentPage * postsPerPage, filteredPosts.length);
+                    text = `Showing ${start}-${end} of ${filteredPosts.length} articles`;
+                }
+                
+                if (category && searchQuery) {
+                    text += ` in "${category}" category matching "${searchQuery}"`;
+                } else if (category) {
+                    text += ` in "${category}" category`;
+                } else if (searchQuery) {
+                    text += ` matching "${searchQuery}"`;
+                }
+                
+                summary.textContent = text;
+                summary.style.display = 'block';
+            }
         }
 
         // Enhanced filter by category function
@@ -1463,28 +1513,6 @@
             filterPosts();
         }
 
-        // Update results summary
-        function updateResultsSummary() {
-            const summary = document.getElementById('results-summary');
-            if (summary) {
-                const searchQuery = document.getElementById('search-posts')?.value.trim();
-                const category = document.getElementById('filter-tags')?.value;
-                
-                let text = `Showing ${filteredPosts.length} articles`;
-                
-                if (category && searchQuery) {
-                    text = `Showing ${filteredPosts.length} "${category}" articles matching "${searchQuery}"`;
-                } else if (category) {
-                    text = `Showing ${filteredPosts.length} articles in "${category}" category`;
-                } else if (searchQuery) {
-                    text = `Showing ${filteredPosts.length} articles matching "${searchQuery}"`;
-                }
-                
-                summary.textContent = text;
-                summary.style.display = 'block';
-            }
-        }
-
         // Newsletter Archive function
         function openNewsletterArchive() {
             window.open('https://um6p-my.sharepoint.com/:f:/g/personal/africa_initiative_um6p_ma/EiUh9bIHpQtAp_LLH5GFMyYBh5fBjEG5EgKPdKgFyF_0fg?e=8WDMVP', '_blank', 'noopener,noreferrer');
@@ -1497,7 +1525,7 @@
 
         // Events Calendar function
         function openEventsCalendar() {
-            window.open('https://um6p-my.sharepoint.com/:x:/g/personal/africa_initiative_um6p_ma/EdKkT38UIMJKnWRJJ6od7mMBMmYwY8G8cp4V6WHHEdCZew?e=aH35dW&nav=MTVfezAwMDAwMDAwLTAwMDEtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMH0', '_blank', 'noopener,noreferrer');
+            window.open('https://um6p-my.sharepoint.com/:x:/g/personal/africa_initiative_um6p_ma/EdKkT38UIMJKnWRJJ6od7mMBMmYwY8G8cp4V6WHHEdCZew?e=aH35dU&nav=MTVfezAwMDAwMDAwLTAwMDEtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMH0', '_blank', 'noopener,noreferrer');
         }
 
         // Intersection Observer for animations
@@ -1531,6 +1559,14 @@
                 searchInput.addEventListener('input', function() {
                     filterPosts();
                 });
+                
+                // Handle Enter key for search
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        filterPosts();
+                    }
+                });
             }
             
             if (filterSelect) {
@@ -1543,6 +1579,10 @@
         // Enhanced page initialization
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize all elements
+            console.log('Initializing with', blogPosts.length, 'blog posts');
+            console.log('First post date:', blogPosts[0]?.date);
+            console.log('Last post date:', blogPosts[blogPosts.length - 1]?.date);
+            
             observeElements();
             setupEnhancedSearch();
             renderPosts(filteredPosts, currentPage);
