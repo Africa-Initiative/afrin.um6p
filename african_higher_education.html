@@ -642,6 +642,93 @@
             font-weight: 500;
         }
 
+        .author-attribution {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Centers the content */
+            gap: 0.5rem;
+            margin: 1rem auto; /* Centers the container and adds auto margins */
+            padding: 0.75rem 1rem;
+            background: rgba(215, 73, 42, 0.05);
+            border-left: 3px solid var(--primary-red);
+            border-radius: 0 8px 8px 0;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            max-width: fit-content; /* Only takes up needed space */
+        }
+
+        .author-attribution:hover {
+            background: rgba(215, 73, 42, 0.08);
+            transform: translateX(2px);
+        }
+
+        .author-attribution i {
+            color: var(--primary-red);
+            font-size: 0.9rem;
+            min-width: 16px;
+        }
+
+        .author-label {
+            color: var(--medium-gray);
+            font-weight: 500;
+            margin-right: 0.25rem;
+        }
+
+        .author-attribution a {
+            color: var(--primary-red);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .author-attribution a:hover,
+        .author-attribution a:focus {
+            color: var(--accent-orange);
+            background-color: rgba(215, 73, 42, 0.1);
+            text-decoration: underline;
+            transform: translateY(-1px);
+        }
+
+        .author-attribution a:visited {
+            color: #a53b2a;
+        }
+
+        .author-attribution a:visited:hover {
+            color: var(--accent-orange);
+        }
+
+        .author-attribution a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .author-attribution a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 480px) {
+            .author-attribution {
+                font-size: 0.9rem;
+                padding: 0.6rem 0.8rem;
+                gap: 0.4rem;
+            }
+            
+            .author-attribution a {
+                padding: 0.2rem 0.4rem;
+            }
+        }
+
         .reference-item a:hover {
             text-decoration: underline;
         }
@@ -916,10 +1003,7 @@
                             <i class="fas fa-tag" aria-hidden="true"></i>
                             <span>Higher Education, Africa, Research</span>
                         </div>
-                        <div class="meta-item">
-                            <i class="fas fa-user" aria-hidden="true"></i>
-                            <span>Azeez Hamzat</span>
-                        </div>
+                        
                     </div>
                 </header>
 
@@ -1209,6 +1293,12 @@
                         The choices made today will determine whether Africa's higher education system becomes a driver of continental transformation or remains constrained by historical limitations. The data shows both the magnitude of the challenge and the extraordinary potential for transformation.
                     </p>
                 </section>
+                
+                <div class="author-attribution">
+                    <i class="fas fa-user" aria-hidden="true"></i>
+                    <span class="author-label">Author:</span>
+                    <a href="https://www.linkedin.com/in/azeezhamzat" target="_blank" rel="noopener">Azeez Adewale Hamzat</a>
+                </div>
 
                 <div class="cta-section">
                     <h3>Join the Conversation</h3>

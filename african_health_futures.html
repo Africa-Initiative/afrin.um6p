@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>African Health Futures: A Foresight Perspective for a Resilient Tomorrow - UM6P Africa Initiative</title>
+    
+    <!-- SEO and Meta Tags -->
+    <meta name="description" content="Exploring strategic foresight methodologies to anticipate and prepare for Africa's evolving health landscape, from epidemiological transitions to technological leapfrogging.">
+    <meta name="keywords" content="African health futures, foresight, strategic planning, epidemiological transition, health systems, futures thinking, UM6P">
+    <meta name="author" content="Hajar Bahi">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#D7492A">
+    
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="African Health Futures: A Foresight Perspective for a Resilient Tomorrow">
+    <meta property="og:description" content="Exploring strategic foresight methodologies to anticipate and prepare for Africa's evolving health landscape">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://afrin.um6p.ma/african-health-futures">
+    <meta property="og:image" content="https://afrin.um6p.ma/images/blog/health-futures.jpg">
+    <meta property="og:site_name" content="UM6P Africa Initiative">
+    
+    <!-- Twitter Card tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="African Health Futures: A Foresight Perspective for a Resilient Tomorrow">
+    <meta name="twitter:description" content="Exploring strategic foresight methodologies to anticipate and prepare for Africa's evolving health landscape">
+    <meta name="twitter:image" content="https://afrin.um6p.ma/images/blog/health-futures.jpg">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* CSS Variables and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-red: #D7492A;
+            --primary-black: #1a1a1a;
+            --primary-white: #ffffff;
+            --light-gray: #f8f9fa;
+            --medium-gray: #6c757d;
+            --dark-gray: #333333;
+            --accent-orange: #ff6b35;
+            --shadow: 0 10px 30px rgba(215, 73, 42, 0.1);
+            --hover-shadow: 0 20px 40px rgba(215, 73, 42, 0.2);
+            --gradient-1: linear-gradient(135deg, #D7492A 0%, #ff6b35 100%);
+            --gradient-2: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+            --gradient-3: linear-gradient(135deg, rgba(215, 73, 42, 0.1) 0%, rgba(255, 107, 53, 0.1) 100%);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            overflow-x: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        body.loaded {
+            opacity: 1;
+        }
+
+        /* Skip link for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--primary-red);
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            border-radius: 0 0 4px 4px;
+            z-index: 9999;
+            font-weight: 600;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Header */
+        .header {
+            background: var(--gradient-2);
+            color: var(--primary-white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary-white);
+            cursor: pointer;
+        }
+
+        .logo a {
+            color: var(--primary-white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .logo a:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--primary-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            background: var(--primary-red);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(215, 73, 42, 0.3);
+        }
+
+        /* Mobile menu hamburger button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-white);
+            cursor: pointer;
+            min-width: 44px;
+            min-height: 44px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-white);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        /* Dropdown Menu Styles */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dropdown-toggle i {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-toggle i,
+        .dropdown-toggle[aria-expanded="true"] i {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #000000;
+            border: 1px solid #d7492a;
+            border-radius: 5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            min-width: 150px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-menu,
+        .dropdown-toggle[aria-expanded="true"] + .dropdown-menu {
+            display: block !important;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li {
+            margin: 0;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: #FFFFFF;
+            font-weight: 400;
+            position: relative;
+            transition: background-color 0.3s, color 0.3s;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown-menu a:hover,
+        .dropdown-menu a:focus,
+        .dropdown-menu a.active {
+            background-color: #d7492a;
+            color: #FFFFFF;
+            transform: none;
+        }
+
+        /* Page Container */
+        .page-container {
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        /* Breadcrumb Navigation */
+        .breadcrumb {
+            background: var(--light-gray);
+            padding: 1rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .breadcrumb-list {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .breadcrumb-list li {
+            display: flex;
+            align-items: center;
+        }
+        
+        .breadcrumb-list li:not(:last-child)::after {
+            content: '/';
+            margin-left: 0.5rem;
+            color: var(--medium-gray);
+        }
+        
+        .breadcrumb-list a {
+            color: var(--primary-red);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+        
+        .breadcrumb-list a:hover {
+            color: var(--accent-orange);
+            background-color: rgba(215, 73, 42, 0.1);
+        }
+        
+        .breadcrumb-list li[aria-current="page"] {
+            color: var(--medium-gray);
+            font-weight: 500;
+        }
+
+        /* Article Styles */
+        .article-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: var(--primary-white);
+        }
+
+        .article-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 3rem 2rem;
+            background: var(--gradient-3);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-1);
+        }
+
+        .article-title {
+            font-size: 3rem;
+            color: var(--primary-black);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .article-subtitle {
+            font-size: 1.3rem;
+            color: var(--medium-gray);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-size: 0.9rem;
+            color: var(--medium-gray);
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .meta-item i {
+            color: var(--primary-red);
+        }
+
+        .publication-note {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--primary-black);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--gradient-1);
+            border-radius: 2px;
+        }
+
+        .subsection-title {
+            font-size: 1.5rem;
+            color: var(--primary-black);
+            margin: 2rem 0 1rem;
+            font-weight: 600;
+        }
+
+        .content-text {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+            line-height: 1.7;
+        }
+
+        .content-text a {
+            color: var(--primary-red);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .content-text a:hover {
+            color: var(--accent-orange);
+            text-decoration: underline;
+        }
+
+        .highlight-box {
+            background: var(--gradient-3);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border-left: 4px solid var(--primary-red);
+        }
+
+        .highlight-box h3 {
+            color: var(--primary-black);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .key-findings {
+            background: var(--gradient-2);
+            color: var(--primary-white);
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+        }
+
+        .key-findings h3 {
+            color: var(--primary-white);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .futures-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .future-scenario {
+            background: var(--primary-white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--primary-red);
+            transition: all 0.3s ease;
+        }
+
+        .future-scenario:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .scenario-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary-red);
+            margin-bottom: 1rem;
+        }
+
+        .scenario-description {
+            color: var(--dark-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .scenario-examples {
+            list-style: none;
+            padding: 0;
+        }
+
+        .scenario-examples li {
+            background: var(--light-gray);
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent-orange);
+            font-size: 0.95rem;
+        }
+
+        .scenario-examples li strong {
+            color: var(--primary-black);
+        }
+
+        .barriers-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: var(--primary-white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .barriers-table th {
+            background: var(--gradient-1);
+            color: var(--primary-white);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .barriers-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .barriers-table tr:hover {
+            background: var(--light-gray);
+        }
+
+        .quote-block {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 6px solid var(--primary-red);
+            margin: 2rem 0;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--dark-gray);
+        }
+
+         .author-attribution {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Centers the content */
+            gap: 0.5rem;
+            margin: 1rem auto; /* Centers the container and adds auto margins */
+            padding: 0.75rem 1rem;
+            background: rgba(215, 73, 42, 0.05);
+            border-left: 3px solid var(--primary-red);
+            border-radius: 0 8px 8px 0;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            max-width: fit-content; /* Only takes up needed space */
+        }
+
+        .author-attribution:hover {
+            background: rgba(215, 73, 42, 0.08);
+            transform: translateX(2px);
+        }
+
+        .author-attribution i {
+            color: var(--primary-red);
+            font-size: 0.9rem;
+            min-width: 16px;
+        }
+
+        .author-label {
+            color: var(--medium-gray);
+            font-weight: 500;
+            margin-right: 0.25rem;
+        }
+
+        .author-attribution a {
+            color: var(--primary-red);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .author-attribution a:hover,
+        .author-attribution a:focus {
+            color: var(--accent-orange);
+            background-color: rgba(215, 73, 42, 0.1);
+            text-decoration: underline;
+            transform: translateY(-1px);
+        }
+
+        .author-attribution a:visited {
+            color: #a53b2a;
+        }
+
+        .author-attribution a:visited:hover {
+            color: var(--accent-orange);
+        }
+
+        .author-attribution a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .author-attribution a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 480px) {
+            .author-attribution {
+                font-size: 0.9rem;
+                padding: 0.6rem 0.8rem;
+                gap: 0.4rem;
+            }
+            
+            .author-attribution a {
+                padding: 0.2rem 0.4rem;
+            }
+        }
+        
+        .cta-section {
+            background: var(--gradient-1);
+            color: var(--primary-white);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .cta-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-white);
+            color: var(--primary-red);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--gradient-2);
+            color: var(--primary-white);
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-red);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: block;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-red);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+            color: #888;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .futures-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Navigation */
+            .nav-container {
+                padding: 0 1rem;
+            }
+            
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary-black);
+                flex-direction: column;
+                padding: 2rem 1rem;
+                gap: 0.5rem;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+                border-radius: 0 0 15px 15px;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            /* Article */
+            .article-container {
+                padding: 1rem;
+            }
+
+            .article-title {
+                font-size: 2.2rem;
+            }
+
+            .article-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .futures-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .article-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .barriers-table {
+                font-size: 0.9rem;
+            }
+
+            .highlight-box,
+            .key-findings,
+            .cta-section {
+                padding: 1.5rem;
+            }
+
+            /* Footer */
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .article-title {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            /* Footer */
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html" aria-label="UM6P Africa Initiative Homepage">
+                    UM6P - Africa Initiative
+                </a>
+            </div>
+            <nav role="navigation" aria-label="Main navigation">
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="news.html" class="active" aria-current="page">News</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+
+                    <!-- Dropdown for UM6P Links -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+                            Explore UM6P <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="none"><a href="https://www.um6p.ma/en" target="_blank" rel="noopener" role="menuitem">UM6P Official</a></li>
+                            <li role="none"><a href="https://timesofum6p.com/" target="_blank" rel="noopener" role="menuitem">Times of UM6P</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-container">
+        <!-- Breadcrumb Navigation -->
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+            <ol class="breadcrumb-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="news.html">News & Updates</a></li>
+                <li aria-current="page">African Health Futures</li>
+            </ol>
+        </nav>
+
+        <main id="main-content">
+            <div class="article-container">
+                <header class="article-header">
+                    <h1 class="article-title">African Health Futures: A Foresight Perspective for a Resilient Tomorrow</h1>
+                    <p class="article-subtitle">Exploring strategic foresight methodologies to anticipate and prepare for Africa's evolving health landscape, from epidemiological transitions to technological leapfrogging</p>
+                    <div class="article-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar" aria-hidden="true"></i>
+                            <span>July 10, 2025</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-clock" aria-hidden="true"></i>
+                            <span>10 min read</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-tag" aria-hidden="true"></i>
+                            <span>Foresight, Health Futures, Strategic Planning</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-user" aria-hidden="true"></i>
+                            <span>Hajar Bahi</span>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="publication-note">
+                    <strong>Note: :</strong> This article written by Hajar Bahi was originally published in the  <em>UM6P In Momentum</em> magazine, Issue #05, April 2025.
+                </div>
+
+                <section class="section">
+                    <p class="content-text">
+                        A major challenge for African countries has been to overcome the severe impact of early mortality, and to ensure that this relatively younger population makes the transition to a healthy and productive working-age population. However, a growing body of evidence indicates that the continent is witnessing an epidemiological transition.
+                    </p>
+
+                    <p class="content-text">
+                        Rapid unplanned urbanization and the trend of rising incomes are contributing to an increase in the incidence of non-communicable diseases in Africa by leading to changes in lifestyles; these include unhealthy dietary habits, reduced physical activity and increased tobacco consumption. Chronic conditions such as obesity and heart disease are creating a double-edged sword that the current healthcare models are not fully equipped to handle. This is predicted to surpass communicable diseases as Africa's leading health threat by 2030, according to a World Bank report.
+                    </p>
+
+                    <div class="highlight-box">
+                        <h3>A New Set of Dynamic Realities</h3>
+                        <p>A new set of dynamic realities is emerging, with a dramatically different matrix of development challenges than the 20th century. Which begs the question: Could strategic foresight have helped us anticipate this better?</p>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Understanding Futures Thinking</h2>
+                    
+                    <p class="content-text">
+                        Futures thinking or foresight is a structured way of exploring and preparing for different futures. It is not about predicting any one inevitable future, but rather opening up a range of possibilities as it helps us navigate complexity and uncertainty. This perspective forces us to ask, "What if?" and "How could things be different?". Foresight covers a heterogeneous collection of theories, frameworks, methods and processes arising from over 50 years of thought-leadership and application.
+                    </p>
+
+                    <h3 class="subsection-title">The Foresight Process in Practice</h3>
+                    <p class="content-text">
+                        In practice, Futures research starts with a scanning exercise to recognize important trends and detect early possible changes by noticing weak signals. This is typically linked with what is referred to as "emerging issue analysis," which focuses on observing weak signals alongside the "outliers," including early adopters, exceptional innovators, or paradigm-shifters and nonconformists.
+                    </p>
+
+                    <p class="content-text">
+                        In retrospect, when we discuss swift urban growth, intelligent uses of technological advancements, greater involvement in the global movement of individuals, commerce, and finances, along with the ongoing repercussions of climate change, these represent a once "collection of weak signals" that have evolved into the trends we observe today.
+                    </p>
+
+                    <div class="highlight-box">
+                        <h3>Foresight in Health Context</h3>
+                        <p>In the realm of health, where emerging, accelerating scientific and technological advances are changing the meaning of patient care, transforming the delivery of health care and the limits of the feasible in terms of the possible medical interventions, these tools and approaches can empower us to proactively identify, anticipate and prepare solutions for the pressing issues that hold great potential and challenges for African health.</p>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Foresight in Motion</h2>
+                    
+                    <p class="content-text">
+                        To gain a better insight of the foresight process, I conducted a horizon scanning exercise to identify potentially emerging trends and signals that can influence health futures in Africa. Three plausible futures emerged.
+                    </p>
+
+                    <div class="futures-grid">
+                        <div class="future-scenario">
+                            <div class="scenario-title">F1: Trend-Driven Leapfrogging Future</div>
+                            <div class="scenario-description">
+                                Africa has a history of leapfrogging traditional development trajectories (consider mobile banking with M-Pesa). Likewise, Technology's use in healthcare is speeding up and signs point to tech-enabled solutions becoming more common:
+                            </div>
+                            <ul class="scenario-examples">
+                                <li><strong>M-TIBA in Kenya:</strong> Improving access to care with a mobile health payment platform</li>
+                                <li><strong>Rwanda's Zipline Drones:</strong> Bringing medical supplies to hard-to-reach places.</li>
+                                <li><strong>ScanNav FetalCheck from Uganda:</strong> AI ultrasound tech improving maternal health.</li>
+                            </ul>
+                        </div>
+
+                        <div class="future-scenario">
+                            <div class="scenario-title">F2: Community-Centered Care Future</div>
+                            <div class="scenario-description">
+                                In this scenario, we see a move towards more localized, community-driven healthcare models, improving access and trust. In fact, most Africans still prefer receiving informal and community-based care for reasons of affordability and cultural relevance. Some weak signals for this trend are the following:
+                            </div>
+                            <ul class="scenario-examples">
+                                <li><strong>Pioneering Community Health Extension Programmers:</strong> The Case of Ethiopia</li>
+                                <li><strong>WHO Traditional Medicine Global Summit (India, 2023):</strong> Asserts the increasing acknowledgement of traditional and indigenous medicine.</li>
+                            </ul>
+                        </div>
+
+                        <div class="future-scenario">
+                            <div class="scenario-title">F3: Policy-Driven Initiatives Future</div>
+                            <div class="scenario-description">
+                                Sustainable health care systems require robust policy frameworks. In this scenario, governments and policymakers forcefully step up to improve the healthcare infrastructure, financing and regulation. Key signals include Angola and Côte d'Ivoire national healthcare projects, Africa CDC Role in Pandemic Response, Rwanda's Mutuelle de Santé.
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="content-text">
+                        While this is a generic exploration of Africa's possible health futures, it should be noted that each scenario also brings its own challenges, even the most desirable ones. Beyond a solid foresight exercise, this calls for a proper evaluation of possible implications to inform a better path ahead.
+                    </p>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Anticipating Barriers to Future Success</h2>
+                    
+                    <p class="content-text">
+                        While this represents a preliminary exploration of Africa's possible health futures, it's crucial to acknowledge that each scenario presents its own unique challenges and barriers, even the most promising ones. A comprehensive foresight exercise requires careful evaluation of potential implementation challenges to inform strategic planning and decision-making.
+                    </p>
+
+                    <table class="barriers-table">
+                        <thead>
+                            <tr>
+                                <th>Plausible Future</th>
+                                <th>Barriers</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Trend-Driven Leapfrogging</strong></td>
+                                <td>
+                                    Digital Divide<br>
+                                    Cybersecurity Risks
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Community-Centered Care</strong></td>
+                                <td>
+                                    Scientific validation of TM
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Policy-Driven Initiatives</strong></td>
+                                <td>
+                                    Bureaucratic inefficiencies<br>
+                                    Political instabilities
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <div class="quote-block">
+                    "At its root, Futures Thinking or Foresight encourages us to welcome uncertainty — not as a cause of anxiety, but as fertile ground for innovation and advancement. In Africa, where the road to a healthier nation is neither linear nor guaranteed, foresight becomes a strategic capacity on demand that serves as a compass to foresee future health problems and opportunities."
+                    <div style="text-align: right; margin-top: 1rem; font-style: normal; font-weight: 600; color: var(--primary-red);">— Hajar Bahi, Africa Initiative</div>
+                </div>
+
+                <section class="section">
+                    <h2 class="section-title">The Road Ahead</h2>
+                    
+                    <p class="content-text">
+                        At its root, Futures Thinking or Foresight encourages us to welcome uncertainty — not as a cause of anxiety, but as fertile ground for innovation and advancement.
+                    </p>
+
+                    <p class="content-text">
+                        In Africa, where the road to a healthier nation is neither linear nor guaranteed, foresight becomes a strategic capacity on demand that serves as a compass to foresee future health problems and opportunities.
+                    </p>
+
+                    <p class="content-text">
+                        For scientists and researchers, this means thinking beyond proximal problem-solvers and considering the more distal impacts of their work. It means asking not simply "What is the next breakthrough? but even "How will our health systems function in 20 or 50 years?". These kinds of questions empower us to explore new frontiers and lead us to resilient Futures for Africa.
+                    </p>
+                </section>
+
+                <div class="author-attribution">
+                    <i class="fas fa-user" aria-hidden="true"></i>
+                    <span class="author-label">Author:</span>
+                    <a href="https://www.linkedin.com/in/hajarbahi/" target="_blank" rel="noopener">Hajar Bahi</a>
+                </div>
+
+                <div class="cta-section">
+                    <h3>Shape Africa's Health Future</h3>
+                    <p>Strategic foresight offers powerful tools for anticipating and preparing for Africa's health challenges and opportunities. Join us in developing evidence-based approaches to building resilient health systems across the continent.</p>
+                    <a href="index.html#contact" class="cta-button">Explore Foresight Partnerships</a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>UM6P - Africa Initiative</h3>
+                <p>Supporting Africa's socio-economic development through collaboration, innovation, and strategic partnerships across the continent.</p>
+                <br>
+                <p><strong>Address:</strong><br>
+                Mohammed VI Polytechnic University<br>
+                Ben Guerir, Morocco</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="index.html#about">About Us</a>
+                <a href="index.html#mission">Our Mission</a>
+                <a href="index.html#workstreams">Workstreams</a>
+                <a href="index.html#partners">Partners</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <a href="#" onclick="openNewsletterArchive()">Newsletter Archive</a>
+                <a href="#" onclick="openOpportunitiesDatabase()">Opportunities</a>
+                <a href="#" onclick="openEventsCalendar()">Events Calendar</a>
+                <a href="mailto:africa.initiative@um6p.ma">Contact Us</a>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <a href="https://www.linkedin.com/company/um6p-africa-initiative" target="_blank" rel="noopener">
+                    <i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn
+                </a>
+                <a href="https://x.com/Um6pAfrica" target="_blank" rel="noopener">
+                    <i class="fab fa-x-twitter" aria-hidden="true"></i> X (Twitter)
+                </a>
+                <a href="https://www.instagram.com/um6pafrica" target="_blank" rel="noopener">
+                    <i class="fab fa-instagram" aria-hidden="true"></i> Instagram
+                </a>
+                <a href="https://www.um6p.ma/en" target="_blank" rel="noopener">
+                    <i class="fas fa-globe" aria-hidden="true"></i> UM6P Official
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 UM6P - Africa Initiative. All rights reserved. | 
+               <a href="#" style="color: #ccc;">Privacy Policy</a> | 
+               <a href="#" style="color: #ccc;">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Complete JavaScript -->
+    <script>
+        // Enhanced mobile menu toggle
+        function toggleMobileMenu() {
+            const navMenu = document.querySelector('.nav-menu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (navMenu && menuBtn) {
+                const isExpanded = navMenu.classList.contains('active');
+                
+                navMenu.classList.toggle('active');
+                menuBtn.setAttribute('aria-expanded', !isExpanded);
+                
+                // Focus management
+                if (!isExpanded) {
+                    const firstMenuItem = navMenu.querySelector('a');
+                    if (firstMenuItem) {
+                        setTimeout(() => firstMenuItem.focus(), 100);
+                    }
+                }
+            }
+        }
+
+        // Newsletter Archive function
+        function openNewsletterArchive() {
+            window.open('https://um6p-my.sharepoint.com/:f:/g/personal/africa_initiative_um6p_ma/EiUh9bIHpQtAp_LLH5GFMyYBh5fBjEG5EgKPdKgFyF_0fg?e=8WDMVP', '_blank', 'noopener,noreferrer');
+        }
+
+        // Opportunities Database function
+        function openOpportunitiesDatabase() {
+            window.open('https://um6p-my.sharepoint.com/:x:/g/personal/africa_initiative_um6p_ma/EQGcCw_ppm1CibdnKt4GqloBTxM22yZ4HLBZOSG3ox9ULw?e=coKt3e&nav=MTVfezAwMDAwMDAwLTAwMDEtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMH0', '_blank', 'noopener,noreferrer');
+        }
+
+        // Events Calendar function
+        function openEventsCalendar() {
+            window.open('https://um6p-my.sharepoint.com/:x:/g/personal/africa_initiative_um6p_ma/EdKkT38UIMJKnWRJJ6od7mMBMmYwY8G8cp4V6WHHEdCZew?e=aH35dW&nav=MTVfezAwMDAwMDAwLTAwMDEtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMH0', '_blank', 'noopener,noreferrer');
+        }
+
+        // Enhanced dropdown click handling
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.dropdown-toggle')) {
+                e.preventDefault();
+                const toggle = e.target.closest('.dropdown-toggle');
+                const dropdown = toggle.closest('.dropdown');
+                const menu = dropdown.querySelector('.dropdown-menu');
+                const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+                
+                toggle.setAttribute('aria-expanded', !isExpanded);
+                
+                if (!isExpanded) {
+                    menu.style.display = 'block';
+                    const firstMenuItem = menu.querySelector('a');
+                    if (firstMenuItem) firstMenuItem.focus();
+                } else {
+                    menu.style.display = '';
+                }
+            }
+        });
+
+        // Mobile menu close on outside click
+        document.addEventListener('click', function(e) {
+            const navMenu = document.querySelector('.nav-menu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (navMenu && menuBtn && !navMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+                navMenu.classList.remove('active');
+                menuBtn.setAttribute('aria-expanded', 'false');
+            }
+
+            // Close dropdowns when clicking outside
+            const dropdowns = document.querySelectorAll('.dropdown');
+            dropdowns.forEach(dropdown => {
+                if (!dropdown.contains(e.target)) {
+                    const toggle = dropdown.querySelector('.dropdown-toggle');
+                    const menu = dropdown.querySelector('.dropdown-menu');
+                    if (toggle && menu) {
+                        toggle.setAttribute('aria-expanded', 'false');
+                        if (menu.style.display === 'block') {
+                            menu.style.display = '';
+                        }
+                    }
+                }
+            });
+        });
+
+        // Close mobile menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const navMenu = document.querySelector('.nav-menu');
+                const menuBtn = document.querySelector('.mobile-menu-btn');
+                if (navMenu && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    menuBtn.setAttribute('aria-expanded', 'false');
+                    menuBtn.focus();
+                }
+
+                // Close dropdowns
+                const dropdowns = document.querySelectorAll('.dropdown');
+                dropdowns.forEach(dropdown => {
+                    const toggle = dropdown.querySelector('.dropdown-toggle');
+                    const menu = dropdown.querySelector('.dropdown-menu');
+                    if (toggle && menu && toggle.getAttribute('aria-expanded') === 'true') {
+                        toggle.setAttribute('aria-expanded', 'false');
+                        menu.style.display = '';
+                        toggle.focus();
+                    }
+                });
+            }
+        });
+
+        // Enhanced page initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('loaded');
+        });
+
+        // Make global functions available
+        window.toggleMobileMenu = toggleMobileMenu;
+        window.openNewsletterArchive = openNewsletterArchive;
+        window.openOpportunitiesDatabase = openOpportunitiesDatabase;
+        window.openEventsCalendar = openEventsCalendar;
+    </script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then((registration) => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch((registrationError) => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

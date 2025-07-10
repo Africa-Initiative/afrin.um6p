@@ -523,29 +523,23 @@
             font-size: 0.8rem;
         }
 
-        .blog-meta a {
-            color: var(--primary-red) !important;
-            text-decoration: none !important;
-            transition: color 0.3s;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            font-weight: 500;
+        /* News Category Styling */
+        .news-category {
+            background: var(--gradient-1);
+            color: var(--primary-white);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(215, 73, 42, 0.2);
+            transition: all 0.3s ease;
         }
 
-        .blog-meta a:hover,
-        .blog-meta a:focus {
-            color: var(--accent-orange) !important;
-            background-color: rgba(215, 73, 42, 0.1);
-            text-decoration: underline !important;
-            outline: none;
-        }
-
-        .blog-meta a:visited {
-            color: #a53b2a !important;
-        }
-
-        .blog-meta a:visited:hover {
-            color: var(--accent-orange) !important;
+        .news-category:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(215, 73, 42, 0.3);
         }
 
         .blog-post h3 {
@@ -1423,22 +1417,19 @@
                             autocomplete="off"
                         >
                         <div id="search-help" class="sr-only">
-                            Search through article titles, content, and author names
+                            Search through article titles, content, and categories
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="filter-tags">Filter by Category</label>
                         <select id="filter-tags" onchange="filterPosts()" aria-describedby="filter-help">
                             <option value="">All Categories</option>
-                            <option value="Agriculture">Agriculture</option>
-                            <option value="Community">Community</option>
                             <option value="Education">Education</option>
-                            <option value="Environment">Environment</option>
-                            <option value="Energy">Energy</option>
+                            <option value="Skills">Skills</option>
                             <option value="Entrepreneurship">Entrepreneurship</option>
+                            <option value="Energy">Energy</option>
                             <option value="Health">Health</option>
                             <option value="Research">Research</option>
-                            <option value="Partnership">Partnership</option>
                             <option value="Innovation">Innovation</option>
                         </select>
                         <div id="filter-help" class="sr-only">
@@ -1585,22 +1576,18 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 UM6P - Africa Initiative. All rights reserved. <!-- | 
-               <a href="#" style="color: #ccc;">Privacy Policy</a> | 
-               <a href="#" style="color: #ccc;">Terms of Service</a> -->
-            </p>
+            <p>&copy; 2025 UM6P - Africa Initiative. All rights reserved.</p>
         </div>
     </footer>
 
     <!-- Complete JavaScript -->
     <script>
-        // Blog posts data with real images - Sorted by date (newest first)
+        // Blog posts data with categories - Sorted by date (newest first)
         const blogPosts = [
             {
                 image: "images/higher-education.webp",
                 date: "July 09, 2025",
-                author: "Azeez Hamzat",
-                authorLink: "https://www.linkedin.com/in/azeezhamzat",
+                category: "Education",
                 title: "The State of African Higher Education: Trends and Opportunities",
                 excerpt: "A comprehensive analysis of Africa's evolving educational landscape based on empirical data from UNESCO, World Bank, and African Union sources.",
                 link: "african_higher_education.html",
@@ -1612,8 +1599,7 @@
             {
                 image: "images/skills.webp",
                 date: "June 15, 2025",
-                author: "Azeez Hamzat",
-                authorLink: "https://www.linkedin.com/in/azeezhamzat",
+                category: "Skills",
                 title: "Skills for Tomorrow: Preparing African Students for the Future Economy",
                 excerpt: "Skills development trends across Africa. Preparing students for tomorrow's economy.",
                 link: "skills_future_economy.html",
@@ -1625,8 +1611,7 @@
             {
                 image: "images/startup.webp",
                 date: "June 07, 2025",
-                author: "Azeez Hamzat",
-                authorLink: "https://www.linkedin.com/in/azeezhamzat",
+                category: "Entrepreneurship",
                 title: "The Rise of Entrepreneurial Universities in Africa",
                 excerpt: "Discover how African universities are transforming from traditional knowledge centers into engines of economic development, creating job creators rather than job seekers and driving innovation across the continent.",
                 link: "entrepreneurial_universities_africa.html",
@@ -1638,8 +1623,7 @@
            {
                 image: "images/energy-research.webp",
                 date: "May 10, 2025",
-                author: "Azeez Hamzat",
-                authorLink: "https://www.linkedin.com/in/azeezhamzat",
+                category: "Energy",
                 title: "The State of Energy Research in Africa",
                 excerpt: "A comprehensive analysis of Africa's energy research landscape, investment trends, institutional capacity, and emerging opportunities in renewable energy development across the continent.",
                 link: "energy_research_africa.html",
@@ -1647,58 +1631,102 @@
                 year: 2025,
                 month: "May",
                 sortDate: new Date("2025-05-10")
+            },
+           {
+                image: "images/future.webp",
+                date: "April 15, 2025",
+                category: "Health",
+                authorLink: "https://www.linkedin.com/in/hajar-bahi", 
+                title: "African Health Futures: A Foresight Perspective for a Resilient Tomorrow",
+                excerpt: "Exploring strategic foresight methodologies to anticipate Africa's evolving health landscape, from epidemiological transitions to technological leapfrogging and community-centered care models.",
+                link: "african_health_futures.html",
+                tags: ["Health Futures", "Strategic Foresight", "Africa", "Epidemiological Transition", "Health Planning", "Futures Thinking"],
+                year: 2025,
+                month: "April",
+                sortDate: new Date("2025-04-15")
+            },
+            {
+                image: "images/compass.webp",
+                date: "April 23, 2025",
+                category: "Education", 
+                authorLink: "https://www.linkedin.com/in/azeezhamzat",
+                title: "When the Map Fails: Navigating Academic Purpose",
+                excerpt: "A reflective exploration of academic disorientation and existential uncertainty in scholarly life, examining how to find deeper meaning beyond external metrics and rediscover purpose when conventional guideposts fail.",
+                link: "when_map_fails_academic_purpose.html",
+                tags: ["Academic Life", "Purpose", "Reflection", "Scholarly Life", "PhD Journey", "Academic Compass"],
+                year: 2025,
+                month: "April",
+                sortDate: new Date("2025-04-23")
+            },
+           {
+                image: "images/healthcare.webp",
+                date: "April 15, 2025",
+                category: "Health",
+                title: "Rethinking Africa's Health Systems for Sustainable Resilience",
+                excerpt: "Building the foundation for a healthier continent through systematic transformation of Africa's health infrastructure, workforce development, and pharmaceutical independence.",
+                link: "africa_health_systems.html",
+                tags: ["Health Systems", "Healthcare", "Africa", "Medical Infrastructure", "Pharmaceutical Independence", "Health Workforce"],
+                year: 2025,
+                month: "April",
+                sortDate: new Date("2025-04-15")
             }
         ];
 
         // Gallery images data
         const galleryImages = [
             {
-                src: "images/gallery/ace-impact-visit.jpg",
-                alt: "UM6P Africa Partnership Summit 2024",
-                title: "Africa Partnership Summit 2024",
-                description: "Leaders from across Africa gathering to strengthen continental partnerships and discuss innovative solutions for sustainable development."
+                src: "images/gallery/Ace-Impact-Morocco.webp",
+                alt: "UACE Impact-Morocco Partnership Forum 2023",
+                title: "ACE Impact-Morocco Partnership Forum",
+                description: "ACE Impact–Morocco Partnership Forum offers valuable learning platform for Vice Chancellors from across Africa to strengthen higher education collaboration."
             },
             {
-                src: "images/gallery/NIRDA-Rwanda.png",
-                alt: "University of Rwanda collaboration visit",
-                title: "University of Rwanda Collaboration",
-                description: "Strengthening academic partnerships and research collaboration with the University of Rwanda to advance higher education in East Africa."
+                src: "images/gallery/DFS-signing.webp",
+                alt: "Digital Farming School (DFS) signing ceremony",
+                title: "Digital Farming School (DFS) Signing Ceremony",
+                description: "Official signing ceremony establishing the Digital Farming School to advance agricultural technology and innovation across Africa."
             },
             {
-                src: "images/gallery/gallery2.jpg",
-                alt: "Agricultural innovation project in Senegal",
-                title: "Agricultural Innovation in Senegal",
-                description: "Supporting sustainable agriculture initiatives and farmer capacity building programs across Senegal's rural communities."
+                src: "images/gallery/INP-HB.webp",
+                alt: "INP-HB at UM6P",
+                title: "Strengthening Ties Through Leadership: INP-HB at UM6P",
+                description: "Student delegation from INP-HB for leadership and cultural immersion under the theme 'Cultures croisées et leadership étudiant.'"
             },
             {
-                src: "images/gallery/gallery3.jpg",
-                alt: "Technology hub opening ceremony in Nairobi",
-                title: "Nairobi Technology Hub Launch",
-                description: "Inaugurating a new technology incubation center in Nairobi to foster innovation and entrepreneurship among young African developers."
+                src: "images/gallery/Mme_Gakinya.webp",
+                alt: "Visit of Her Excellence Mrs. Jessica Gakinya",
+                title: "Visit of Her Excellence Mrs. Jessica Gakinya, Ambassador of Kenya to Morocco",
+                description: "We had the honor of welcoming Her Excellency Mrs. Jessica Gakinya, Ambassador of Kenya to Morocco, along with Mr. Abdullahi Nurrow, Economic Counselor, to explore shared ambitions for Africa's sustainable development."
             },
             {
-                src: "images/gallery/gallery4.jpg",
-                alt: "Renewable energy research facility in Morocco",
-                title: "Morocco Renewable Energy Research",
-                description: "Advancing clean energy solutions through cutting-edge research at our state-of-the-art renewable energy facility in Ben Guerir."
+                src: "images/gallery/ISdB.webp",
+                alt: "Visit of the delegation of the Islamic Development Bank",
+                title: "Visit of the Delegation of the Islamic Development Bank",
+                description: "Exploring collaboration opportunities for deploying UM6P-driven solutions across African countries, with focus on agriculture, entrepreneurship, employability, and capacity building."
             },
             {
-                src: "images/gallery/gallery6.jpg",
-                alt: "Education workshop with Ghanaian universities",
-                title: "Ghana Education Workshop",
-                description: "Collaborative workshop with Ghanaian universities focusing on curriculum development and digital transformation in higher education."
+                src: "images/gallery/recteur_amadou.webp",
+                alt: "Recteur de l'Université Amadou Makhtar Mbow, le Pr. Ibrahima CISSE PAD",
+                title: "Visit of Pr. Ibrahima CISSE PAD, Rector of Université Amadou Makhtar Mbow",
+                description: "High-level academic visit strengthening partnerships between UM6P and Université Amadou Makhtar Mbow to advance higher education collaboration in West Africa."
             },
             {
-                src: "images/gallery/ESOs-workshop.jpg",
-                alt: "Youth leadership conference in Lagos",
-                title: "Lagos Youth Leadership Conference",
-                description: "Empowering the next generation of African leaders through skills development and entrepreneurship training in Lagos, Nigeria."
+                src: "images/gallery/GEP.webp",
+                alt: "AAU members visiting the UM6P's Green Energy Park",
+                title: "Association of African Universities (AAU) Members Visiting UM6P's Green Energy Park",
+                description: "Distinguished delegation from the Association of African Universities exploring cutting-edge renewable energy research and innovation at UM6P's Green Energy Park."
             },
             {
-                src: "images/gallery/SUA-delegation.jpeg",
-                alt: "Mining research collaboration in South Africa",
-                title: "South Africa Mining Research",
-                description: "Collaborating on sustainable mining practices and environmental protection with leading South African research institutions."
+                src: "images/gallery/ESOs-workshop.webp",
+                alt: "ESOs Workshop",
+                title: "Entrepreneurship Support Ecosystems Workshop",
+                description: "Intensive brainstorming session focused on developing African agripreneurship and strengthening entrepreneurship support ecosystems across the continent."
+            },
+            {
+                src: "images/gallery/SUA-delegation.webp",
+                alt: "High-level delegation from Sokoine University of Agriculture (SUA)",
+                title: "High-level Delegation from Sokoine University of Agriculture (SUA)",
+                description: "Strategic partnership discussions with Sokoine University of Agriculture delegation to advance agricultural research, innovation, and capacity building in East Africa."
             }
         ];
 
@@ -2093,7 +2121,7 @@
             });
         }
 
-        // Blog post functionality (existing code)
+        // Blog post functionality (updated for categories)
         function renderPosts(posts, page) {
             const start = (page - 1) * postsPerPage;
             const end = start + postsPerPage;
@@ -2128,7 +2156,7 @@
                         contentWrapper.innerHTML = `
                             <div class="blog-meta">
                                 <span><i class="fas fa-calendar-alt" aria-hidden="true"></i> <time datetime="${post.sortDate.toISOString()}">${post.date}</time></span>
-                                <span><i class="fas fa-user" aria-hidden="true"></i> <a href="${post.authorLink}" target="_blank" rel="noopener">${post.author}</a></span>
+                                <span><i class="fas fa-tag" aria-hidden="true"></i> <span class="news-category">${post.category}</span></span>
                             </div>
                             <h3><a href="${post.link}" aria-describedby="excerpt-${start + index}">${post.title}</a></h3>
                             <p id="excerpt-${start + index}">${post.excerpt}</p>
@@ -2287,10 +2315,10 @@
                     const matchesSearch = searchQuery === '' || 
                                         post.title.toLowerCase().includes(searchQuery) || 
                                         post.excerpt.toLowerCase().includes(searchQuery) ||
-                                        post.author.toLowerCase().includes(searchQuery) ||
+                                        post.category.toLowerCase().includes(searchQuery) ||
                                         post.tags.some(tag => tag.toLowerCase().includes(searchQuery));
                     
-                    const matchesTag = selectedTag === '' || post.tags.includes(selectedTag);
+                    const matchesTag = selectedTag === '' || post.category === selectedTag;
                     
                     return matchesSearch && matchesTag;
                 });

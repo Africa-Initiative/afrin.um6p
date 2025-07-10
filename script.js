@@ -620,10 +620,10 @@ function requestHeaderUpdate() {
 
 // Enhanced stats animation with intersection observer
 function animateStats() {
-    const statNumbers = document.querySelectorAll('.stat-number');
+    const statNumbers = document.querySelectorAll('.impact-stat-number');
     statNumbers.forEach(stat => {
         const target = parseInt(stat.dataset.target || stat.textContent);
-        const suffix = stat.textContent.includes('+') ? '+' : '';
+        const suffix = '+'; // Always add + suffix for impact stats
         let current = 0;
         const increment = target / 50;
         const timer = setInterval(() => {
@@ -1279,7 +1279,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Trigger stats animation when section comes into view
-    const statsSection = document.querySelector('.stats');
+    const statsSection = document.querySelector('.impact-mission');
     if (statsSection) {
         const statsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
