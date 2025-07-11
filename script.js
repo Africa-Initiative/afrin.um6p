@@ -1,4 +1,3 @@
-// Enhanced script.js with fixed carousel timing and performance optimizations
 
 // Hero Carousel Variables with Better Interval Management
 let currentHeroSlideIndex = 0;
@@ -24,7 +23,7 @@ function initReducedMotion() {
     isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
-// Enhanced Hero Carousel Functions with Image Support
+// Hero Carousel Functions with Image Support
 function preloadHeroImages() {
     const imageUrls = [
         'images/hero/africa-collaboration.jpg',
@@ -193,7 +192,7 @@ function announceSlideChange(slideNumber) {
     }
 }
 
-// Enhanced image loading with better error handling and lazy loading
+// image loading with better error handling and lazy loading
 function initializeLogos() {
     const logoImages = document.querySelectorAll('.logo-img');
     
@@ -286,7 +285,7 @@ function createFallback(img) {
     img.parentNode.appendChild(fallback);
 }
 
-// Enhanced mobile menu toggle with better accessibility
+// mobile menu toggle 
 function toggleMobileMenu() {
     const navMenu = document.querySelector('.nav-menu');
     const menuBtn = document.querySelector('.mobile-menu-btn');
@@ -380,7 +379,7 @@ function openEventsCalendar() {
     window.open('https://um6p-my.sharepoint.com/:x:/g/personal/africa_initiative_um6p_ma/EdKkT38UIMJKnWRJJ6od7mMBMmYwY8G8cp4V6WHHEdCZew?e=aH35dW&nav=MTVfezAwMDAwMDAwLTAwMDEtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMH0', '_blank', 'noopener,noreferrer');
 }
 
-// Enhanced accessibility features
+// accessibility features
 function initAccessibility() {
     // Create live region for announcements
     const announcer = document.createElement('div');
@@ -409,7 +408,7 @@ function initAccessibility() {
         });
     }
     
-    // Enhanced keyboard navigation for hero carousel
+    // keyboard navigation for hero carousel
     document.addEventListener('keydown', (e) => {
         if (e.target.closest('.hero-carousel') || document.activeElement.closest('.hero-carousel')) {
             switch(e.key) {
@@ -445,7 +444,7 @@ function initAccessibility() {
         }
     });
 
-    // Enhanced dropdown keyboard navigation
+    // dropdown keyboard navigation
     document.addEventListener('keydown', (e) => {
         if (e.target.classList.contains('dropdown-toggle')) {
             if (e.key === 'Enter' || e.key === ' ') {
@@ -466,7 +465,7 @@ function initAccessibility() {
     });
 }
 
-// Enhanced performance monitoring
+// performance monitoring
 function initPerformanceMonitoring() {
     // Monitor loading times
     window.addEventListener('load', () => {
@@ -489,7 +488,7 @@ function initPerformanceMonitoring() {
     });
 }
 
-// Enhanced form validation with accessibility improvements
+// form validation with accessibility improvements
 function validateForm(formElement) {
     const inputs = formElement.querySelectorAll('input[required], textarea[required], select[required]');
     let isValid = true;
@@ -532,7 +531,7 @@ function validateForm(formElement) {
             }
         }
         
-        // Enhanced email validation
+        // email validation
         if (input.type === 'email' && input.value) {
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailPattern.test(input.value)) {
@@ -594,7 +593,7 @@ function observeElements() {
     });
 }
 
-// Enhanced header background on scroll with throttling
+// header background on scroll with throttling
 let ticking = false;
 
 function updateHeader() {
@@ -618,7 +617,7 @@ function requestHeaderUpdate() {
     }
 }
 
-// Enhanced stats animation with intersection observer
+// stats animation with intersection observer
 function animateStats() {
     const statNumbers = document.querySelectorAll('.impact-stat-number');
     statNumbers.forEach(stat => {
@@ -637,7 +636,7 @@ function animateStats() {
     });
 }
 
-// Enhanced workstreams diagram interactions
+// workstreams diagram interactions
 function initializeWorkstreamsInteractions() {
     const workstreamNodes = document.querySelectorAll('.workstream-node');
     const workstreamCards = document.querySelectorAll('.workstream-card');
@@ -704,7 +703,7 @@ function initializeWorkstreamsInteractions() {
     });
 }
 
-// Blog Module (Enhanced with better performance)
+// Blog Module
 const BlogModule = (function() {
     // Blog posts data
     const blogPosts = [
@@ -895,7 +894,7 @@ const BlogModule = (function() {
         }
     }
 
-    // Enhanced change page function
+    // change page function
     function changePage(direction) {
         const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
         if (direction === 'prev' && currentPage > 1) {
@@ -915,7 +914,7 @@ const BlogModule = (function() {
         }
     }
 
-    // Enhanced filter posts with debouncing
+    // filter posts with debouncing
     let filterTimeout;
     function filterPosts() {
         clearTimeout(filterTimeout);
@@ -966,7 +965,7 @@ function filterPosts() {
     BlogModule.filterPosts();
 }
 
-// Enhanced newsletter form submissions
+// newsletter form submissions
 function handleNewsletterSubmission(formId, successId) {
     const form = document.getElementById(formId);
     const successMessage = document.getElementById(successId);
@@ -995,7 +994,7 @@ function handleNewsletterSubmission(formId, successId) {
     }
 }
 
-// Enhanced smooth scrolling for navigation links
+// smooth scrolling for navigation links
 function initSmoothScrolling() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -1027,7 +1026,7 @@ function initSmoothScrolling() {
     });
 }
 
-// Enhanced touch/swipe support for hero carousel
+// touch/swipe support for hero carousel
 let touchStartX = 0;
 let touchEndX = 0;
 let touchStartY = 0;
@@ -1066,7 +1065,7 @@ function handleSwipe() {
     }
 }
 
-// Enhanced floating links animation
+// floating links animation
 function initFloatingLinks() {
     const floatingSocialLinks = document.querySelector('.floating-social-links');
     if (floatingSocialLinks) {
@@ -1080,7 +1079,7 @@ function initFloatingLinks() {
     }
 }
 
-// Enhanced visibility change handler for carousel management
+// visibility change handler for carousel management
 function handleVisibilityChange() {
     if (document.hidden) {
         stopHeroAutoplay();
@@ -1089,7 +1088,7 @@ function handleVisibilityChange() {
     }
 }
 
-// Enhanced page initialization
+// page initialization
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize reduced motion detection
     initReducedMotion();
@@ -1119,7 +1118,7 @@ document.addEventListener('DOMContentLoaded', function() {
             startHeroAutoplay();
         }, 1000); // Delay to ensure page is fully loaded
         
-        // Enhanced hover/focus event handling with better debouncing
+        // hover/focus event handling with better debouncing
         let hoverTimeout;
         heroCarousel.addEventListener('mouseenter', () => {
             clearTimeout(hoverTimeout);
@@ -1173,7 +1172,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize blog module
     BlogModule.init();
     
-    // Enhanced form handling for all forms
+    // form handling for all forms
     const forms = document.querySelectorAll('form');
     forms.forEach(form => {
         form.addEventListener('submit', function(e) {
@@ -1226,7 +1225,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Enhanced collaboration form submission
+    // collaboration form submission
     const collaborationForm = document.getElementById('collaborationForm');
     if (collaborationForm) {
         collaborationForm.addEventListener('submit', function(e) {
@@ -1292,7 +1291,7 @@ document.addEventListener('DOMContentLoaded', function() {
         statsObserver.observe(statsSection);
     }
     
-    // Enhanced navigation active state management
+    // navigation active state management
     const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
     const sections = document.querySelectorAll('section[id]');
     
@@ -1318,10 +1317,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Enhanced scroll event with throttling
+    // scroll event with throttling
     window.addEventListener('scroll', requestHeaderUpdate, { passive: true });
     
-    // Enhanced loading state management
+    // loading state management
     window.addEventListener('load', () => {
         document.body.classList.add('loaded');
         
@@ -1344,7 +1343,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Enhanced error handling for failed resources
+    // error handling for failed resources
     window.addEventListener('error', (e) => {
         if (e.target.tagName === 'IMG') {
             console.warn('Failed to load image:', e.target.src);
@@ -1359,7 +1358,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, true);
     
-    // Enhanced resize handler with debouncing
+    // resize handler with debouncing
     let resizeTimeout;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
@@ -1395,7 +1394,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Enhanced mobile menu management
+// mobile menu management
 document.addEventListener('click', function(e) {
     const navMenu = document.querySelector('.nav-menu');
     const menuBtn = document.querySelector('.mobile-menu-btn');
@@ -1406,7 +1405,7 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// Enhanced keyboard navigation
+// keyboard navigation
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         // Close mobile menu
@@ -1437,7 +1436,7 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// Enhanced viewport height calculation for mobile browsers
+// viewport height calculation for mobile browsers
 function setViewportHeight() {
     const vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -1450,7 +1449,7 @@ setViewportHeight();
 window.addEventListener('resize', setViewportHeight, { passive: true });
 window.addEventListener('orientationchange', setViewportHeight, { passive: true });
 
-// Enhanced touch event handling to prevent zoom on double tap
+// touch event handling to prevent zoom on double tap
 let lastTouchEnd = 0;
 document.addEventListener('touchend', function (event) {
     const now = (new Date()).getTime();
@@ -1460,7 +1459,7 @@ document.addEventListener('touchend', function (event) {
     lastTouchEnd = now;
 }, { passive: false });
 
-// Export enhanced functions for global access
+// Export functions for global access
 window.UM6P = {
     // Hero carousel functions
     changeHeroSlide,

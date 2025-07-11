@@ -1049,7 +1049,7 @@
             border: 0;
         }
 
-        /* Enhanced Mobile Responsiveness */
+        /* Mobile Responsiveness */
         @media (max-width: 768px) {
             /* Navigation */
             .nav-container {
