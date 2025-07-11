@@ -1,14 +1,23 @@
+// =====================================
+// GLOBAL VARIABLES AND CONFIGURATION
+// =====================================
 
 // Hero Carousel Variables with Better Interval Management
 let currentHeroSlideIndex = 0;
 const totalHeroSlides = 4;
-let heroAutoplayInterval = null; // Changed to null for better checking
+let heroAutoplayInterval = null;
 let heroProgressInterval = null;
 const autoplayDuration = 6000; // 6 seconds per slide
 
-// Gallery Carousel Variables
+// Gallery Carousel Variables (for photo galleries)
 let currentSlideIndex = 0;
 const totalSlides = 6;
+
+// News Gallery Variables
+let currentNewsGallerySlide = 0;
+let newsAutoplayInterval;
+let isNewsAutoplayActive = true;
+const newsAutoplayDelay = 5000; // 5 seconds
 
 // Performance optimization variables
 let isReducedMotion = false;
@@ -18,12 +27,328 @@ let imageLoadPromises = [];
 let resetTimeout = null;
 let isResetting = false;
 
+// Blog posts data with categories - Sorted by date (newest first)
+const blogPosts = [
+    {
+        image: "images/higher-education.webp",
+        date: "July 09, 2025",
+        category: "Education",
+        title: "The State of African Higher Education: Trends and Opportunities",
+        excerpt: "A comprehensive analysis of Africa's evolving educational landscape based on empirical data from UNESCO, World Bank, and African Union sources.",
+        link: "african_higher_education.html",
+        tags: ["Higher Education", "Africa", "Research", "Data Analysis"],
+        year: 2025,
+        month: "July",
+        sortDate: new Date("2025-07-09")
+    },
+    {
+        image: "images/skills.webp",
+        date: "June 15, 2025",
+        category: "Skills",
+        title: "Skills for Tomorrow: Preparing African Students for the Future Economy",
+        excerpt: "Skills development trends across Africa. Preparing students for tomorrow's economy.",
+        link: "skills_future_economy.html",
+        tags: ["Skills Development", "Future Economy", "Education", "Digital Skills", "Industry 4.0"],
+        year: 2025,
+        month: "June",
+        sortDate: new Date("2025-06-15")
+    },
+    {
+        image: "images/startup.webp",
+        date: "June 07, 2025",
+        category: "Entrepreneurship",
+        title: "The Rise of Entrepreneurial Universities in Africa",
+        excerpt: "Discover how African universities are transforming from traditional knowledge centers into engines of economic development, creating job creators rather than job seekers and driving innovation across the continent.",
+        link: "entrepreneurial_universities_africa.html",
+        tags: ["Entrepreneurship", "Universities", "Innovation", "Economic Development", "Youth Employment"],
+        year: 2025,
+        month: "June",
+        sortDate: new Date("2025-06-07")
+    },
+    {
+        image: "images/energy-research.webp",
+        date: "May 10, 2025",
+        category: "Energy",
+        title: "The State of Energy Research in Africa",
+        excerpt: "A comprehensive analysis of Africa's energy research landscape, investment trends, institutional capacity, and emerging opportunities in renewable energy development across the continent.",
+        link: "energy_research_africa.html",
+        tags: ["Energy Research", "Renewable Energy", "Investment", "Research Institutions", "SEFA", "ARUA"],
+        year: 2025,
+        month: "May",
+        sortDate: new Date("2025-05-10")
+    },
+    {
+        image: "images/future.webp",
+        date: "April 15, 2025",
+        category: "Health",
+        authorLink: "https://www.linkedin.com/in/hajar-bahi", 
+        title: "African Health Futures: A Foresight Perspective for a Resilient Tomorrow",
+        excerpt: "Exploring strategic foresight methodologies to anticipate Africa's evolving health landscape, from epidemiological transitions to technological leapfrogging and community-centered care models.",
+        link: "african_health_futures.html",
+        tags: ["Health Futures", "Strategic Foresight", "Africa", "Epidemiological Transition", "Health Planning", "Futures Thinking"],
+        year: 2025,
+        month: "April",
+        sortDate: new Date("2025-04-15")
+    },
+    {
+        image: "images/compass.webp",
+        date: "April 23, 2025",
+        category: "Education", 
+        authorLink: "https://www.linkedin.com/in/azeezhamzat",
+        title: "When the Map Fails: Navigating Academic Purpose",
+        excerpt: "A reflective exploration of academic disorientation and existential uncertainty in scholarly life, examining how to find deeper meaning beyond external metrics and rediscover purpose when conventional guideposts fail.",
+        link: "when_map_fails_academic_purpose.html",
+        tags: ["Academic Life", "Purpose", "Reflection", "Scholarly Life", "PhD Journey", "Academic Compass"],
+        year: 2025,
+        month: "April",
+        sortDate: new Date("2025-04-23")
+    },
+    {
+        image: "images/healthcare.webp",
+        date: "April 15, 2025",
+        category: "Health",
+        title: "Rethinking Africa's Health Systems for Sustainable Resilience",
+        excerpt: "Building the foundation for a healthier continent through systematic transformation of Africa's health infrastructure, workforce development, and pharmaceutical independence.",
+        link: "africa_health_systems.html",
+        tags: ["Health Systems", "Healthcare", "Africa", "Medical Infrastructure", "Pharmaceutical Independence", "Health Workforce"],
+        year: 2025,
+        month: "April",
+        sortDate: new Date("2025-04-15")
+    },
+    {
+        image: "images/Healthcare.jpg",
+        date: "March 1, 2025",
+        author: "Azeez Hamzat",
+        authorLink: "https://www.linkedin.com/in/azeezhamzat",
+        title: "Advancing Healthcare in Africa: UM6P's Vision for AI-Driven Innovation",
+        excerpt: "Learn how UM6P leverages AI to transform healthcare in Africa, addressing challenges and improving access during Science Week.",
+        link: "Advancing-healthcare.html",
+        tags: ["Health", "AI", "Innovation", "Africa"],
+        year: 2025,
+        month: "March",
+        sortDate: new Date("2025-03-01")
+    },
+    {
+        image: "images/Energy-Research.jpg",
+        date: "February 27, 2025",
+        author: "Azeez Hamzat",
+        authorLink: "https://www.linkedin.com/in/Azeezhamzat",
+        title: "Why Africa Must Do More on Energy Research",
+        excerpt: "Learn why Africa must prioritize energy research to address access gaps and climate challenges, with insights on the €30M EU-AU fund boosting sustainable solutions.",
+        link: "africa-energy-research.html",
+        tags: ["Energy", "Research", "Sustainability", "Climate Change"],
+        year: 2025,
+        month: "February",
+        sortDate: new Date("2025-02-27")
+    },
+    {
+        image: "images/NextAfrica.jpeg",
+        date: "February 28, 2025",
+        author: "Azeez Hamzat",
+        authorLink: "https://www.linkedin.com/in/azeezhamzat",
+        title: "NextAfrica: Bridging Europe and Africa Through Innovation at Station F",
+        excerpt: "Learn how UM6P's NextAfrica program at Station F accelerates Greentech, Agritech, and Healthtech startups, connecting Europe and Africa for sustainable innovation.",
+        link: "next-africa.html",
+        tags: ["Innovation", "Entrepreneurship", "Environment", "Agriculture", "Health"],
+        year: 2025,
+        month: "February",
+        sortDate: new Date("2025-02-28")
+    },
+    {
+        image: "images/um6pv.png",
+        date: "February 16, 2025",
+        author: "Azeez Hamzat",
+        authorLink: "https://www.linkedin.com/in/azeezhamzat",
+        title: "UM6P Ventures: Investing in Africa's Future Through Science and Innovation",
+        excerpt: "Explore how UM6P Ventures supports Digital Transformation and Deeptech startups, driving innovation in Agriculture, GreenTech, and Healthtech across Africa.",
+        link: "um6p-ventures.html",
+        tags: ["Innovation", "Startups", "Deeptech", "Digital Transformation"],
+        year: 2025,
+        month: "February",
+        sortDate: new Date("2025-02-16")
+    },
+    {
+        image: "images/diversity-um6p.jpg",
+        date: "January 7, 2025",
+        author: "Azeez Hamzat",
+        authorLink: "https://www.linkedin.com/in/azeezhamzat",
+        title: "Embracing Diversity: How UM6P is Building a Pan-African Community of Innovators",
+        excerpt: "Discover how UM6P fosters a diverse, multicultural student body to drive innovation and collaboration across Africa.",
+        link: "blog-post-diversity.html",
+        tags: ["Diversity", "Education", "Community"],
+        year: 2025,
+        month: "January",
+        sortDate: new Date("2025-01-07")
+    },
+    {
+        image: "images/For Africa.png",
+        date: "January 10, 2025",
+        author: "Azeez Hamzat",
+        authorLink: "https://www.linkedin.com/in/azeezhamzat",
+        title: "For Africa: UM6P's Commitment to Industry, Research, and Business Innovation",
+        excerpt: "Discover how UM6P drives excellence through AAIT, AIRESS, ABS, and the Center for African Studies, fostering innovation and African perspectives.",
+        link: "For-Africa.html",
+        tags: ["Industry", "Research", "Business", "African Studies"],
+        year: 2025,
+        month: "January",
+        sortDate: new Date("2025-01-10")
+    },
+    {
+        image: "images/Startgate.jpg",
+        date: "December 15, 2024",
+        author: "Azeez Hamzat",
+        authorLink: "https://www.linkedin.com/in/azeezhamzat",
+        title: "Unleashing Africa's Entrepreneurial Spirit: How UM6P is Shaping the Future Through Innovation",
+        excerpt: "Discover how UM6P is empowering Africa's youth to tackle challenges through entrepreneurship and innovation.",
+        link: "Unleashing-Entrepreneurship.html",
+        tags: ["Entrepreneurship", "Innovation", "Startups"],
+        year: 2024,
+        month: "December",
+        sortDate: new Date("2024-12-15")
+    },
+    {
+        image: "images/excellence-in-africa.jpg",
+        date: "January 23, 2024",
+        author: "Azeez Hamzat",
+        authorLink: "https://www.linkedin.com/in/azeezhamzat",
+        title: "Excellence in Africa: UM6P and EPFL's Collaborative Push for Academic Innovation",
+        excerpt: "Explore how UM6P and EPFL are advancing academic excellence in Africa through the Excellence in Africa initiative.",
+        link: "excellence-in-africa.html",
+        tags: ["Education", "Research", "Innovation"],
+        year: 2024,
+        month: "January",
+        sortDate: new Date("2024-01-23")
+    }
+];
+
+// News Gallery images data
+const newsGalleryImages = [
+    {
+        src: "images/gallery/Ace-Impact-Morocco.webp",
+        alt: "UACE Impact-Morocco Partnership Forum 2023",
+        title: "ACE Impact-Morocco Partnership Forum",
+        description: "ACE Impact–Morocco Partnership Forum offers valuable learning platform for Vice Chancellors from across Africa to strengthen higher education collaboration."
+    },
+    {
+        src: "images/gallery/DFS-signing.webp",
+        alt: "Digital Farming School (DFS) signing ceremony",
+        title: "Digital Farming School (DFS) Signing Ceremony",
+        description: "Official signing ceremony establishing the Digital Farming School to advance agricultural technology and innovation across Africa."
+    },
+    {
+        src: "images/gallery/INP-HB.webp",
+        alt: "INP-HB at UM6P",
+        title: "Strengthening Ties Through Leadership: INP-HB at UM6P",
+        description: "Student delegation from INP-HB for leadership and cultural immersion under the theme 'Cultures croisées et leadership étudiant.'"
+    },
+    {
+        src: "images/gallery/Mme_Gakinya.webp",
+        alt: "Visit of Her Excellence Mrs. Jessica Gakinya",
+        title: "Visit of Her Excellence Mrs. Jessica Gakinya, Ambassador of Kenya to Morocco",
+        description: "We had the honor of welcoming Her Excellency Mrs. Jessica Gakinya, Ambassador of Kenya to Morocco, along with Mr. Abdullahi Nurrow, Economic Counselor, to explore shared ambitions for Africa's sustainable development."
+    },
+    {
+        src: "images/gallery/IsDB.webp",
+        alt: "Visit of the delegation of the Islamic Development Bank",
+        title: "Visit of the Delegation of the Islamic Development Bank",
+        description: "Exploring collaboration opportunities for deploying UM6P-driven solutions across African countries, with focus on agriculture, entrepreneurship, employability, and capacity building."
+    },
+    {
+        src: "images/gallery/recteur_amadou.webp",
+        alt: "Recteur de l'Université Amadou Makhtar Mbow, le Pr. Ibrahima CISSE PAD",
+        title: "Visit of Pr. Ibrahima CISSE PAD, Rector of Université Amadou Makhtar Mbow",
+        description: "High-level academic visit strengthening partnerships between UM6P and Université Amadou Makhtar Mbow to advance higher education collaboration in West Africa."
+    },
+    {
+        src: "images/gallery/GEP.webp",
+        alt: "AAU members visiting the UM6P's Green Energy Park",
+        title: "Association of African Universities (AAU) Members Visiting UM6P's Green Energy Park",
+        description: "Distinguished delegation from the Association of African Universities exploring cutting-edge renewable energy research and innovation at UM6P's Green Energy Park."
+    },
+    {
+        src: "images/gallery/ESOs-workshop.webp",
+        alt: "ESOs Workshop",
+        title: "Entrepreneurship Support Ecosystems Workshop",
+        description: "Intensive brainstorming session focused on developing African agripreneurship and strengthening entrepreneurship support ecosystems across the continent."
+    },
+    {
+        src: "images/gallery/SUA-delegation.webp",
+        alt: "High-level delegation from Sokoine University of Agriculture (SUA)",
+        title: "High-level Delegation from Sokoine University of Agriculture (SUA)",
+        description: "Strategic partnership discussions with Sokoine University of Agriculture delegation to advance agricultural research, innovation, and capacity building in East Africa."
+    }
+];
+
+// Blog Pagination variables
+const postsPerPage = 6;
+let currentPage = 1;
+let filteredPosts = [...blogPosts];
+
+// Sort blog posts by date (newest to oldest)
+blogPosts.sort((a, b) => b.sortDate - a.sortDate);
+filteredPosts.sort((a, b) => b.sortDate - a.sortDate);
+
+// =====================================
+// UTILITY FUNCTIONS
+// =====================================
+
 // Initialize reduced motion preference
 function initReducedMotion() {
     isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
-// Hero Carousel Functions with Image Support
+// Enhanced image loading with better error handling and lazy loading
+function createImageElement(post) {
+    const img = document.createElement('img');
+    img.className = 'blog-image';
+    img.alt = post.title;
+    img.loading = 'lazy';
+    
+    img.addEventListener('error', function() {
+        // Create fallback div with gradient background
+        const fallback = document.createElement('div');
+        fallback.className = 'blog-image-placeholder';
+        fallback.textContent = '📰';
+        fallback.setAttribute('role', 'img');
+        fallback.setAttribute('aria-label', post.title);
+        this.parentNode.replaceChild(fallback, this);
+    });
+    
+    img.src = post.image;
+    return img;
+}
+
+function createFallback(img) {
+    const fallback = document.createElement('div');
+    fallback.className = 'logo-fallback';
+    fallback.textContent = img.alt || 'Logo';
+    fallback.setAttribute('role', 'img');
+    fallback.setAttribute('aria-label', img.alt || 'Partner logo');
+    
+    fallback.style.cssText = `
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--gradient-1);
+        color: var(--primary-white);
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-align: center;
+        border-radius: 10px;
+        padding: 5px;
+    `;
+    
+    img.style.display = 'none';
+    img.parentNode.appendChild(fallback);
+}
+
+// =====================================
+// HERO CAROUSEL FUNCTIONS
+// =====================================
+
+// Hero carousel image preloading
 function preloadHeroImages() {
     const imageUrls = [
         'images/hero/africa-collaboration.jpg',
@@ -42,7 +367,7 @@ function preloadHeroImages() {
             img.onload = () => resolve(url);
             img.onerror = () => {
                 console.warn(`Failed to load hero image: ${url}`);
-                resolve(url); // Still resolve to continue loading other images
+                resolve(url);
             };
         });
         img.src = url;
@@ -71,7 +396,6 @@ function stopHeroAutoplay() {
 
 // Improved function to start autoplay with safety checks
 function startHeroAutoplay() {
-    // Always stop any existing interval first
     stopHeroAutoplay();
     
     if (!isReducedMotion && !document.hidden) {
@@ -95,7 +419,7 @@ function resetHeroAutoplay() {
         setTimeout(() => {
             startHeroAutoplay();
             isResetting = false;
-        }, 200); // Small delay to prevent rapid resets
+        }, 200);
     }, 100);
 }
 
@@ -176,7 +500,6 @@ function updateHeroProgress() {
     if (progressBar && !isReducedMotion) {
         progressBar.style.transition = 'none';
         progressBar.style.width = '0%';
-        // Small delay to ensure smooth animation
         setTimeout(() => {
             progressBar.style.transition = `width ${autoplayDuration}ms linear`;
             progressBar.style.width = '100%';
@@ -192,100 +515,614 @@ function announceSlideChange(slideNumber) {
     }
 }
 
-// image loading with better error handling and lazy loading
-function initializeLogos() {
-    const logoImages = document.querySelectorAll('.logo-img');
-    
-    logoImages.forEach(img => {
-        img.classList.add('loading');
-        
-        // Create intersection observer for lazy loading
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    
-                    img.addEventListener('load', function() {
-                        this.classList.remove('loading');
-                        this.classList.add('loaded');
-                    });
-                    
-                    img.addEventListener('error', function() {
-                        this.classList.remove('loading');
-                        this.classList.add('error');
-                        createFallback(this);
-                    });
-                    
-                    // Force check if image is already loaded
-                    if (img.complete) {
-                        if (img.naturalWidth === 0) {
-                            img.dispatchEvent(new Event('error'));
-                        } else {
-                            img.dispatchEvent(new Event('load'));
-                        }
-                    }
-                    
-                    observer.unobserve(img);
-                }
-            });
-        }, {
-            rootMargin: '50px' // Start loading 50px before image enters viewport
-        });
-        
-        imageObserver.observe(img);
-    });
-}
+// =====================================
+// NEWS GALLERY FUNCTIONS
+// =====================================
 
-function initializeHeroImages() {
-    const heroImages = document.querySelectorAll('.hero-feature-image');
+function initializeNewsGallery() {
+    const galleryMain = document.getElementById('gallery-main');
+    const galleryThumbnails = document.getElementById('gallery-thumbnails');
+    const galleryTotal = document.getElementById('gallery-total');
     
-    heroImages.forEach(img => {
+    if (!galleryMain || !galleryThumbnails || !galleryTotal) return;
+
+    // Set total count
+    galleryTotal.textContent = newsGalleryImages.length;
+
+    // Create slides
+    newsGalleryImages.forEach((image, index) => {
+        // Create main slide
+        const slide = document.createElement('div');
+        slide.className = `gallery-slide ${index === 0 ? 'active' : ''}`;
+        slide.setAttribute('role', 'tabpanel');
+        slide.setAttribute('aria-labelledby', `gallery-thumb-${index}`);
+        
+        const img = document.createElement('img');
+        img.src = image.src;
+        img.alt = image.alt;
+        img.loading = index === 0 ? 'eager' : 'lazy';
+        
+        // Add error handling for gallery images
         img.addEventListener('error', function() {
-            this.style.display = 'none';
-            // Create fallback emoji
             const fallback = document.createElement('div');
             fallback.style.cssText = `
-                font-size: 8rem;
-                filter: drop-shadow(0 0 20px rgba(215, 73, 42, 0.5));
+                width: 100%;
+                height: 100%;
+                background: var(--gradient-1);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 3rem;
             `;
-            
-            // Set appropriate emoji based on slide
-            const slideIndex = Array.from(img.closest('.hero-slide').parentNode.children).indexOf(img.closest('.hero-slide'));
-            const emojis = ['🌍', '🔬', '🎓', '🌱'];
-            fallback.textContent = emojis[slideIndex] || '🌍';
-            
-            img.parentNode.appendChild(fallback);
+            fallback.textContent = '🖼️';
+            fallback.setAttribute('role', 'img');
+            fallback.setAttribute('aria-label', image.alt);
+            this.parentNode.replaceChild(fallback, this);
         });
+        
+        const overlay = document.createElement('div');
+        overlay.className = 'gallery-overlay';
+        overlay.innerHTML = `
+            <h3>${image.title}</h3>
+            <p>${image.description}</p>
+        `;
+        
+        slide.appendChild(img);
+        slide.appendChild(overlay);
+        galleryMain.appendChild(slide);
+
+        // Create thumbnail
+        const thumbnail = document.createElement('button');
+        thumbnail.className = `gallery-thumbnail ${index === 0 ? 'active' : ''}`;
+        thumbnail.setAttribute('role', 'tab');
+        thumbnail.setAttribute('id', `gallery-thumb-${index}`);
+        thumbnail.setAttribute('aria-selected', index === 0 ? 'true' : 'false');
+        thumbnail.setAttribute('aria-label', `View ${image.title}`);
+        thumbnail.onclick = () => goToNewsSlide(index);
+        
+        const thumbImg = document.createElement('img');
+        thumbImg.src = image.src;
+        thumbImg.alt = '';
+        thumbImg.loading = 'lazy';
+        
+        // Add error handling for thumbnail images
+        thumbImg.addEventListener('error', function() {
+            const fallback = document.createElement('div');
+            fallback.style.cssText = `
+                width: 100%;
+                height: 100%;
+                background: var(--gradient-1);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 1.5rem;
+            `;
+            fallback.textContent = '🖼️';
+            this.parentNode.replaceChild(fallback, this);
+        });
+        
+        thumbnail.appendChild(thumbImg);
+        galleryThumbnails.appendChild(thumbnail);
+    });
+
+    // Start autoplay
+    startNewsAutoplay();
+}
+
+function changeNewsSlide(direction) {
+    const slides = document.querySelectorAll('.gallery-slide');
+    const thumbnails = document.querySelectorAll('.gallery-thumbnail');
+    
+    if (slides.length === 0) return;
+
+    // Remove active classes
+    slides[currentNewsGallerySlide].classList.remove('active');
+    slides[currentNewsGallerySlide].classList.add('prev');
+    thumbnails[currentNewsGallerySlide].classList.remove('active');
+    thumbnails[currentNewsGallerySlide].setAttribute('aria-selected', 'false');
+
+    // Calculate new slide index
+    currentNewsGallerySlide = (currentNewsGallerySlide + direction + slides.length) % slides.length;
+
+    // Add active classes
+    setTimeout(() => {
+        slides.forEach(slide => slide.classList.remove('prev'));
+        slides[currentNewsGallerySlide].classList.add('active');
+        thumbnails[currentNewsGallerySlide].classList.add('active');
+        thumbnails[currentNewsGallerySlide].setAttribute('aria-selected', 'true');
+        
+        // Update counter
+        const galleryCurrentElement = document.getElementById('gallery-current');
+        if (galleryCurrentElement) {
+            galleryCurrentElement.textContent = currentNewsGallerySlide + 1;
+        }
+        
+        // Update progress bar
+        updateNewsProgressBar();
+    }, 100);
+
+    // Reset autoplay
+    if (isNewsAutoplayActive) {
+        stopNewsAutoplay();
+        startNewsAutoplay();
+    }
+}
+
+function goToNewsSlide(index) {
+    if (index === currentNewsGallerySlide) return;
+    
+    const slides = document.querySelectorAll('.gallery-slide');
+    const thumbnails = document.querySelectorAll('.gallery-thumbnail');
+    
+    // Remove active classes
+    slides[currentNewsGallerySlide].classList.remove('active');
+    thumbnails[currentNewsGallerySlide].classList.remove('active');
+    thumbnails[currentNewsGallerySlide].setAttribute('aria-selected', 'false');
+
+    currentNewsGallerySlide = index;
+
+    // Add active classes
+    slides[currentNewsGallerySlide].classList.add('active');
+    thumbnails[currentNewsGallerySlide].classList.add('active');
+    thumbnails[currentNewsGallerySlide].setAttribute('aria-selected', 'true');
+    
+    // Update counter
+    const galleryCurrentElement = document.getElementById('gallery-current');
+    if (galleryCurrentElement) {
+        galleryCurrentElement.textContent = currentNewsGallerySlide + 1;
+    }
+    
+    // Update progress bar
+    updateNewsProgressBar();
+
+    // Reset autoplay
+    if (isNewsAutoplayActive) {
+        stopNewsAutoplay();
+        startNewsAutoplay();
+    }
+}
+
+function startNewsAutoplay() {
+    if (newsAutoplayInterval) clearInterval(newsAutoplayInterval);
+    newsAutoplayInterval = setInterval(() => {
+        changeNewsSlide(1);
+    }, newsAutoplayDelay);
+    updateNewsProgressBar();
+}
+
+function stopNewsAutoplay() {
+    if (newsAutoplayInterval) {
+        clearInterval(newsAutoplayInterval);
+        newsAutoplayInterval = null;
+    }
+}
+
+function toggleNewsAutoplay() {
+    const icon = document.getElementById('autoplay-icon');
+    if (!icon) return;
+    
+    isNewsAutoplayActive = !isNewsAutoplayActive;
+    
+    if (isNewsAutoplayActive) {
+        startNewsAutoplay();
+        icon.className = 'fas fa-pause';
+    } else {
+        stopNewsAutoplay();
+        icon.className = 'fas fa-play';
+    }
+}
+
+function updateNewsProgressBar() {
+    const progressBar = document.getElementById('gallery-progress');
+    if (!progressBar || !isNewsAutoplayActive) {
+        if (progressBar) progressBar.style.width = '0%';
+        return;
+    }
+    
+    let progress = 0;
+    const progressInterval = setInterval(() => {
+        progress += (100 / (newsAutoplayDelay / 50));
+        progressBar.style.width = `${Math.min(progress, 100)}%`;
+        
+        if (progress >= 100) {
+            clearInterval(progressInterval);
+            progressBar.style.width = '0%';
+        }
+    }, 50);
+}
+
+// Touch/Swipe support for news gallery
+function addNewsGalleryTouchSupport() {
+    const galleryMain = document.getElementById('gallery-main');
+    if (!galleryMain) return;
+
+    let startX = 0;
+    let startY = 0;
+    let isScrolling = undefined;
+
+    galleryMain.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        isScrolling = undefined;
+    }, { passive: true });
+
+    galleryMain.addEventListener('touchmove', (e) => {
+        if (!startX || !startY) return;
+
+        const currentX = e.touches[0].clientX;
+        const currentY = e.touches[0].clientY;
+        const diffX = startX - currentX;
+        const diffY = startY - currentY;
+
+        if (isScrolling === undefined) {
+            isScrolling = Math.abs(diffY) > Math.abs(diffX);
+        }
+
+        if (!isScrolling && Math.abs(diffX) > 10) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+
+    galleryMain.addEventListener('touchend', (e) => {
+        if (!startX || !startY || isScrolling) {
+            startX = startY = 0;
+            return;
+        }
+
+        const currentX = e.changedTouches[0].clientX;
+        const diffX = startX - currentX;
+
+        if (Math.abs(diffX) > 50) {
+            if (diffX > 0) {
+                changeNewsSlide(1);
+            } else {
+                changeNewsSlide(-1);
+            }
+        }
+
+        startX = startY = 0;
+    }, { passive: true });
+}
+
+// Pause autoplay on hover for news gallery
+function addNewsGalleryHoverSupport() {
+    const galleryCarousel = document.querySelector('.gallery-carousel');
+    if (!galleryCarousel) return;
+
+    galleryCarousel.addEventListener('mouseenter', () => {
+        if (isNewsAutoplayActive) {
+            stopNewsAutoplay();
+        }
+    });
+
+    galleryCarousel.addEventListener('mouseleave', () => {
+        if (isNewsAutoplayActive) {
+            startNewsAutoplay();
+        }
     });
 }
 
-function createFallback(img) {
-    const fallback = document.createElement('div');
-    fallback.className = 'logo-fallback';
-    fallback.textContent = img.alt || 'Logo';
-    fallback.setAttribute('role', 'img');
-    fallback.setAttribute('aria-label', img.alt || 'Partner logo');
-    
-    fallback.style.cssText = `
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: var(--gradient-1);
-        color: var(--primary-white);
-        font-weight: 600;
-        font-size: 0.9rem;
-        text-align: center;
-        border-radius: 10px;
-        padding: 5px;
-    `;
-    
-    img.style.display = 'none';
-    img.parentNode.appendChild(fallback);
+// Keyboard navigation for news gallery
+function addNewsGalleryKeyboardSupport() {
+    document.addEventListener('keydown', (e) => {
+        const gallerySection = document.querySelector('.gallery-section');
+        if (!gallerySection) return;
+
+        const rect = gallerySection.getBoundingClientRect();
+        const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+        const isFocused = gallerySection.contains(document.activeElement);
+
+        if (!isInView && !isFocused) return;
+
+        switch (e.key) {
+            case 'ArrowLeft':
+                e.preventDefault();
+                changeNewsSlide(-1);
+                break;
+            case 'ArrowRight':
+                e.preventDefault();
+                changeNewsSlide(1);
+                break;
+            case ' ':
+                if (isFocused) {
+                    e.preventDefault();
+                    toggleNewsAutoplay();
+                }
+                break;
+            case 'Home':
+                if (isFocused) {
+                    e.preventDefault();
+                    goToNewsSlide(0);
+                }
+                break;
+            case 'End':
+                if (isFocused) {
+                    e.preventDefault();
+                    goToNewsSlide(newsGalleryImages.length - 1);
+                }
+                break;
+        }
+    });
 }
 
-// mobile menu toggle 
+// =====================================
+// BLOG/NEWS FUNCTIONALITY
+// =====================================
+
+// Render blog posts with enhanced accessibility
+function renderPosts(posts, page) {
+    const start = (page - 1) * postsPerPage;
+    const end = start + postsPerPage;
+    const postsToDisplay = posts.slice(start, end);
+
+    const blogGrid = document.getElementById('blog-grid');
+    if (blogGrid) {
+        blogGrid.innerHTML = '';
+        blogGrid.setAttribute('aria-busy', 'true');
+        
+        if (postsToDisplay.length === 0) {
+            const noResults = document.createElement('div');
+            noResults.className = 'no-results';
+            noResults.style.cssText = 'grid-column: 1 / -1; text-align: center; padding: 2rem; color: var(--medium-gray);';
+            noResults.innerHTML = '<h3>No articles found</h3><p>Try adjusting your search terms or filters.</p>';
+            blogGrid.appendChild(noResults);
+        } else {
+            postsToDisplay.forEach((post, index) => {
+                const article = document.createElement('article');
+                article.className = 'blog-post fade-in';
+                article.setAttribute('role', 'article');
+                
+                const imageElement = createImageElement(post);
+                
+                const contentWrapper = document.createElement('div');
+                contentWrapper.className = 'blog-content-wrapper';
+                contentWrapper.innerHTML = `
+                    <div class="blog-meta">
+                        <span><i class="fas fa-calendar-alt" aria-hidden="true"></i> <time datetime="${post.sortDate.toISOString()}">${post.date}</time></span>
+                        <span><i class="fas fa-tag" aria-hidden="true"></i> <span class="news-category">${post.category}</span></span>
+                    </div>
+                    <h3><a href="${post.link}" aria-describedby="excerpt-${start + index}">${post.title}</a></h3>
+                    <p id="excerpt-${start + index}">${post.excerpt}</p>
+                    <a href="${post.link}" class="news-link" aria-label="Read more about ${post.title}">
+                        Read More <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+                `;
+                
+                article.appendChild(imageElement);
+                article.appendChild(contentWrapper);
+                blogGrid.appendChild(article);
+            });
+        }
+        
+        blogGrid.setAttribute('aria-busy', 'false');
+        updatePagination(posts);
+        observeElements();
+    }
+}
+
+// Update pagination controls with better accessibility
+function updatePagination(posts) {
+    const totalPages = Math.ceil(posts.length / postsPerPage);
+    const paginationNumbers = document.getElementById('pagination-numbers');
+    const pagination = document.getElementById('blog-pagination');
+    
+    if (totalPages <= 1) {
+        if (pagination) {
+            pagination.style.display = 'none';
+        }
+        return;
+    } else {
+        if (pagination) {
+            pagination.style.display = 'flex';
+        }
+    }
+    
+    if (paginationNumbers) {
+        paginationNumbers.innerHTML = '';
+        
+        const maxVisiblePages = 5;
+        let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+        let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+        
+        if (endPage - startPage + 1 < maxVisiblePages) {
+            startPage = Math.max(1, endPage - maxVisiblePages + 1);
+        }
+        
+        // First page
+        if (startPage > 1) {
+            const firstBtn = createPageButton(1, 1 === currentPage);
+            paginationNumbers.appendChild(firstBtn);
+            
+            if (startPage > 2) {
+                const ellipsis = document.createElement('span');
+                ellipsis.textContent = '...';
+                ellipsis.className = 'pagination-ellipsis';
+                paginationNumbers.appendChild(ellipsis);
+            }
+        }
+        
+        // Page range
+        for (let i = startPage; i <= endPage; i++) {
+            const pageBtn = createPageButton(i, i === currentPage);
+            paginationNumbers.appendChild(pageBtn);
+        }
+        
+        // Last page
+        if (endPage < totalPages) {
+            if (endPage < totalPages - 1) {
+                const ellipsis = document.createElement('span');
+                ellipsis.textContent = '...';
+                ellipsis.className = 'pagination-ellipsis';
+                paginationNumbers.appendChild(ellipsis);
+            }
+            
+            const lastBtn = createPageButton(totalPages, totalPages === currentPage);
+            paginationNumbers.appendChild(lastBtn);
+        }
+    }
+
+    // Update prev/next buttons
+    if (pagination) {
+        const prevBtn = pagination.querySelector('button:first-child');
+        const nextBtn = pagination.querySelector('button:last-child');
+        if (prevBtn) {
+            prevBtn.disabled = currentPage === 1;
+        }
+        if (nextBtn) {
+            nextBtn.disabled = currentPage === totalPages;
+        }
+    }
+}
+
+// Helper function to create page buttons
+function createPageButton(pageNum, isActive) {
+    const pageBtn = document.createElement('button');
+    pageBtn.className = `btn pagination-btn ${isActive ? 'active' : ''}`;
+    pageBtn.textContent = pageNum;
+    pageBtn.setAttribute('aria-label', `Go to page ${pageNum}`);
+    pageBtn.setAttribute('aria-current', isActive ? 'page' : 'false');
+    pageBtn.onclick = () => {
+        if (pageNum !== currentPage) {
+            currentPage = pageNum;
+            renderPosts(filteredPosts, currentPage);
+            window.scrollTo({ top: document.querySelector('.blog-content').offsetTop - 100, behavior: 'smooth' });
+        }
+    };
+    return pageBtn;
+}
+
+// Enhanced change page function
+function changePage(direction) {
+    const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+    
+    if (direction === 'prev' && currentPage > 1) {
+        currentPage--;
+    } else if (direction === 'next' && currentPage < totalPages) {
+        currentPage++;
+    } else {
+        return;
+    }
+    
+    renderPosts(filteredPosts, currentPage);
+    
+    const blogContent = document.querySelector('.blog-content');
+    if (blogContent) {
+        window.scrollTo({ 
+            top: blogContent.offsetTop - 100, 
+            behavior: 'smooth' 
+        });
+    }
+    
+    updateResultsSummary();
+}
+
+// Enhanced filter posts with debouncing
+let filterTimeout;
+function filterPosts() {
+    clearTimeout(filterTimeout);
+    filterTimeout = setTimeout(() => {
+        const searchQuery = document.getElementById('search-posts')?.value.toLowerCase() || '';
+        const selectedTag = document.getElementById('filter-tags')?.value || '';
+
+        filteredPosts = blogPosts.filter(post => {
+            const matchesSearch = searchQuery === '' || 
+                                post.title.toLowerCase().includes(searchQuery) || 
+                                post.excerpt.toLowerCase().includes(searchQuery) ||
+                                post.category.toLowerCase().includes(searchQuery) ||
+                                post.tags.some(tag => tag.toLowerCase().includes(searchQuery));
+            
+            const matchesTag = selectedTag === '' || post.category === selectedTag;
+            
+            return matchesSearch && matchesTag;
+        });
+
+        currentPage = 1;
+        renderPosts(filteredPosts, currentPage);
+        updateResultsSummary();
+    }, 300);
+}
+
+// Update results summary
+function updateResultsSummary() {
+    const summary = document.getElementById('results-summary');
+    if (summary) {
+        const searchQuery = document.getElementById('search-posts')?.value.trim();
+        const category = document.getElementById('filter-tags')?.value;
+        const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+        
+        let text = `Showing ${filteredPosts.length} article${filteredPosts.length !== 1 ? 's' : ''}`;
+        
+        if (totalPages > 1) {
+            const start = (currentPage - 1) * postsPerPage + 1;
+            const end = Math.min(currentPage * postsPerPage, filteredPosts.length);
+            text = `Showing ${start}-${end} of ${filteredPosts.length} articles`;
+        }
+        
+        if (category && searchQuery) {
+            text += ` in "${category}" category matching "${searchQuery}"`;
+        } else if (category) {
+            text += ` in "${category}" category`;
+        } else if (searchQuery) {
+            text += ` matching "${searchQuery}"`;
+        }
+        
+        summary.textContent = text;
+        summary.style.display = 'block';
+    }
+}
+
+// Enhanced filter by category function
+function filterByCategory(category) {
+    const filterSelect = document.getElementById('filter-tags');
+    const searchInput = document.getElementById('search-posts');
+    
+    if (filterSelect) {
+        filterSelect.value = category;
+    }
+    if (searchInput) {
+        searchInput.value = '';
+    }
+    
+    const blogSection = document.querySelector('.blog-content');
+    if (blogSection) {
+        blogSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    
+    filterPosts();
+}
+
+// Enhanced search functionality with real-time updates
+function setupEnhancedSearch() {
+    const searchInput = document.getElementById('search-posts');
+    const filterSelect = document.getElementById('filter-tags');
+    
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            filterPosts();
+        });
+        
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                filterPosts();
+            }
+        });
+    }
+    
+    if (filterSelect) {
+        filterSelect.addEventListener('change', function() {
+            filterPosts();
+        });
+    }
+}
+
+// =====================================
+// NAVIGATION FUNCTIONS
+// =====================================
+
+// Mobile menu toggle 
 function toggleMobileMenu() {
     const navMenu = document.querySelector('.nav-menu');
     const menuBtn = document.querySelector('.mobile-menu-btn');
@@ -296,9 +1133,7 @@ function toggleMobileMenu() {
         navMenu.classList.toggle('active');
         menuBtn.setAttribute('aria-expanded', !isExpanded);
         
-        // Focus management
         if (!isExpanded) {
-            // Menu opened - focus first menu item
             const firstMenuItem = navMenu.querySelector('a');
             if (firstMenuItem) {
                 setTimeout(() => firstMenuItem.focus(), 100);
@@ -306,6 +1141,10 @@ function toggleMobileMenu() {
         }
     }
 }
+
+// =====================================
+// GENERAL CAROUSEL FUNCTIONS
+// =====================================
 
 // Gallery Carousel Functions (for photo galleries)
 function changeSlide(direction) {
@@ -338,7 +1177,6 @@ function updateCarousel() {
         track.style.transform = `translateX(${translateX}%)`;
     }
     
-    // Update dots
     dots.forEach((dot, index) => {
         dot.classList.toggle('active', index === currentSlideIndex);
     });
@@ -364,6 +1202,10 @@ function stopCarouselAutoPlay() {
     clearInterval(carouselInterval);
 }
 
+// =====================================
+// EXTERNAL LINKS FUNCTIONS
+// =====================================
+
 // Newsletter Archive function
 function openNewsletterArchive() {
     window.open('https://um6p-my.sharepoint.com/:f:/g/personal/africa_initiative_um6p_ma/EiUh9bIHpQtAp_LLH5GFMyYBh5fBjEG5EgKPdKgFyF_0fg?e=8WDMVP', '_blank', 'noopener,noreferrer');
@@ -376,12 +1218,82 @@ function openOpportunitiesDatabase() {
 
 // Events Calendar function
 function openEventsCalendar() {
-    window.open('https://um6p-my.sharepoint.com/:x:/g/personal/africa_initiative_um6p_ma/EdKkT38UIMJKnWRJJ6od7mMBMmYwY8G8cp4V6WHHEdCZew?e=aH35dW&nav=MTVfezAwMDAwMDAwLTAwMDEtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMH0', '_blank', 'noopener,noreferrer');
+    window.open('https://um6p-my.sharepoint.com/:x:/g/personal/africa_initiative_um6p_ma/EdKkT38UIMJKnWRJJ6od7mMBMmYwY8G8cp4V6WHHEdCZew?e=aH35dU&nav=MTVfezAwMDAwMDAwLTAwMDEtMDAwMC0wMDAwLTAwMDAwMDAwMDAwMH0', '_blank', 'noopener,noreferrer');
 }
 
-// accessibility features
+// =====================================
+// IMAGE AND INITIALIZATION FUNCTIONS
+// =====================================
+
+// Image loading with better error handling and lazy loading
+function initializeLogos() {
+    const logoImages = document.querySelectorAll('.logo-img');
+    
+    logoImages.forEach(img => {
+        img.classList.add('loading');
+        
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    
+                    img.addEventListener('load', function() {
+                        this.classList.remove('loading');
+                        this.classList.add('loaded');
+                    });
+                    
+                    img.addEventListener('error', function() {
+                        this.classList.remove('loading');
+                        this.classList.add('error');
+                        createFallback(this);
+                    });
+                    
+                    if (img.complete) {
+                        if (img.naturalWidth === 0) {
+                            img.dispatchEvent(new Event('error'));
+                        } else {
+                            img.dispatchEvent(new Event('load'));
+                        }
+                    }
+                    
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px'
+        });
+        
+        imageObserver.observe(img);
+    });
+}
+
+function initializeHeroImages() {
+    const heroImages = document.querySelectorAll('.hero-feature-image');
+    
+    heroImages.forEach(img => {
+        img.addEventListener('error', function() {
+            this.style.display = 'none';
+            const fallback = document.createElement('div');
+            fallback.style.cssText = `
+                font-size: 8rem;
+                filter: drop-shadow(0 0 20px rgba(215, 73, 42, 0.5));
+            `;
+            
+            const slideIndex = Array.from(img.closest('.hero-slide').parentNode.children).indexOf(img.closest('.hero-slide'));
+            const emojis = ['🌍', '🔬', '🎓', '🌱'];
+            fallback.textContent = emojis[slideIndex] || '🌍';
+            
+            img.parentNode.appendChild(fallback);
+        });
+    });
+}
+
+// =====================================
+// ACCESSIBILITY FUNCTIONS
+// =====================================
+
+// Accessibility features
 function initAccessibility() {
-    // Create live region for announcements
     const announcer = document.createElement('div');
     announcer.id = 'slide-announcer';
     announcer.setAttribute('aria-live', 'polite');
@@ -395,7 +1307,6 @@ function initAccessibility() {
     `;
     document.body.appendChild(announcer);
     
-    // Skip link functionality
     const skipLink = document.querySelector('.skip-link');
     if (skipLink) {
         skipLink.addEventListener('click', (e) => {
@@ -408,7 +1319,7 @@ function initAccessibility() {
         });
     }
     
-    // keyboard navigation for hero carousel
+    // Keyboard navigation for hero carousel
     document.addEventListener('keydown', (e) => {
         if (e.target.closest('.hero-carousel') || document.activeElement.closest('.hero-carousel')) {
             switch(e.key) {
@@ -444,7 +1355,7 @@ function initAccessibility() {
         }
     });
 
-    // dropdown keyboard navigation
+    // Dropdown keyboard navigation
     document.addEventListener('keydown', (e) => {
         if (e.target.classList.contains('dropdown-toggle')) {
             if (e.key === 'Enter' || e.key === ' ') {
@@ -465,14 +1376,16 @@ function initAccessibility() {
     });
 }
 
-// performance monitoring
+// =====================================
+// PERFORMANCE AND UTILITY FUNCTIONS
+// =====================================
+
+// Performance monitoring
 function initPerformanceMonitoring() {
-    // Monitor loading times
     window.addEventListener('load', () => {
         const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
         console.log('Page load time:', loadTime + 'ms');
         
-        // Monitor Core Web Vitals if available
         if ('PerformanceObserver' in window) {
             try {
                 const observer = new PerformanceObserver((list) => {
@@ -488,7 +1401,7 @@ function initPerformanceMonitoring() {
     });
 }
 
-// form validation with accessibility improvements
+// Form validation with accessibility improvements
 function validateForm(formElement) {
     const inputs = formElement.querySelectorAll('input[required], textarea[required], select[required]');
     let isValid = true;
@@ -531,7 +1444,7 @@ function validateForm(formElement) {
             }
         }
         
-        // email validation
+        // Email validation
         if (input.type === 'email' && input.value) {
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailPattern.test(input.value)) {
@@ -563,7 +1476,6 @@ function validateForm(formElement) {
         }
     });
     
-    // Focus first error field if validation fails
     if (!isValid && firstErrorField) {
         firstErrorField.focus();
     }
@@ -581,7 +1493,6 @@ const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            // Unobserve after animation to improve performance
             observer.unobserve(entry.target);
         }
     });
@@ -593,7 +1504,7 @@ function observeElements() {
     });
 }
 
-// header background on scroll with throttling
+// Header background on scroll with throttling
 let ticking = false;
 
 function updateHeader() {
@@ -617,12 +1528,12 @@ function requestHeaderUpdate() {
     }
 }
 
-// stats animation with intersection observer
+// Stats animation with intersection observer
 function animateStats() {
     const statNumbers = document.querySelectorAll('.impact-stat-number');
     statNumbers.forEach(stat => {
         const target = parseInt(stat.dataset.target || stat.textContent);
-        const suffix = '+'; // Always add + suffix for impact stats
+        const suffix = '+';
         let current = 0;
         const increment = target / 50;
         const timer = setInterval(() => {
@@ -636,15 +1547,13 @@ function animateStats() {
     });
 }
 
-// workstreams diagram interactions
+// Workstreams diagram interactions
 function initializeWorkstreamsInteractions() {
     const workstreamNodes = document.querySelectorAll('.workstream-node');
     const workstreamCards = document.querySelectorAll('.workstream-card');
     
-    // Add hover effects for nodes
     workstreamNodes.forEach((node, index) => {
         node.addEventListener('mouseenter', function() {
-            // Highlight the corresponding card
             const correspondingCard = document.querySelector(`[data-workstream="${index + 1}"]`);
             if (correspondingCard) {
                 correspondingCard.style.transform = 'translateY(-10px)';
@@ -654,7 +1563,6 @@ function initializeWorkstreamsInteractions() {
         });
         
         node.addEventListener('mouseleave', function() {
-            // Reset the corresponding card
             const correspondingCard = document.querySelector(`[data-workstream="${index + 1}"]`);
             if (correspondingCard) {
                 correspondingCard.style.transform = '';
@@ -663,7 +1571,6 @@ function initializeWorkstreamsInteractions() {
             }
         });
         
-        // Click to scroll to corresponding card with smooth animation
         node.addEventListener('click', function() {
             const correspondingCard = document.querySelector(`[data-workstream="${index + 1}"]`);
             if (correspondingCard) {
@@ -672,7 +1579,6 @@ function initializeWorkstreamsInteractions() {
                     block: 'center' 
                 });
                 
-                // Temporary highlight effect
                 correspondingCard.style.background = 'rgba(215, 73, 42, 0.05)';
                 setTimeout(() => {
                     correspondingCard.style.background = '';
@@ -681,291 +1587,24 @@ function initializeWorkstreamsInteractions() {
         });
     });
     
-    // Add hover effects for cards
     workstreamCards.forEach((card, index) => {
         card.addEventListener('mouseenter', function() {
-            // Highlight the corresponding node
             const correspondingNode = document.querySelectorAll('.workstream-node')[index];
             if (correspondingNode) {
-                correspondingNode.style.transform = 'scale(1.1)';
                 correspondingNode.style.boxShadow = '0 20px 40px rgba(215, 73, 42, 0.3)';
             }
         });
         
         card.addEventListener('mouseleave', function() {
-            // Reset the corresponding node
             const correspondingNode = document.querySelectorAll('.workstream-node')[index];
             if (correspondingNode) {
-                correspondingNode.style.transform = '';
                 correspondingNode.style.boxShadow = '';
             }
         });
     });
 }
 
-// Blog Module
-const BlogModule = (function() {
-    // Blog posts data
-    const blogPosts = [
-        {
-            image: "images/Healthcare.jpg",
-            date: "March 1, 2025",
-            author: "Azeez Hamzat",
-            authorLink: "https://www.linkedin.com/in/azeezhamzat",
-            title: "Advancing Healthcare in Africa: UM6P's Vision for AI-Driven Innovation",
-            excerpt: "Learn how UM6P leverages AI to transform healthcare in Africa, addressing challenges and improving access during Science Week.",
-            link: "Advancing-healthcare.html",
-            tags: ["Health", "AI", "Innovation", "Africa"],
-            year: 2025,
-            month: "March"
-        },
-        {
-            image: "images/Energy-Research.jpg",
-            date: "February 27, 2025",
-            author: "Azeez Hamzat",
-            authorLink: "https://www.linkedin.com/in/Azeezhamzat",
-            title: "Why Africa Must Do More on Energy Research",
-            excerpt: "Learn why Africa must prioritize energy research to address access gaps and climate challenges, with insights on the €30M EU-AU fund boosting sustainable solutions.",
-            link: "africa-energy-research.html",
-            tags: ["Energy", "Research", "Sustainability", "Climate Change"],
-            year: 2025,
-            month: "February"
-        },
-        {
-            image: "images/NextAfrica.jpeg",
-            date: "February 28, 2025",
-            author: "Azeez Hamzat",
-            authorLink: "https://www.linkedin.com/in/azeezhamzat",
-            title: "NextAfrica: Bridging Europe and Africa Through Innovation at Station F",
-            excerpt: "Learn how UM6P's NextAfrica program at Station F accelerates Greentech, Agritech, and Healthtech startups, connecting Europe and Africa for sustainable innovation.",
-            link: "next-africa.html",
-            tags: ["Innovation", "Entrepreneurship", "Environment", "Agriculture", "Health"],
-            year: 2025,
-            month: "February"
-        },
-        {
-            image: "images/Startgate.jpg",
-            date: "December 15, 2024",
-            author: "Azeez Hamzat",
-            authorLink: "https://www.linkedin.com/in/azeezhamzat",
-            title: "Unleashing Africa's Entrepreneurial Spirit: How UM6P is Shaping the Future Through Innovation",
-            excerpt: "Discover how UM6P is empowering Africa's youth to tackle challenges through entrepreneurship and innovation.",
-            link: "Unleashing-Entrepreneurship.html",
-            tags: ["Entrepreneurship", "Innovation", "Startups"],
-            year: 2024,
-            month: "December"
-        },
-        {
-            image: "images/diversity-um6p.jpg",
-            date: "January 7, 2025",
-            author: "Azeez Hamzat",
-            authorLink: "https://www.linkedin.com/in/azeezhamzat",
-            title: "Embracing Diversity: How UM6P is Building a Pan-African Community of Innovators",
-            excerpt: "Discover how UM6P fosters a diverse, multicultural student body to drive innovation and collaboration across Africa.",
-            link: "blog-post-diversity.html",
-            tags: ["Diversity", "Education", "Community"],
-            year: 2025,
-            month: "January"
-        },
-        {
-            image: "images/For Africa.png",
-            date: "January 10, 2025",
-            author: "Azeez Hamzat",
-            authorLink: "https://www.linkedin.com/in/azeezhamzat",
-            title: "For Africa: UM6P's Commitment to Industry, Research, and Business Innovation",
-            excerpt: "Discover how UM6P drives excellence through AAIT, AIRESS, ABS, and the Center for African Studies, fostering innovation and African perspectives.",
-            link: "For-Africa.html",
-            tags: ["Industry", "Research", "Business", "African Studies"],
-            year: 2025,
-            month: "January"
-        },
-        {
-            image: "images/excellence-in-africa.jpg",
-            date: "January 23, 2024",
-            author: "Azeez Hamzat",
-            authorLink: "https://www.linkedin.com/in/azeezhamzat",
-            title: "Excellence in Africa: UM6P and EPFL's Collaborative Push for Academic Innovation",
-            excerpt: "Explore how UM6P and EPFL are advancing academic excellence in Africa through the Excellence in Africa initiative.",
-            link: "excellence-in-africa.html",
-            tags: ["Education", "Research", "Innovation"],
-            year: 2024,
-            month: "January"
-        },
-        {
-            image: "images/um6pv.png",
-            date: "February 16, 2025",
-            author: "Azeez Hamzat",
-            authorLink: "https://www.linkedin.com/in/azeezhamzat",
-            title: "UM6P Ventures: Investing in Africa's Future Through Science and Innovation",
-            excerpt: "Explore how UM6P Ventures supports Digital Transformation and Deeptech startups, driving innovation in Agriculture, GreenTech, and Healthtech across Africa.",
-            link: "um6p-ventures.html",
-            tags: ["Innovation", "Startups", "Deeptech", "Digital Transformation"],
-            year: 2025,
-            month: "February"
-        }
-    ];
-
-    // Pagination variables
-    const postsPerPage = 6;
-    let currentPage = 1;
-    let filteredPosts = [...blogPosts];
-
-    // Sort blogPosts by date (newest to oldest)
-    blogPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-    // Render blog posts with enhanced accessibility
-    function renderPosts(posts, page) {
-        const start = (page - 1) * postsPerPage;
-        const end = start + postsPerPage;
-        const postsToDisplay = posts.slice(start, end);
-
-        const blogGrid = document.getElementById('blog-grid');
-        if (blogGrid) {
-            blogGrid.innerHTML = '';
-            
-            // Add loading state
-            blogGrid.setAttribute('aria-busy', 'true');
-            
-            postsToDisplay.forEach((post, index) => {
-                const article = document.createElement('article');
-                article.className = 'blog-post fade-in';
-                article.setAttribute('role', 'article');
-                article.innerHTML = `
-                    <div class="blog-image" style="background: var(--gradient-1); display: flex; align-items: center; justify-content: center; height: 200px; border-radius: 10px; margin-bottom: 1rem; color: white; font-size: 3rem;" role="img" aria-label="Blog post illustration">📖</div>
-                    <div class="blog-meta">
-                        <span><i class="fas fa-calendar-alt" aria-hidden="true"></i> <time datetime="${new Date(post.date).toISOString()}">${post.date}</time></span>
-                        <span><i class="fas fa-user" aria-hidden="true"></i> <a href="${post.authorLink}" target="_blank" rel="noopener">${post.author}</a></span>
-                    </div>
-                    <h3><a href="${post.link}" aria-describedby="excerpt-${start + index}">${post.title}</a></h3>
-                    <p id="excerpt-${start + index}">${post.excerpt}</p>
-                    <div class="blog-tags" style="margin-top: 1rem;">
-                        ${post.tags.map(tag => `<span class="tag" style="background: var(--gradient-3); color: var(--primary-red); padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;" role="button" tabindex="0">${tag}</span>`).join('')}
-                    </div>
-                `;
-                blogGrid.appendChild(article);
-            });
-            
-            // Remove loading state
-            blogGrid.setAttribute('aria-busy', 'false');
-            
-            updatePagination(posts);
-            observeElements(); // Reuse existing fade-in observer
-        }
-    }
-
-    // Update pagination controls with better accessibility
-    function updatePagination(posts) {
-        const totalPages = Math.ceil(posts.length / postsPerPage);
-        const paginationNumbers = document.getElementById('pagination-numbers');
-        
-        if (paginationNumbers) {
-            paginationNumbers.innerHTML = '';
-            paginationNumbers.setAttribute('role', 'navigation');
-            paginationNumbers.setAttribute('aria-label', 'Blog pagination');
-            
-            for (let i = 1; i <= totalPages; i++) {
-                const pageBtn = document.createElement('button');
-                pageBtn.className = `btn pagination-btn ${i === currentPage ? 'active' : ''}`;
-                pageBtn.textContent = i;
-                pageBtn.setAttribute('aria-label', `Go to page ${i}`);
-                pageBtn.setAttribute('aria-current', i === currentPage ? 'page' : 'false');
-                pageBtn.onclick = () => {
-                    currentPage = i;
-                    renderPosts(filteredPosts, currentPage);
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                };
-                paginationNumbers.appendChild(pageBtn);
-            }
-        }
-
-        // Update prev/next buttons
-        const pagination = document.getElementById('blog-pagination');
-        if (pagination) {
-            const prevBtn = pagination.querySelector('button:first-child');
-            const nextBtn = pagination.querySelector('button:last-child');
-            if (prevBtn) {
-                prevBtn.disabled = currentPage === 1;
-                prevBtn.setAttribute('aria-label', 'Go to previous page');
-            }
-            if (nextBtn) {
-                nextBtn.disabled = currentPage === totalPages;
-                nextBtn.setAttribute('aria-label', 'Go to next page');
-            }
-        }
-    }
-
-    // change page function
-    function changePage(direction) {
-        const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
-        if (direction === 'prev' && currentPage > 1) {
-            currentPage--;
-        } else if (direction === 'next' && currentPage < totalPages) {
-            currentPage++;
-        }
-        renderPosts(filteredPosts, currentPage);
-        
-        // Smooth scroll to top
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        
-        // Announce page change
-        const announcer = document.getElementById('slide-announcer');
-        if (announcer) {
-            announcer.textContent = `Page ${currentPage} of ${totalPages} loaded`;
-        }
-    }
-
-    // filter posts with debouncing
-    let filterTimeout;
-    function filterPosts() {
-        clearTimeout(filterTimeout);
-        filterTimeout = setTimeout(() => {
-            const searchQuery = document.getElementById('search-posts')?.value.toLowerCase() || '';
-            const selectedTag = document.getElementById('filter-tags')?.value || '';
-
-            filteredPosts = blogPosts.filter(post => {
-                const matchesSearch = post.title.toLowerCase().includes(searchQuery) || 
-                                    post.excerpt.toLowerCase().includes(searchQuery) ||
-                                    post.author.toLowerCase().includes(searchQuery);
-                const matchesTag = selectedTag === '' || post.tags.includes(selectedTag);
-                return matchesSearch && matchesTag;
-            });
-
-            currentPage = 1;
-            renderPosts(filteredPosts, currentPage);
-            
-            // Announce filter results
-            const announcer = document.getElementById('slide-announcer');
-            if (announcer) {
-                announcer.textContent = `Found ${filteredPosts.length} blog posts`;
-            }
-        }, 300); // 300ms debounce
-    }
-
-    // Initialize blog
-    function init() {
-        if (document.getElementById('blog-grid')) {
-            renderPosts(filteredPosts, currentPage);
-        }
-    }
-
-    // Public API
-    return {
-        changePage,
-        filterPosts,
-        init
-    };
-})();
-
-// Global functions for blog pagination (needed for onclick handlers in HTML)
-function changePage(direction) {
-    BlogModule.changePage(direction);
-}
-
-function filterPosts() {
-    BlogModule.filterPosts();
-}
-
-// newsletter form submissions
+// Newsletter form submissions
 function handleNewsletterSubmission(formId, successId) {
     const form = document.getElementById(formId);
     const successMessage = document.getElementById(successId);
@@ -975,16 +1614,13 @@ function handleNewsletterSubmission(formId, successId) {
             e.preventDefault();
             
             if (validateForm(this)) {
-                // Show success message
                 successMessage.classList.add('show');
                 successMessage.style.display = 'block';
                 successMessage.setAttribute('role', 'alert');
                 this.reset();
                 
-                // Focus success message for screen readers
                 successMessage.focus();
                 
-                // Hide success message after 5 seconds
                 setTimeout(() => {
                     successMessage.classList.remove('show');
                     successMessage.style.display = 'none';
@@ -994,7 +1630,7 @@ function handleNewsletterSubmission(formId, successId) {
     }
 }
 
-// smooth scrolling for navigation links
+// Smooth scrolling for navigation links
 function initSmoothScrolling() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -1006,7 +1642,6 @@ function initSmoothScrolling() {
                     block: 'start'
                 });
                 
-                // Update active navigation
                 document.querySelectorAll('.nav-menu a').forEach(link => {
                     link.classList.remove('active');
                     link.removeAttribute('aria-current');
@@ -1014,7 +1649,6 @@ function initSmoothScrolling() {
                 this.classList.add('active');
                 this.setAttribute('aria-current', 'page');
                 
-                // Close mobile menu if open
                 const navMenu = document.querySelector('.nav-menu');
                 const menuBtn = document.querySelector('.mobile-menu-btn');
                 if (navMenu && navMenu.classList.contains('active')) {
@@ -1026,7 +1660,7 @@ function initSmoothScrolling() {
     });
 }
 
-// touch/swipe support for hero carousel
+// Touch/swipe support for hero carousel
 let touchStartX = 0;
 let touchEndX = 0;
 let touchStartY = 0;
@@ -1053,19 +1687,16 @@ function handleSwipe() {
     const horizontalDistance = touchStartX - touchEndX;
     const verticalDistance = Math.abs(touchStartY - touchEndY);
     
-    // Only trigger swipe if horizontal movement is greater than vertical
     if (Math.abs(horizontalDistance) > swipeThreshold && Math.abs(horizontalDistance) > verticalDistance) {
         if (horizontalDistance > 0) {
-            // Swipe left - next slide
             changeHeroSlide(1);
         } else {
-            // Swipe right - previous slide
             changeHeroSlide(-1);
         }
     }
 }
 
-// floating links animation
+// Floating links animation
 function initFloatingLinks() {
     const floatingSocialLinks = document.querySelector('.floating-social-links');
     if (floatingSocialLinks) {
@@ -1079,7 +1710,7 @@ function initFloatingLinks() {
     }
 }
 
-// visibility change handler for carousel management
+// Visibility change handler for carousel management
 function handleVisibilityChange() {
     if (document.hidden) {
         stopHeroAutoplay();
@@ -1088,7 +1719,11 @@ function handleVisibilityChange() {
     }
 }
 
-// page initialization
+// =====================================
+// PAGE INITIALIZATION
+// =====================================
+
+// Page initialization
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize reduced motion detection
     initReducedMotion();
@@ -1110,15 +1745,29 @@ document.addEventListener('DOMContentLoaded', function() {
     // Observe all fade-in elements
     observeElements();
     
+    // Initialize blog functionality if on news page
+    if (document.getElementById('blog-grid')) {
+        console.log('Initializing with', blogPosts.length, 'blog posts');
+        setupEnhancedSearch();
+        renderPosts(filteredPosts, currentPage);
+        updateResultsSummary();
+    }
+    
+    // Initialize news gallery if it exists
+    if (document.getElementById('gallery-main')) {
+        initializeNewsGallery();
+        addNewsGalleryTouchSupport();
+        addNewsGalleryHoverSupport();
+        addNewsGalleryKeyboardSupport();
+    }
+    
     // Initialize hero carousel if it exists
     const heroCarousel = document.querySelector('.hero-carousel');
     if (heroCarousel) {
-        // Start hero carousel autoplay
         setTimeout(() => {
             startHeroAutoplay();
-        }, 1000); // Delay to ensure page is fully loaded
+        }, 1000);
         
-        // hover/focus event handling with better debouncing
         let hoverTimeout;
         heroCarousel.addEventListener('mouseenter', () => {
             clearTimeout(hoverTimeout);
@@ -1146,7 +1795,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 100);
         });
         
-        // Add ARIA labels to hero elements
         const heroDots = document.querySelectorAll('.hero-dot');
         heroDots.forEach((dot, index) => {
             dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
@@ -1169,10 +1817,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Setup newsletter forms
     handleNewsletterSubmission('newsletterForm', 'newsletterSuccess');
     
-    // Initialize blog module
-    BlogModule.init();
-    
-    // form handling for all forms
+    // Form handling for all forms
     const forms = document.querySelectorAll('form');
     forms.forEach(form => {
         form.addEventListener('submit', function(e) {
@@ -1181,11 +1826,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Add real-time validation
         const inputs = form.querySelectorAll('input, textarea, select');
         inputs.forEach(input => {
             input.addEventListener('blur', function() {
-                // Clear previous errors
                 const errorElement = this.parentNode.querySelector('.error-message');
                 if (errorElement) {
                     errorElement.remove();
@@ -1194,7 +1837,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.classList.remove('error');
                 this.setAttribute('aria-invalid', 'false');
                 
-                // Validate single field
                 if (this.hasAttribute('required') && !this.value.trim()) {
                     this.classList.add('error');
                     this.setAttribute('aria-invalid', 'true');
@@ -1225,7 +1867,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // collaboration form submission
+    // Collaboration form submission
     const collaborationForm = document.getElementById('collaborationForm');
     if (collaborationForm) {
         collaborationForm.addEventListener('submit', function(e) {
@@ -1241,7 +1883,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 submitBtn.disabled = true;
                 submitBtn.setAttribute('aria-busy', 'true');
                 
-                // Simulate form submission
                 setTimeout(() => {
                     this.reset();
                     if (successMessage) {
@@ -1255,7 +1896,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     submitBtn.disabled = false;
                     submitBtn.setAttribute('aria-busy', 'false');
                     
-                    // Hide success message after 5 seconds
                     setTimeout(() => {
                         if (successMessage) {
                             successMessage.classList.remove('show');
@@ -1272,7 +1912,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (galleryCarousel) {
         startCarouselAutoPlay();
         
-        // Pause carousel on hover
         galleryCarousel.addEventListener('mouseenter', stopCarouselAutoPlay);
         galleryCarousel.addEventListener('mouseleave', startCarouselAutoPlay);
     }
@@ -1291,7 +1930,7 @@ document.addEventListener('DOMContentLoaded', function() {
         statsObserver.observe(statsSection);
     }
     
-    // navigation active state management
+    // Navigation active state management
     const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
     const sections = document.querySelectorAll('section[id]');
     
@@ -1317,14 +1956,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // scroll event with throttling
+    // Scroll event with throttling
     window.addEventListener('scroll', requestHeaderUpdate, { passive: true });
     
-    // loading state management
+    // Loading state management
     window.addEventListener('load', () => {
         document.body.classList.add('loaded');
         
-        // Remove any loading spinners or placeholders
         const loadingElements = document.querySelectorAll('.loading');
         loadingElements.forEach(el => {
             if (!el.classList.contains('logo-img')) {
@@ -1332,7 +1970,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Initialize any remaining lazy-loaded content
         if ('IntersectionObserver' in window) {
             const lazyImages = document.querySelectorAll('img[loading="lazy"]');
             lazyImages.forEach(img => {
@@ -1343,7 +1980,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // error handling for failed resources
+    // Error handling for failed resources
     window.addEventListener('error', (e) => {
         if (e.target.tagName === 'IMG') {
             console.warn('Failed to load image:', e.target.src);
@@ -1351,35 +1988,30 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (e.target.classList.contains('logo-img')) {
                     createFallback(e.target);
                 } else if (e.target.classList.contains('hero-feature-image')) {
-                    // Handle hero image errors
                     e.target.style.display = 'none';
                 }
             }
         }
     }, true);
     
-    // resize handler with debouncing
+    // Resize handler with debouncing
     let resizeTimeout;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
-            // Update viewport height for mobile
             const vh = window.innerHeight * 0.01;
             document.documentElement.style.setProperty('--vh', `${vh}px`);
             
-            // Recalculate carousel positions if needed
             if (document.querySelector('.gallery-carousel')) {
                 updateCarousel();
             }
             
-            // Update reduced motion preference
             initReducedMotion();
         }, 250);
     }, { passive: true });
     
     // Add proper focus management for dropdown menus
     document.addEventListener('click', (e) => {
-        // Close dropdowns when clicking outside
         const dropdowns = document.querySelectorAll('.dropdown');
         dropdowns.forEach(dropdown => {
             if (!dropdown.contains(e.target)) {
@@ -1392,9 +2024,27 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+    
+    // Newsletter form handling
+    const newsletterForm = document.getElementById('newsletterForm');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const successMessage = document.getElementById('newsletterSuccess');
+            if (successMessage) {
+                successMessage.classList.add('show');
+                successMessage.style.display = 'block';
+                setTimeout(() => {
+                    successMessage.classList.remove('show');
+                    successMessage.style.display = 'none';
+                }, 5000);
+            }
+            this.reset();
+        });
+    }
 });
 
-// mobile menu management
+// Mobile menu management
 document.addEventListener('click', function(e) {
     const navMenu = document.querySelector('.nav-menu');
     const menuBtn = document.querySelector('.mobile-menu-btn');
@@ -1405,7 +2055,7 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// keyboard navigation
+// Keyboard navigation
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         // Close mobile menu
@@ -1436,7 +2086,7 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// viewport height calculation for mobile browsers
+// Viewport height calculation for mobile browsers
 function setViewportHeight() {
     const vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -1449,7 +2099,7 @@ setViewportHeight();
 window.addEventListener('resize', setViewportHeight, { passive: true });
 window.addEventListener('orientationchange', setViewportHeight, { passive: true });
 
-// touch event handling to prevent zoom on double tap
+// Touch event handling to prevent zoom on double tap
 let lastTouchEnd = 0;
 document.addEventListener('touchend', function (event) {
     const now = (new Date()).getTime();
@@ -1458,6 +2108,10 @@ document.addEventListener('touchend', function (event) {
     }
     lastTouchEnd = now;
 }, { passive: false });
+
+// =====================================
+// GLOBAL EXPORTS AND API
+// =====================================
 
 // Export functions for global access
 window.UM6P = {
@@ -1473,10 +2127,14 @@ window.UM6P = {
     // Gallery functions
     changeSlide,
     currentSlide,
+    changeNewsSlide: changeNewsSlide,
+    goToNewsSlide: goToNewsSlide,
+    toggleNewsAutoplay: toggleNewsAutoplay,
     
     // Blog functions
     changePage,
     filterPosts,
+    filterByCategory,
     
     // Utility functions
     openNewsletterArchive,
@@ -1493,3 +2151,10 @@ window.currentHeroSlide = currentHeroSlide;
 window.toggleMobileMenu = toggleMobileMenu;
 window.changePage = changePage;
 window.filterPosts = filterPosts;
+window.filterByCategory = filterByCategory;
+window.changeSlide = changeNewsSlide;
+window.goToSlide = goToNewsSlide;
+window.toggleAutoplay = toggleNewsAutoplay;
+window.openNewsletterArchive = openNewsletterArchive;
+window.openOpportunitiesDatabase = openOpportunitiesDatabase;
+window.openEventsCalendar = openEventsCalendar;
