@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - UM6P Africa Initiative</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Explore our impactful work through distinguished guests, strategic partnerships, events, and transformative initiatives shaping Africa's future.">
+    <meta name="keywords" content="UM6P gallery, Africa Initiative photos, partnerships, events, distinguished guests, transformative initiatives">
+    <meta name="author" content="UM6P Africa Initiative">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#D7492A">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Gallery - UM6P Africa Initiative">
+    <meta property="og:description" content="Moments that matter - Explore our impactful work across Africa">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://afrin.um6p.ma/gallery.html">
+    <meta property="og:image" content="https://afrin.um6p.ma/images/gallery-og-image.jpg">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Gallery - UM6P Africa Initiative">
+    <meta name="twitter:description" content="Moments that matter - Explore our impactful work across Africa">
+    <meta name="twitter:image" content="https://afrin.um6p.ma/images/gallery-twitter-image.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://afrin.um6p.ma/gallery.html">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Structured Data for Gallery -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ImageGallery",
+      "name": "UM6P Africa Initiative Gallery",
+      "description": "Visual documentation of our impactful work across Africa through partnerships, events, and transformative initiatives",
+      "url": "https://afrin.um6p.ma/gallery.html",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://afrin.um6p.ma"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Gallery",
+            "item": "https://afrin.um6p.ma/gallery.html"
+          }
+        ]
+      }
+    }
+    </script>
+
+</head>
+<body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html" aria-label="UM6P Africa Initiative Homepage">
+                    UM6P - Africa Initiative
+                </a>
+            </div>
+            <nav role="navigation" aria-label="Main navigation">
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="gallery.html" class="active" aria-current="page">Gallery</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    
+                    <!-- Dropdown for UM6P Links -->
+                    <!-- <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+                            Explore UM6P <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="none"><a href="https://www.um6p.ma/en" target="_blank" rel="noopener" role="menuitem">UM6P Official</a></li>
+                            <li role="none"><a href="https://timesofum6p.com/" target="_blank" rel="noopener" role="menuitem">Times of UM6P</a></li>
+                        </ul> -->
+                    </li>
+                </ul>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-container">
+        <!-- Breadcrumb Navigation -->
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+            <div class="section-container">
+                <ol class="breadcrumb-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li aria-current="page">Gallery</li>
+                </ol>
+            </div>
+        </nav>
+        
+        <!-- Hero Section -->
+        <main id="main-content">
+            <div class="about-hero">
+                <div class="section-container">
+                    <h1 class="section-title">Moments That Matter</h1>
+                    <p class="section-subtitle">Explore our impactful work through the distinguished guests we host, strategic partnerships we build, events we organize, and transformative initiatives that are shaping the continent's future.</p>
+                </div>
+            </div>
+
+            <!-- Gallery Carousel Section -->
+            <section class="gallery-section" id="gallery" role="region" aria-labelledby="gallery-heading">
+                <div class="gallery-container">
+                    <div class="gallery-header fade-in">
+                        <h2 id="gallery-heading">Our Journey in Pictures</h2>
+                        <p>From high-level diplomatic visits to groundbreaking research collaborations, from student exchanges to innovative partnerships - witness the moments that define our mission to transform Africa's educational and innovation landscape.</p>
+                    </div>
+                    
+                    <div class="gallery-carousel fade-in" role="region" aria-label="Photo gallery of UM6P Africa Initiative activities">
+                        <!-- Gallery Counter -->
+                        <div class="gallery-counter" aria-live="polite">
+                            <span id="gallery-current">1</span> / <span id="gallery-total">9</span>
+                        </div>
+                        
+                        <!-- Auto-play Toggle -->
+                        <button class="gallery-auto-toggle" onclick="toggleNewsAutoplay()" aria-label="Toggle slideshow autoplay" title="Toggle autoplay">
+                            <i class="fas fa-pause" id="autoplay-icon" aria-hidden="true"></i>
+                        </button>
+                        
+                        <!-- Main Gallery Display -->
+                        <div class="gallery-main" id="gallery-main">
+                            <!-- Gallery slides will be inserted here by JavaScript -->
+                        </div>
+                        
+                        <!-- Gallery Controls -->
+                        <button class="gallery-controls gallery-btn gallery-prev" onclick="changeNewsSlide(-1)" aria-label="Previous image">
+                            <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                        </button>
+                        <button class="gallery-controls gallery-btn gallery-next" onclick="changeNewsSlide(1)" aria-label="Next image">
+                            <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                        </button>
+                        
+                        <!-- Progress Bar -->
+                        <div class="gallery-progress" id="gallery-progress"></div>
+                        
+                        <!-- Thumbnails -->
+                        <div class="gallery-thumbnails" id="gallery-thumbnails" role="tablist" aria-label="Gallery thumbnail navigation">
+                            <!-- Thumbnails will be inserted here by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery Stats Section -->
+            <section class="gallery-stats-section" role="region" aria-labelledby="stats-heading">
+                <div class="section-container">
+                    <h2 id="stats-heading" class="section-title">Our Impact by the Numbers</h2>
+                    <div class="gallery-stats-grid">
+                        <div class="gallery-stat-card fade-in">
+                            <div class="gallery-stat-icon">🤝</div>
+                            <div class="gallery-stat-number">150+</div>
+                            <div class="gallery-stat-label">Strategic Partnerships</div>
+                            <p>Collaborations with universities, organizations, and institutions across Africa and beyond</p>
+                        </div>
+                        <div class="gallery-stat-card fade-in">
+                            <div class="gallery-stat-icon">🌍</div>
+                            <div class="gallery-stat-number">45+</div>
+                            <div class="gallery-stat-label">Countries Engaged</div>
+                            <p>Active presence and partnerships spanning across the African continent</p>
+                        </div>
+                        <div class="gallery-stat-card fade-in">
+                            <div class="gallery-stat-icon">🎓</div>
+                            <div class="gallery-stat-number">1000+</div>
+                            <div class="gallery-stat-label">Students Impacted</div>
+                            <p>Young minds empowered through our educational initiatives and exchange programs</p>
+                        </div>
+                        <div class="gallery-stat-card fade-in">
+                            <div class="gallery-stat-icon">🚀</div>
+                            <div class="gallery-stat-number">75+</div>
+                            <div class="gallery-stat-label">Innovation Projects</div>
+                            <p>Cutting-edge research and development initiatives driving continental progress</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Call to Action Section -->
+            <section class="gallery-cta-section" role="region" aria-labelledby="cta-heading">
+                <div class="section-container">
+                    <div class="gallery-cta-content fade-in">
+                        <h2 id="cta-heading">Be Part of Our Story</h2>
+                        <p>Every image in our gallery represents a step toward Africa's transformation. Join us in shaping the continent's future through innovation, collaboration, and excellence in education.</p>
+                        <div class="gallery-cta-buttons">
+                            <a href="index.html#about" class="cta-button primary">Learn About Our Mission</a>
+                            <a href="index.html#contact" class="cta-button secondary">Partner With Us</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>UM6P - Africa Initiative</h3>
+                <p>Supporting Africa's socio-economic development through collaboration, innovation, and strategic partnerships across the continent.</p>
+                <br>
+                <address>
+                    <strong>Address:</strong><br>
+                    Mohammed VI Polytechnic University<br>
+                    Ben Guerir, Morocco
+                </address>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="index.html#about">About Us</a>
+                <a href="index.html#workstreams">Workstreams</a>
+                <a href="news.html">News</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <a href="https://www.linkedin.com/company/um6p-africa-initiative" target="_blank" rel="noopener">
+                    <i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn
+                </a>
+                <a href="https://x.com/Um6pAfrica" target="_blank" rel="noopener">
+                    <i class="fab fa-x-twitter" aria-hidden="true"></i> X (Twitter)
+                </a>
+                <a href="https://www.instagram.com/um6pafrica" target="_blank" rel="noopener">
+                    <i class="fab fa-instagram" aria-hidden="true"></i> Instagram
+                </a>
+                <a href="https://www.um6p.ma/en" target="_blank" rel="noopener">
+                    <i class="fas fa-globe" aria-hidden="true"></i> UM6P Official
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 UM6P - Africa Initiative. All rights reserved.</p>
+        </div>
+    </footer>
+
+     <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

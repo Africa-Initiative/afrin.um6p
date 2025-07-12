@@ -74,11 +74,12 @@
                 <ul class="nav-menu">
                     <li><a href="#home" class="active" aria-current="page">Home</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="news.html">News</a></li>
+                    <li><a href="#news-preview">News</a></li>
+                    <li><a href="#gallery-preview">Gallery</a></li>
                     <li><a href="#contact">Contact</a></li>
 
                     <!-- Dropdown for UM6P Links -->
-                    <li class="dropdown">
+                    <!-- <li class="dropdown">
                         <a href="#" class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
                             Explore UM6P <i class="fas fa-chevron-down" aria-hidden="true"></i>
                         </a>
@@ -86,7 +87,7 @@
                             <li role="none"><a href="https://www.um6p.ma/en" target="_blank" rel="noopener" role="menuitem">UM6P Official</a></li>
                             <li role="none"><a href="https://timesofum6p.com/" target="_blank" rel="noopener" role="menuitem">Times of UM6P</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                 </ul>
                 <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu" aria-expanded="false">
                     <span class="hamburger-line"></span>
@@ -231,16 +232,16 @@
                     </div>
                     <div class="impact-stats-grid fade-in">
                         <div class="impact-stat">
-                            <div class="impact-stat-number" data-target="50">0</div>
+                            <div class="impact-stat-number" data-target="45">0</div>
                             <div class="impact-stat-label">African Countries Reached</div>
                         </div>
                         <div class="impact-stat">
-                            <div class="impact-stat-number" data-target="200">0</div>
+                            <div class="impact-stat-number" data-target="150">0</div>
                             <div class="impact-stat-label">Global Partners</div>
                         </div>
                         <div class="impact-stat">
-                            <div class="impact-stat-number" data-target="100">0</div>
-                            <div class="impact-stat-label">Research Projects</div>
+                            <div class="impact-stat-number" data-target="75">0</div>
+                            <div class="impact-stat-label">R&D Projects</div>
                         </div>
                         <div class="impact-stat">
                             <div class="impact-stat-number" data-target="1000">0</div>
@@ -417,7 +418,7 @@
         </section>
         
         <!-- Latest News & Insights Section -->
-        <section class="news-section" id="news" role="region" aria-labelledby="news-title">
+        <section class="news-section" id="news-preview" role="region" aria-labelledby="news-title">
             <div class="section-container">
                 <h2 class="section-title" id="news-title">Latest News & Insights</h2>
                 <p class="section-subtitle">Stay updated with our latest developments, research breakthroughs, and stories from across Africa's innovation landscape.</p>
@@ -453,8 +454,6 @@
                         </div>
                     </article>
 
-                    
-
                     <article class="news-card fade-in">
                         <div class="news-image">
                             <img src="images/future.webp" alt="Future of Healthcare Innovation in Africa" class="news-thumbnail" loading="lazy">
@@ -469,11 +468,54 @@
                             <a href="african_health_futures.html" class="news-link">Read More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                         </div>
                     </article>
-
                 </div>
 
                 <div class="news-cta fade-in">
                     <a href="news.html" class="cta-button primary">View All News & Updates</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Preview Section -->
+        <section class="gallery-preview-section" id="gallery-preview" role="region" aria-labelledby="gallery-preview-title">
+            <div class="section-container">
+                <div class="gallery-preview-content">
+                    <div class="gallery-preview-text fade-in">
+                        <h2 id="gallery-preview-title">Moments That Define Our Mission</h2>
+                        <p>Behind every achievement lies a story of collaboration, innovation, and shared vision. Our gallery captures the distinguished guests we welcome, the strategic partnerships we forge, and the transformative initiatives that are reshaping Africa's educational and innovation landscape.</p>
+                        <p>From high-level diplomatic visits to groundbreaking research collaborations, witness the moments that matter most in our journey toward continental transformation.</p>
+                        <div class="gallery-preview-cta">
+                            <a href="gallery.html" class="cta-button primary">Explore Our Gallery</a>
+                        </div>
+                    </div>
+                    <div class="gallery-preview-visual fade-in">
+                        <div class="gallery-preview-grid">
+                            <div class="gallery-preview-item">
+                                <img src="images/gallery/Mme_Gakinya.webp" alt="High-level diplomatic visit" loading="lazy">
+                                <div class="gallery-preview-overlay">
+                                    <span>Distinguished Guests</span>
+                                </div>
+                            </div>
+                            <div class="gallery-preview-item">
+                                <img src="images/gallery/DFS-signing.webp" alt="Strategic partnership signing" loading="lazy">
+                                <div class="gallery-preview-overlay">
+                                    <span>Strategic Partnerships</span>
+                                </div>
+                            </div>
+                            <div class="gallery-preview-item">
+                                <img src="images/gallery/GEP.webp" alt="Educational collaboration" loading="lazy">
+                                <div class="gallery-preview-overlay">
+                                    <span>Innovation Collaborations</span>
+                                </div>
+                            </div>
+                            <div class="gallery-preview-item main-feature">
+                                <img src="images/gallery/ESOs-workshop.webp" alt="Transformative initiatives workshop" loading="lazy">
+                                <div class="gallery-preview-overlay">
+                                    <span>Transformative Initiatives</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -624,56 +666,6 @@
                         <a href="https://www.linkedin.com/company/um6p-africa-initiative" target="_blank" rel="noopener">LinkedIn</a>
                     </div>
                 </div>
-
-                <!-- Contact Form -->
-                <!-- <form class="contact-form fade-in" id="collaborationForm" aria-label="Contact form">
-                    <h3 style="text-align: center; margin-bottom: 2rem; color: var(--primary-black);">Start a Conversation</h3>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="firstName">First Name *</label>
-                            <input type="text" id="firstName" name="firstName" required autocomplete="given-name">
-                        </div>
-                        <div class="form-group">
-                            <label for="lastName">Last Name *</label>
-                            <input type="text" id="lastName" name="lastName" required autocomplete="family-name">
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required autocomplete="email">
-                        </div>
-                        <div class="form-group">
-                            <label for="organization">Organization</label>
-                            <input type="text" id="organization" name="organization" autocomplete="organization">
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="subject">Subject *</label>
-                        <select id="subject" name="subject" required>
-                            <option value="">Select a topic</option>
-                            <option value="partnership">Partnership Opportunity</option>
-                            <option value="research">Research Collaboration</option>
-                            <option value="education">Education Programs</option>
-                            <option value="innovation">Innovation & Entrepreneurship</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Message *</label>
-                        <textarea id="message" name="message" rows="5" placeholder="Tell us about your idea, project, or how you'd like to collaborate..." required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">Send Message</button>
-                    
-                    <div class="success-message" id="collaborationSuccess" role="alert" aria-live="polite">
-                        Thank you for your message! We'll get back to you within 48 hours.
-                    </div>
-                </form> -->
             </div>
         </section>
     </div>
@@ -694,16 +686,9 @@
                 <a href="#home">Home</a>
                 <a href="#about">About Us</a>
                 <a href="#mission">Our Mission</a>
-                <!-- <a href="#workstreams">Workstreams</a>
-                <a href="#partners">Partners</a> -->
+                <a href="news.html">News</a>
+                <a href="gallery.html">Gallery</a>
                 <a href="#contact">Contact</a>
-            </div>
-            <div class="footer-section">
-                <h3>Resources</h3>
-                <a href="#" onclick="openNewsletterArchive()">Newsletter Archive</a>
-                <!-- <a href="#" onclick="openOpportunitiesDatabase()">Opportunities</a>
-                <a href="#" onclick="openEventsCalendar()">Events Calendar</a> -->
-                <a href="mailto:africa.initiative@um6p.ma">Contact Us</a>
             </div>
             <div class="footer-section">
                 <h3>Connect With Us</h3>

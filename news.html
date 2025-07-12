@@ -86,10 +86,11 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="index.html#about">About</a></li>
                     <li><a href="news.html" class="active" aria-current="page">News</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
                     
                     <!-- Dropdown for UM6P Links -->
-                    <li class="dropdown">
+                    <!-- <li class="dropdown">
                         <a href="#" class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
                             Explore UM6P <i class="fas fa-chevron-down" aria-hidden="true"></i>
                         </a>
@@ -97,7 +98,7 @@
                             <li role="none"><a href="https://www.um6p.ma/en" target="_blank" rel="noopener" role="menuitem">UM6P Official</a></li>
                             <li role="none"><a href="https://timesofum6p.com/" target="_blank" rel="noopener" role="menuitem">Times of UM6P</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                 </ul>
                 <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu" aria-expanded="false">
                     <span class="hamburger-line"></span>
@@ -190,49 +191,6 @@
                 </nav>
             </section>
 
-            <!-- Gallery Carousel Section -->
-            <section class="gallery-section" role="region" aria-labelledby="gallery-heading">
-                <div class="gallery-container">
-                    <div class="gallery-header fade-in">
-                        <h2 id="gallery-heading">Moments That Matter</h2>
-                        <p>Explore our impactful work through the distinguished guests we host, strategic partnerships we build, events we organize, and transformative initiatives that are shaping the continent's future.</p>
-                    </div>
-                    
-                    <div class="gallery-carousel fade-in" role="region" aria-label="Photo gallery of UM6P Africa Initiative activities">
-                        <!-- Gallery Counter -->
-                        <div class="gallery-counter" aria-live="polite">
-                            <span id="gallery-current">1</span> / <span id="gallery-total">8</span>
-                        </div>
-                        
-                        <!-- Auto-play Toggle -->
-                        <button class="gallery-auto-toggle" onclick="toggleAutoplay()" aria-label="Toggle slideshow autoplay" title="Toggle autoplay">
-                            <i class="fas fa-pause" id="autoplay-icon" aria-hidden="true"></i>
-                        </button>
-                        
-                        <!-- Main Gallery Display -->
-                        <div class="gallery-main" id="gallery-main">
-                            <!-- Gallery slides will be inserted here by JavaScript -->
-                        </div>
-                        
-                        <!-- Gallery Controls -->
-                        <button class="gallery-controls gallery-btn gallery-prev" onclick="changeSlide(-1)" aria-label="Previous image">
-                            <i class="fas fa-chevron-left" aria-hidden="true"></i>
-                        </button>
-                        <button class="gallery-controls gallery-btn gallery-next" onclick="changeSlide(1)" aria-label="Next image">
-                            <i class="fas fa-chevron-right" aria-hidden="true"></i>
-                        </button>
-                        
-                        <!-- Progress Bar -->
-                        <div class="gallery-progress" id="gallery-progress"></div>
-                        
-                        <!-- Thumbnails -->
-                        <div class="gallery-thumbnails" id="gallery-thumbnails" role="tablist" aria-label="Gallery thumbnail navigation">
-                            <!-- Thumbnails will be inserted here by JavaScript -->
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             <!-- Newsletter Subscription -->
             <section class="newsletter-section" role="region" aria-labelledby="newsletter-heading">
                 <div class="newsletter-content">
@@ -275,17 +233,10 @@
                 <h3>Quick Links</h3>
                 <a href="index.html">Home</a>
                 <a href="index.html#about">About Us</a>
-                <!-- <a href="index.html#mission">Our Mission</a> -->
                 <a href="index.html#workstreams">Workstreams</a>
-                <!-- <a href="index.html#partners">Partners</a> -->
+                <a href="news.html">News</a>
+                <a href="gallery.html">Gallery</a>
                 <a href="index.html#contact">Contact</a>
-            </div>
-            <div class="footer-section">
-                <h3>Resources</h3>
-                <a href="#" onclick="openNewsletterArchive()">Newsletter Archive</a>
-                <!-- <a href="#" onclick="openOpportunitiesDatabase()">Opportunities</a> -->
-                <!-- <a href="#" onclick="openEventsCalendar()">Events Calendar</a> -->
-                <a href="mailto:africa.initiative@um6p.ma">Contact Us</a>
             </div>
             <div class="footer-section">
                 <h3>Connect With Us</h3>

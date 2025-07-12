@@ -128,110 +128,6 @@ const blogPosts = [
         year: 2025,
         month: "April",
         sortDate: new Date("2025-04-15")
-    },
-    {
-        image: "images/Healthcare.jpg",
-        date: "March 1, 2025",
-        author: "Azeez Hamzat",
-        authorLink: "https://www.linkedin.com/in/azeezhamzat",
-        title: "Advancing Healthcare in Africa: UM6P's Vision for AI-Driven Innovation",
-        excerpt: "Learn how UM6P leverages AI to transform healthcare in Africa, addressing challenges and improving access during Science Week.",
-        link: "Advancing-healthcare.html",
-        tags: ["Health", "AI", "Innovation", "Africa"],
-        year: 2025,
-        month: "March",
-        sortDate: new Date("2025-03-01")
-    },
-    {
-        image: "images/Energy-Research.jpg",
-        date: "February 27, 2025",
-        author: "Azeez Hamzat",
-        authorLink: "https://www.linkedin.com/in/Azeezhamzat",
-        title: "Why Africa Must Do More on Energy Research",
-        excerpt: "Learn why Africa must prioritize energy research to address access gaps and climate challenges, with insights on the €30M EU-AU fund boosting sustainable solutions.",
-        link: "africa-energy-research.html",
-        tags: ["Energy", "Research", "Sustainability", "Climate Change"],
-        year: 2025,
-        month: "February",
-        sortDate: new Date("2025-02-27")
-    },
-    {
-        image: "images/NextAfrica.jpeg",
-        date: "February 28, 2025",
-        author: "Azeez Hamzat",
-        authorLink: "https://www.linkedin.com/in/azeezhamzat",
-        title: "NextAfrica: Bridging Europe and Africa Through Innovation at Station F",
-        excerpt: "Learn how UM6P's NextAfrica program at Station F accelerates Greentech, Agritech, and Healthtech startups, connecting Europe and Africa for sustainable innovation.",
-        link: "next-africa.html",
-        tags: ["Innovation", "Entrepreneurship", "Environment", "Agriculture", "Health"],
-        year: 2025,
-        month: "February",
-        sortDate: new Date("2025-02-28")
-    },
-    {
-        image: "images/um6pv.png",
-        date: "February 16, 2025",
-        author: "Azeez Hamzat",
-        authorLink: "https://www.linkedin.com/in/azeezhamzat",
-        title: "UM6P Ventures: Investing in Africa's Future Through Science and Innovation",
-        excerpt: "Explore how UM6P Ventures supports Digital Transformation and Deeptech startups, driving innovation in Agriculture, GreenTech, and Healthtech across Africa.",
-        link: "um6p-ventures.html",
-        tags: ["Innovation", "Startups", "Deeptech", "Digital Transformation"],
-        year: 2025,
-        month: "February",
-        sortDate: new Date("2025-02-16")
-    },
-    {
-        image: "images/diversity-um6p.jpg",
-        date: "January 7, 2025",
-        author: "Azeez Hamzat",
-        authorLink: "https://www.linkedin.com/in/azeezhamzat",
-        title: "Embracing Diversity: How UM6P is Building a Pan-African Community of Innovators",
-        excerpt: "Discover how UM6P fosters a diverse, multicultural student body to drive innovation and collaboration across Africa.",
-        link: "blog-post-diversity.html",
-        tags: ["Diversity", "Education", "Community"],
-        year: 2025,
-        month: "January",
-        sortDate: new Date("2025-01-07")
-    },
-    {
-        image: "images/For Africa.png",
-        date: "January 10, 2025",
-        author: "Azeez Hamzat",
-        authorLink: "https://www.linkedin.com/in/azeezhamzat",
-        title: "For Africa: UM6P's Commitment to Industry, Research, and Business Innovation",
-        excerpt: "Discover how UM6P drives excellence through AAIT, AIRESS, ABS, and the Center for African Studies, fostering innovation and African perspectives.",
-        link: "For-Africa.html",
-        tags: ["Industry", "Research", "Business", "African Studies"],
-        year: 2025,
-        month: "January",
-        sortDate: new Date("2025-01-10")
-    },
-    {
-        image: "images/Startgate.jpg",
-        date: "December 15, 2024",
-        author: "Azeez Hamzat",
-        authorLink: "https://www.linkedin.com/in/azeezhamzat",
-        title: "Unleashing Africa's Entrepreneurial Spirit: How UM6P is Shaping the Future Through Innovation",
-        excerpt: "Discover how UM6P is empowering Africa's youth to tackle challenges through entrepreneurship and innovation.",
-        link: "Unleashing-Entrepreneurship.html",
-        tags: ["Entrepreneurship", "Innovation", "Startups"],
-        year: 2024,
-        month: "December",
-        sortDate: new Date("2024-12-15")
-    },
-    {
-        image: "images/excellence-in-africa.jpg",
-        date: "January 23, 2024",
-        author: "Azeez Hamzat",
-        authorLink: "https://www.linkedin.com/in/azeezhamzat",
-        title: "Excellence in Africa: UM6P and EPFL's Collaborative Push for Academic Innovation",
-        excerpt: "Explore how UM6P and EPFL are advancing academic excellence in Africa through the Excellence in Africa initiative.",
-        link: "excellence-in-africa.html",
-        tags: ["Education", "Research", "Innovation"],
-        year: 2024,
-        month: "January",
-        sortDate: new Date("2024-01-23")
     }
 ];
 
@@ -1978,6 +1874,9 @@ window.filterByCategory = filterByCategory;
 window.changeSlide = changeNewsSlide;
 window.goToSlide = goToNewsSlide;
 window.toggleAutoplay = toggleNewsAutoplay;
+window.changeNewsSlide = changeNewsSlide;
+window.goToNewsSlide = goToNewsSlide;
+window.toggleNewsAutoplay = toggleNewsAutoplay;
 window.openNewsletterArchive = openNewsletterArchive;
 window.openOpportunitiesDatabase = openOpportunitiesDatabase;
 window.openEventsCalendar = openEventsCalendar;

@@ -16,15 +16,15 @@
     <meta property="og:title" content="The State of Energy Research in Africa">
     <meta property="og:description" content="A comprehensive analysis of Africa's energy research landscape, investment trends, and emerging opportunities">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://afrin.um6p.ma/energy-research-africa">
-    <meta property="og:image" content="https://afrin.um6p.ma/images/blog/energy-research.jpg">
+    <meta property="og:url" content="https://um6p-africa.ma/energy-research-africa">
+    <meta property="og:image" content="https://um6p-africa.ma/images/blog/energy-research.jpg">
     <meta property="og:site_name" content="UM6P Africa Initiative">
     
     <!-- Twitter Card tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="The State of Energy Research in Africa">
     <meta name="twitter:description" content="A comprehensive analysis of Africa's energy research landscape and investment trends">
-    <meta name="twitter:image" content="https://afrin.um6p.ma/images/blog/energy-research.jpg">
+    <meta name="twitter:image" content="https://um6p-africa.ma/images/blog/energy-research.jpg">
     
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
@@ -142,18 +142,6 @@
             list-style: none;
             gap: 1rem;
             align-items: center;
-        }
-       
-        a {
-            color: var(--primary-red);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        a:hover {
-            color: var(--accent-orange);
-            text-decoration: underline;
         }
 
         .nav-menu a {
@@ -421,7 +409,7 @@
         }
 
         /* Link Styling */
-        .content-text a, .highlight-box a, .opportunity-item a, .challenge-item a {
+        .content-text a, .highlight-box a, .opportunity-item a,  .regional-card a, .challenge-item a {
             color: var(--primary-red);
             text-decoration: none;
             border-bottom: 1px solid transparent;
@@ -819,11 +807,25 @@
         }
 
         /* Footer */
+        /* Footer */
         .footer {
             background: var(--gradient-2);
             color: var(--primary-white);
-            padding: 4rem 0 2rem;
+            padding: 5rem 0 2rem;
+            position: relative;
             margin-top: 4rem;
+            /* Performance optimization */
+            contain: layout;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-1);
         }
 
         .footer-content {
@@ -831,38 +833,137 @@
             margin: 0 auto;
             padding: 0 2rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .footer-section {
+            line-height: 1.6;
         }
 
         .footer-section h3 {
             color: var(--primary-red);
             margin-bottom: 1.5rem;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary-red);
+            border-radius: 2px;
+        }
+
+        .footer-section p {
+            color: #ccc;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
         }
 
         .footer-section a {
             color: #ccc;
             text-decoration: none;
-            transition: color 0.3s ease;
-            display: block;
-            margin-bottom: 0.5rem;
-            cursor: pointer;
-            min-height: 44px;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
+            margin-bottom: 0.8rem;
+            cursor: pointer;
+            min-height: 44px;
+            padding: 0.5rem 0;
+            border-radius: 4px;
+            position: relative;
+            font-size: 0.95rem;
         }
 
         .footer-section a:hover {
             color: var(--primary-red);
+            transform: translateX(5px);
+            background: rgba(215, 73, 42, 0.1);
+            padding-left: 10px;
+        }
+
+        .footer-section a i {
+            margin-right: 0.8rem;
+            width: 20px;
+            text-align: center;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .footer-section a:hover i {
+            transform: scale(1.2);
+            color: var(--primary-red);
+        }
+
+        /* First footer section (company info) specific styling */
+        .footer-section:first-child {
+            max-width: none;
+        }
+
+        .footer-section:first-child p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section:first-child address {
+            font-style: normal;
+            color: #ccc;
+            line-height: 1.6;
+            margin-top: 1rem;
+        }
+
+        .footer-section:first-child strong {
+            color: var(--primary-red);
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        /* Social media links styling */
+        .footer-section:last-child a {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 0.8rem 1rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .footer-section:last-child a:hover {
+            background: var(--primary-red);
+            border-color: var(--primary-red);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(215, 73, 42, 0.3);
+            padding-left: 1rem;
+        }
+
+        .footer-section:last-child a i {
+            margin-right: 1rem;
+            width: 24px;
+            font-size: 1.2rem;
         }
 
         .footer-bottom {
-            border-top: 1px solid #333;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 2rem;
-            margin-top: 3rem;
+            margin-top: 4rem;
             text-align: center;
             color: #888;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            padding: 1rem 0;
         }
 
         /* Responsive Design */
@@ -871,12 +972,25 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            .energy-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .regional-comparison {
+                grid-template-columns: repeat(3, 1fr);
             }
 
-            .regional-grid {
-                grid-template-columns: repeat(2, 1fr);
+            /* Footer adjustments for tablet */
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+            }
+
+            .footer-section:first-child {
+                grid-column: 1 / -1;
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+
+            .footer-section:first-child h3::after {
+                left: 50%;
+                transform: translateX(-50%);
             }
         }
 
@@ -934,12 +1048,8 @@
                 gap: 1rem;
             }
 
-            .energy-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .regional-grid {
-                grid-template-columns: 1fr;
+            .regional-comparison {
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .article-meta {
@@ -958,14 +1068,64 @@
             }
 
             /* Footer */
+            .footer {
+                padding: 4rem 0 2rem;
+            }
+
             .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                text-align: center;
+                padding: 0 1rem;
+            }
+            
+            .footer-section h3 {
+                font-size: 1.3rem;
+                text-align: center;
+            }
+
+            .footer-section h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .footer-section:first-child {
+                text-align: center;
+            }
+
+            .footer-section:first-child address {
+                text-align: center;
+                font-size: 0.95rem;
+            }
+
+            .footer-section a {
+                justify-content: center;
+                text-align: center;
+                margin-bottom: 0.6rem;
+                font-size: 0.9rem;
+            }
+
+            .footer-section:last-child a {
+                padding: 0.8rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            .footer-section {
+                padding: 1rem 0;
+            }
+
+            .footer-bottom {
+                margin-top: 3rem;
+                padding-top: 1.5rem;
+            }
+
+            .footer-bottom p {
+                font-size: 0.85rem;
             }
         }
 
         @media (max-width: 480px) {
-            .regional-grid {
+            .regional-comparison {
                 grid-template-columns: 1fr;
             }
 
@@ -978,10 +1138,59 @@
             }
 
             /* Footer */
+            .footer {
+                padding: 4rem 0 2rem;
+            }
+
             .footer-content {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 2.5rem;
                 text-align: center;
+                padding: 0 1rem;
+            }
+            
+            .footer-section h3 {
+                font-size: 1.3rem;
+                text-align: center;
+            }
+
+            .footer-section h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .footer-section:first-child {
+                text-align: center;
+            }
+
+            .footer-section:first-child address {
+                text-align: center;
+                font-size: 0.95rem;
+            }
+
+            .footer-section a {
+                justify-content: center;
+                text-align: center;
+                margin-bottom: 0.6rem;
+                font-size: 0.9rem;
+            }
+
+            .footer-section:last-child a {
+                padding: 0.8rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            .footer-section {
+                padding: 1rem 0;
+            }
+
+            .footer-bottom {
+                margin-top: 3rem;
+                padding-top: 1.5rem;
+            }
+
+            .footer-bottom p {
+                font-size: 0.85rem;
             }
         }
 
@@ -996,6 +1205,7 @@
             white-space: nowrap;
             border: 0;
         }
+
     </style>
 </head>
 <body>
@@ -1018,15 +1228,7 @@
                     <li><a href="index.html#contact">Contact</a></li>
 
                     <!-- Dropdown for UM6P Links -->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
-                            Explore UM6P <i class="fas fa-chevron-down" aria-hidden="true"></i>
-                        </a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li role="none"><a href="https://www.um6p.ma/en" target="_blank" rel="noopener" role="menuitem">UM6P Official</a></li>
-                            <li role="none"><a href="https://timesofum6p.com/" target="_blank" rel="noopener" role="menuitem">Times of UM6P</a></li>
-                        </ul>
-                    </li>
+                    
                 </ul>
                 <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu" aria-expanded="false">
                     <span class="hamburger-line"></span>
@@ -1336,12 +1538,6 @@
                     <a href="https://www.linkedin.com/in/azeezhamzat" target="_blank" rel="noopener">Azeez Adewale Hamzat</a>
                 </div>
 
-                <div class="cta-section">
-                    <h3>Join Africa's Energy Research Revolution</h3>
-                    <p>Be part of the transformation driving sustainable energy innovation across the continent. Partner with leading institutions and researchers to shape Africa's energy future.</p>
-                    <a href="index.html#contact" class="cta-button">Explore Research Partnerships</a>
-                </div>
-
                 <div class="references">
                     <h3>Data Sources and References</h3>
                     <div class="reference-item">[1] TechCabal. (2024). <a href="https://insights.techcabal.com/solar-dominates-africas-energy-investments-but-millions-remain-in-the-dark/" target="_blank" rel="noopener"><em>Solar Dominates Africa's Energy Investments</em></a>. TechCabal Insights.</div>
@@ -1354,8 +1550,7 @@
                     <div class="reference-item">[8] Masters Studies Nigeria. <a href="https://www.masterstudies.ng/masters-degree/energy-studies/africa" target="_blank" rel="noopener"><em>Masters Degree in Energy Studies in Africa</em></a>. Masters Studies.</div>
                     <div class="reference-item">[9] Masters Portal. <a href="https://www.mastersportal.com/search/master/sustainable-energy/africa" target="_blank" rel="noopener"><em>Master in Sustainable Energy in Africa</em></a>. Masters Portal.</div>
                     <div class="reference-item">[10] Global Solar Council. <a href="https://www.globalsolarcouncil.org/resources/africa-market-outlook-for-solar-pv-2025-2028/" target="_blank" rel="noopener"><em>Africa Market Outlook for Solar PV 2025-2028</em></a>. GSC.</div>
-                    <div class="reference-item">Additional references available in the comprehensive source list covering research institutions, policy organizations, and international development initiatives across Africa's energy sector.</div>
-                </div>
+                    </div>
             </div>
         </main>
     </div>
@@ -1367,25 +1562,20 @@
                 <h3>UM6P - Africa Initiative</h3>
                 <p>Supporting Africa's socio-economic development through collaboration, innovation, and strategic partnerships across the continent.</p>
                 <br>
-                <p><strong>Address:</strong><br>
-                Mohammed VI Polytechnic University<br>
-                Ben Guerir, Morocco</p>
+                <address>
+                    <strong>Address:</strong><br>
+                    Mohammed VI Polytechnic University<br>
+                    Ben Guerir, Morocco
+                </address>
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <a href="index.html">Home</a>
                 <a href="index.html#about">About Us</a>
-                <a href="index.html#mission">Our Mission</a>
                 <a href="index.html#workstreams">Workstreams</a>
-                <a href="index.html#partners">Partners</a>
+                <a href="news.html">News</a>
+                <a href="gallery.html">Gallery</a>
                 <a href="index.html#contact">Contact</a>
-            </div>
-            <div class="footer-section">
-                <h3>Resources</h3>
-                <a href="#" onclick="openNewsletterArchive()">Newsletter Archive</a>
-                <a href="#" onclick="openOpportunitiesDatabase()">Opportunities</a>
-                <a href="#" onclick="openEventsCalendar()">Events Calendar</a>
-                <a href="mailto:africa.initiative@um6p.ma">Contact Us</a>
             </div>
             <div class="footer-section">
                 <h3>Connect With Us</h3>
@@ -1404,10 +1594,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 UM6P - Africa Initiative. All rights reserved. | 
-               <a href="#" style="color: #ccc;">Privacy Policy</a> | 
-               <a href="#" style="color: #ccc;">Terms of Service</a>
-            </p>
+            <p>&copy; 2025 UM6P - Africa Initiative. All rights reserved.</p>
         </div>
     </footer>
 
