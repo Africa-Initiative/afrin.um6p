@@ -1611,7 +1611,78 @@ function handleCTAClick(e) {
     }
 }
 
-// Fallback function to ensure all CTA buttons work
+// Enhanced debugging for desktop vs mobile click issues
+function debugClickIssues() {
+    console.log('=== CLICK DEBUGGING ===');
+    
+    // Check if we're on mobile
+    const isMobile = window.innerWidth <= 768;
+    console.log(`Screen width: ${window.innerWidth}px`);
+    console.log(`Is mobile: ${isMobile}`);
+    
+    // Test click detection on each CTA button
+    const ctaButtons = document.querySelectorAll('.cta-button');
+    ctaButtons.forEach((button, index) => {
+        const rect = button.getBoundingClientRect();
+        const computedStyle = window.getComputedStyle(button);
+        
+        console.log(`\nButton ${index + 1}: "${button.textContent.trim()}"`);
+        console.log(`  Position: ${rect.left.toFixed(1)}, ${rect.top.toFixed(1)}`);
+        console.log(`  Size: ${rect.width.toFixed(1)} x ${rect.height.toFixed(1)}`);
+        console.log(`  Z-index: ${computedStyle.zIndex}`);
+        console.log(`  Pointer events: ${computedStyle.pointerEvents}`);
+        console.log(`  Display: ${computedStyle.display}`);
+        console.log(`  Visibility: ${computedStyle.visibility}`);
+        
+        // Test what element is actually at the button's center
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const elementAtPoint = document.elementFromPoint(centerX, centerY);
+        
+        console.log(`  Element at center: ${elementAtPoint?.tagName}${elementAtPoint?.id ? '#' + elementAtPoint.id : ''}${elementAtPoint?.className ? '.' + elementAtPoint.className.split(' ')[0] : ''}`);
+        console.log(`  Is button itself: ${elementAtPoint === button}`);
+        console.log(`  Is button child: ${button.contains(elementAtPoint)}`);
+        
+        if (elementAtPoint !== button && !button.contains(elementAtPoint)) {
+            console.log(`  ❌ BLOCKING ELEMENT DETECTED!`);
+            console.log(`  Blocker z-index: ${window.getComputedStyle(elementAtPoint).zIndex}`);
+        } else {
+            console.log(`  ✅ Button is clickable`);
+        }
+    });
+}
+
+// Add click test functionality
+function addClickTestOverlay() {
+    if (window.location.hash === '#debug') {
+        const style = document.createElement('style');
+        style.textContent = `
+            .cta-button::after {
+                content: '';
+                position: absolute;
+                top: -2px;
+                left: -2px;
+                right: -2px;
+                bottom: -2px;
+                border: 2px solid lime !important;
+                border-radius: 50px;
+                pointer-events: none;
+                z-index: 999999;
+            }
+            .hero-overlay {
+                border: 2px dashed red !important;
+            }
+            .hero-content {
+                border: 2px dashed blue !important;
+            }
+            .hero-text {
+                border: 2px dashed green !important;
+            }
+        `;
+        document.head.appendChild(style);
+        console.log('🐛 Debug mode enabled - you should see colored borders around elements');
+    }
+}
 function debugAndFixCTAButtons() {
     console.log('=== CTA BUTTON DEBUG ===');
     
@@ -1813,7 +1884,21 @@ document.addEventListener('DOMContentLoaded', function() {
     initPerformanceMonitoring();
     initAccessibility();
     initSmoothScrolling();
+    initCTAButtons();
     initTouchSupport();
+    
+    // Debug and fix any CTA button issues
+    setTimeout(() => {
+        debugAndFixCTAButtons();
+        debugClickIssues();
+        addClickTestOverlay();
+    }, 500);
+    
+    // Add resize handler to debug desktop/mobile differences
+    window.addEventListener('resize', debounce(() => {
+        console.log('Screen resized, re-checking buttons...');
+        debugClickIssues();
+    }, 500));
     
     // Preload hero images for better performance
     preloadHeroImages().then(() => {
@@ -2021,6 +2106,51 @@ document.addEventListener('touchend', function (event) {
 // =====================================
 // GLOBAL EXPORTS AND API
 // =====================================
+
+// Export test function for manual testing
+window.testCTAButtons = function() {
+    console.log('=== TESTING CTA BUTTONS ===');
+    const ctaButtons = document.querySelectorAll('.cta-button');
+    
+    ctaButtons.forEach((button, index) => {
+        const href = button.getAttribute('href');
+        const target = href ? document.querySelector(href) : null;
+        
+        console.log(`\nTesting button ${index + 1}: "${button.textContent.trim()}"`);
+        console.log(`Href: ${href}`);
+        console.log(`Target exists: ${!!target}`);
+        
+        if (target) {
+            console.log(`✅ Button ${index + 1} should work`);
+        } else {
+            console.log(`❌ Button ${index + 1} will NOT work - target missing`);
+        }
+    });
+    
+    console.log('\n=== You can test by calling: ===');
+    console.log('document.querySelector(".cta-button").click()');
+    console.log('\n=== Or debug what\'s blocking clicks: ===');
+    console.log('debugClickIssues()');
+    console.log('\n=== Or enable visual debug mode: ===');
+    console.log('Add #debug to URL and refresh page');
+};
+
+// Add global debug function
+window.debugClickIssues = debugClickIssues;
+
+// Force click through any blocking elements
+window.forceButtonClick = function(buttonIndex = 0) {
+    const buttons = document.querySelectorAll('.cta-button');
+    const button = buttons[buttonIndex];
+    if (button) {
+        const href = button.getAttribute('href');
+        const target = document.querySelector(href);
+        if (target) {
+            console.log(`Force clicking button: ${button.textContent.trim()}`);
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+};
 
 // Export functions for global access
 window.UM6P = {
