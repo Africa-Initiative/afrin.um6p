@@ -1533,29 +1533,219 @@ function handleNewsletterSubmission(formId, successId) {
     }
 }
 
-// Smooth scrolling for navigation links
+// Initialize CTA buttons specifically with enhanced debugging
+function initCTAButtons() {
+    console.log('Initializing CTA buttons...');
+    const ctaButtons = document.querySelectorAll('.cta-button');
+    console.log('Found CTA buttons:', ctaButtons.length);
+    
+    ctaButtons.forEach((button, index) => {
+        const href = button.getAttribute('href');
+        console.log(`CTA Button ${index + 1}: href="${href}"`);
+        
+        // Ensure buttons are clickable with enhanced styling
+        button.style.cssText += `
+            pointer-events: auto !important;
+            position: relative !important;
+            z-index: 15 !important;
+            cursor: pointer !important;
+        `;
+        
+        // Remove any existing click handlers to avoid conflicts
+        button.removeEventListener('click', handleCTAClick);
+        
+        // Add click event listener
+        button.addEventListener('click', handleCTAClick, { passive: false });
+        
+        // Verify target exists
+        if (href && href.startsWith('#')) {
+            const target = document.querySelector(href);
+            if (!target) {
+                console.warn(`CTA button target not found: ${href}`);
+            } else {
+                console.log(`CTA button target found: ${href} -> ${target.tagName}#${target.id}`);
+            }
+        }
+    });
+}
+
+// Dedicated CTA click handler
+function handleCTAClick(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    const href = this.getAttribute('href');
+    console.log('CTA button clicked, href:', href);
+    
+    if (href && href.startsWith('#')) {
+        const target = document.querySelector(href);
+        if (target) {
+            console.log('Navigating to:', href);
+            
+            // Stop hero autoplay
+            stopHeroAutoplay();
+            
+            // Smooth scroll to target
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            
+            // Update URL hash without triggering page jump
+            if (history.pushState) {
+                history.pushState(null, null, href);
+            } else {
+                location.hash = href;
+            }
+            
+            // Restart autoplay after navigation
+            setTimeout(() => {
+                if (!document.hidden && !isReducedMotion) {
+                    startHeroAutoplay();
+                }
+            }, 1500);
+        } else {
+            console.error('CTA button target not found:', href);
+            alert(`Navigation target "${href}" not found on page.`);
+        }
+    }
+}
+
+// Fallback function to ensure all CTA buttons work
+function debugAndFixCTAButtons() {
+    console.log('=== CTA BUTTON DEBUG ===');
+    
+    // Check all hero slides
+    const heroSlides = document.querySelectorAll('.hero-slide');
+    console.log(`Found ${heroSlides.length} hero slides`);
+    
+    heroSlides.forEach((slide, slideIndex) => {
+        console.log(`\n--- Slide ${slideIndex + 1} ---`);
+        const ctaButtons = slide.querySelectorAll('.cta-button');
+        console.log(`CTA buttons in slide: ${ctaButtons.length}`);
+        
+        ctaButtons.forEach((button, buttonIndex) => {
+            const href = button.getAttribute('href');
+            const target = href ? document.querySelector(href) : null;
+            
+            console.log(`Button ${buttonIndex + 1}:`);
+            console.log(`  Text: "${button.textContent.trim()}"`);
+            console.log(`  Href: "${href}"`);
+            console.log(`  Target exists: ${!!target}`);
+            console.log(`  Z-index: ${window.getComputedStyle(button).zIndex}`);
+            console.log(`  Pointer events: ${window.getComputedStyle(button).pointerEvents}`);
+            
+            if (target) {
+                console.log(`  Target: ${target.tagName}#${target.id}`);
+            } else if (href) {
+                console.log(`  ❌ TARGET NOT FOUND for ${href}`);
+            }
+            
+            // Force click handler attachment
+            button.onclick = function(e) {
+                e.preventDefault();
+                console.log(`Manual click handler triggered for: ${href}`);
+                if (target) {
+                    stopHeroAutoplay();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    setTimeout(() => {
+                        if (!document.hidden && !isReducedMotion) {
+                            startHeroAutoplay();
+                        }
+                    }, 1500);
+                } else {
+                    console.error('No target found for manual click');
+                }
+            };
+        });
+    });
+    
+    // Check if all required targets exist
+    const requiredTargets = ['#about', '#workstreams', '#partners', '#contact'];
+    console.log('\n--- Target Check ---');
+    requiredTargets.forEach(targetId => {
+        const target = document.querySelector(targetId);
+        console.log(`${targetId}: ${target ? '✅ Found' : '❌ Missing'}`);
+        if (target) {
+            console.log(`  Element: ${target.tagName}#${target.id}.${target.className}`);
+        }
+    });
+}
+
+// Enhanced smooth scrolling for navigation links
 function initSmoothScrolling() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    console.log('Initializing smooth scrolling...');
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    console.log('Found anchor links:', anchorLinks.length);
+    
+    anchorLinks.forEach((anchor, index) => {
+        const targetId = anchor.getAttribute('href');
+        console.log(`Anchor ${index + 1}: href="${targetId}"`);
+        
+        // Verify target exists
+        if (targetId && targetId !== '#') {
+            const target = document.querySelector(targetId);
+            if (!target) {
+                console.warn(`Anchor target not found: ${targetId}`);
+            }
+        }
+        
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const targetId = this.getAttribute('href');
+            
+            // Skip empty hashes
+            if (!targetId || targetId === '#') {
+                console.warn('Empty or invalid anchor href');
+                return;
+            }
+            
+            const target = document.querySelector(targetId);
+            
             if (target) {
+                console.log('Smooth scrolling to:', targetId);
+                
+                // Stop hero autoplay when navigating
+                stopHeroAutoplay();
+                
                 target.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
                 
-                document.querySelectorAll('.nav-menu a').forEach(link => {
-                    link.classList.remove('active');
-                    link.removeAttribute('aria-current');
-                });
-                this.classList.add('active');
-                this.setAttribute('aria-current', 'page');
+                // Update navigation active states only for nav menu items
+                if (this.closest('.nav-menu')) {
+                    document.querySelectorAll('.nav-menu a').forEach(link => {
+                        link.classList.remove('active');
+                        link.removeAttribute('aria-current');
+                    });
+                    this.classList.add('active');
+                    this.setAttribute('aria-current', 'page');
+                }
                 
+                // Close mobile menu if open
                 if (domCache.navMenu && domCache.navMenu.classList.contains('active')) {
                     domCache.navMenu.classList.remove('active');
                     domCache.mobileMenuBtn.setAttribute('aria-expanded', 'false');
                 }
+                
+                // Update URL hash
+                if (history.pushState) {
+                    history.pushState(null, null, targetId);
+                } else {
+                    location.hash = targetId;
+                }
+                
+                // Restart hero autoplay after navigation
+                setTimeout(() => {
+                    if (!document.hidden && !isReducedMotion) {
+                        startHeroAutoplay();
+                    }
+                }, 1500);
+            } else {
+                console.error('Smooth scroll target not found:', targetId);
+                // Fallback: try to scroll to top if target not found
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         });
     });
