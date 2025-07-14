@@ -1554,30 +1554,46 @@ function initCTAButtons() {
         // Remove any existing click handlers to avoid conflicts
         button.removeEventListener('click', handleCTAClick);
         
-        // Add click event listener
-        button.addEventListener('click', handleCTAClick, { passive: false });
-        
-        // Verify target exists
+        // Add click event listener only for internal links or special handling
         if (href && href.startsWith('#')) {
+            // Only add custom handler for internal anchor links
+            button.addEventListener('click', handleCTAClick, { passive: false });
+            
+            // Verify target exists
             const target = document.querySelector(href);
             if (!target) {
                 console.warn(`CTA button target not found: ${href}`);
             } else {
                 console.log(`CTA button target found: ${href} -> ${target.tagName}#${target.id}`);
             }
+        } else if (href && (href.endsWith('.html') || href.startsWith('http'))) {
+            // For external links, ensure no JavaScript interference
+            console.log(`External link detected: ${href} - allowing normal navigation`);
+            
+            // Remove any onclick attributes that might interfere
+            button.removeAttribute('onclick');
+            
+            // Ensure the button will navigate normally
+            button.addEventListener('click', function(e) {
+                console.log('External link clicked, navigating to:', href);
+                // Don't prevent default - allow normal navigation
+            }, { passive: true });
+        } else {
+            console.warn(`CTA button with unusual href: ${href}`);
         }
     });
 }
 
 // Dedicated CTA click handler
 function handleCTAClick(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    
     const href = this.getAttribute('href');
     console.log('CTA button clicked, href:', href);
     
+    // Only prevent default for internal anchor links
     if (href && href.startsWith('#')) {
+        e.preventDefault();
+        e.stopPropagation();
+        
         const target = document.querySelector(href);
         if (target) {
             console.log('Navigating to:', href);
@@ -1608,6 +1624,15 @@ function handleCTAClick(e) {
             console.error('CTA button target not found:', href);
             alert(`Navigation target "${href}" not found on page.`);
         }
+    } else if (href && (href.endsWith('.html') || href.startsWith('http'))) {
+        // Allow normal navigation for external links
+        console.log('Allowing normal navigation to:', href);
+        // Don't prevent default - let the browser handle the navigation normally
+        return true;
+    } else {
+        // For any other cases, prevent default to avoid broken navigation
+        e.preventDefault();
+        console.warn('CTA button with unhandled href:', href);
     }
 }
 
@@ -1652,37 +1677,6 @@ function debugClickIssues() {
     });
 }
 
-// Add click test functionality
-function addClickTestOverlay() {
-    if (window.location.hash === '#debug') {
-        const style = document.createElement('style');
-        style.textContent = `
-            .cta-button::after {
-                content: '';
-                position: absolute;
-                top: -2px;
-                left: -2px;
-                right: -2px;
-                bottom: -2px;
-                border: 2px solid lime !important;
-                border-radius: 50px;
-                pointer-events: none;
-                z-index: 999999;
-            }
-            .hero-overlay {
-                border: 2px dashed red !important;
-            }
-            .hero-content {
-                border: 2px dashed blue !important;
-            }
-            .hero-text {
-                border: 2px dashed green !important;
-            }
-        `;
-        document.head.appendChild(style);
-        console.log('🐛 Debug mode enabled - you should see colored borders around elements');
-    }
-}
 function debugAndFixCTAButtons() {
     console.log('=== CTA BUTTON DEBUG ===');
     
@@ -1865,6 +1859,196 @@ function handleVisibilityChange() {
         startHeroAutoplay();
     }
 }
+
+// Add click test functionality
+function addClickTestOverlay() {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('debug') === '1' || window.location.hash === '#debug') {
+        const style = document.createElement('style');
+        style.id = 'debug-styles';
+        style.textContent = `
+            .cta-button {
+                border: 3px solid lime !important;
+                background: rgba(0, 255, 0, 0.2) !important;
+                position: relative !important;
+            }
+            .cta-button::after {
+                content: '🎯 CLICKABLE';
+                position: absolute;
+                top: -25px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: lime;
+                color: black;
+                padding: 2px 6px;
+                font-size: 10px;
+                font-weight: bold;
+                border-radius: 3px;
+                pointer-events: none;
+                z-index: 99999;
+            }
+            a[href="news.html"], a[href="gallery.html"] {
+                border: 3px solid red !important;
+                background: rgba(255, 0, 0, 0.2) !important;
+            }
+            a[href="news.html"]::before, a[href="gallery.html"]::before {
+                content: '🚨 PROBLEM BUTTON';
+                position: absolute;
+                top: -25px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: red;
+                color: white;
+                padding: 2px 6px;
+                font-size: 10px;
+                font-weight: bold;
+                border-radius: 3px;
+                pointer-events: none;
+                z-index: 99999;
+            }
+            .hero-overlay {
+                border: 2px dashed red !important;
+            }
+            .hero-content {
+                border: 2px dashed blue !important;
+            }
+            .hero-text {
+                border: 2px dashed green !important;
+            }
+            .news-section, .gallery-preview-section {
+                border: 2px dashed orange !important;
+            }
+        `;
+        document.head.appendChild(style);
+        console.log('🐛 Debug mode enabled - you should see colored borders around elements');
+        
+        // Add debug info to page
+        const debugInfo = document.createElement('div');
+        debugInfo.style.cssText = `
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: black;
+            color: lime;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+            z-index: 99999;
+            max-width: 300px;
+            line-height: 1.4;
+        `;
+        debugInfo.innerHTML = `
+            <strong>🐛 DEBUG MODE</strong><br>
+            Green = Should work<br>
+            Red = Problem buttons<br>
+            <button onclick="debugCTAButtons()" style="margin-top: 5px; padding: 5px;">Debug Buttons</button><br>
+            <button onclick="fixCTAButtons()" style="margin-top: 2px; padding: 5px;">Fix Buttons</button>
+        `;
+        document.body.appendChild(debugInfo);
+    }
+}
+
+// Quick fix function for CTA buttons
+window.fixCTAButtons = function() {
+    console.log('🔧 Applying CTA button fixes...');
+    
+    const problematicButtons = document.querySelectorAll('a[href="news.html"], a[href="gallery.html"]');
+    
+    problematicButtons.forEach((button, index) => {
+        console.log(`Fixing button ${index + 1}: ${button.href}`);
+        
+        // Remove any interfering event listeners
+        const newButton = button.cloneNode(true);
+        button.parentNode.replaceChild(newButton, button);
+        
+        // Apply strong CSS fixes
+        newButton.style.cssText = `
+            position: relative !important;
+            z-index: 9999 !important;
+            pointer-events: auto !important;
+            cursor: pointer !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            min-height: 44px !important;
+            min-width: 120px !important;
+            isolation: isolate !important;
+            backface-visibility: visible !important;
+            transform: none !important;
+        `;
+        
+        // Add a simple click handler
+        newButton.addEventListener('click', function(e) {
+            console.log('✅ Fixed button clicked, navigating to:', this.href);
+            // Allow default navigation
+        });
+        
+        // Visual confirmation
+        newButton.style.boxShadow = '0 0 0 2px green';
+        setTimeout(() => {
+            newButton.style.boxShadow = '';
+        }, 2000);
+    });
+    
+    console.log('✅ CTA button fixes applied!');
+};
+
+window.debugCTAButtons = function() {
+    console.log('=== CTA BUTTON DIAGNOSTICS ===');
+    
+    const problematicButtons = [
+        'a[href="news.html"]',
+        'a[href="gallery.html"]'
+    ];
+    
+    problematicButtons.forEach(selector => {
+        const button = document.querySelector(selector);
+        if (button) {
+            const rect = button.getBoundingClientRect();
+            const computedStyle = window.getComputedStyle(button);
+            
+            console.log(`\n--- Button: ${selector} ---`);
+            console.log(`Text: "${button.textContent.trim()}"`);
+            console.log(`Position: ${rect.left.toFixed(1)}, ${rect.top.toFixed(1)}`);
+            console.log(`Size: ${rect.width.toFixed(1)} x ${rect.height.toFixed(1)}`);
+            console.log(`Z-index: ${computedStyle.zIndex}`);
+            console.log(`Pointer events: ${computedStyle.pointerEvents}`);
+            console.log(`Display: ${computedStyle.display}`);
+            console.log(`Visibility: ${computedStyle.visibility}`);
+            
+            // Test what element is actually at the button's center
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const elementAtPoint = document.elementFromPoint(centerX, centerY);
+            
+            console.log(`Element at center: ${elementAtPoint?.tagName}${elementAtPoint?.id ? '#' + elementAtPoint.id : ''}${elementAtPoint?.className ? '.' + elementAtPoint.className.split(' ')[0] : ''}`);
+            console.log(`Is button itself: ${elementAtPoint === button}`);
+            console.log(`Is button child: ${button.contains(elementAtPoint)}`);
+            
+            if (elementAtPoint !== button && !button.contains(elementAtPoint)) {
+                console.log(`❌ BLOCKED! Element blocking clicks:`);
+                console.log(`  Blocker: ${elementAtPoint?.tagName}${elementAtPoint?.id ? '#' + elementAtPoint.id : ''}`);
+                console.log(`  Blocker z-index: ${window.getComputedStyle(elementAtPoint).zIndex}`);
+                console.log(`  Blocker pointer-events: ${window.getComputedStyle(elementAtPoint).pointerEvents}`);
+            } else {
+                console.log(`✅ Button should be clickable`);
+            }
+            
+            // Check for event listeners
+            const events = getEventListeners ? getEventListeners(button) : 'Chrome DevTools required';
+            console.log(`Event listeners: ${typeof events === 'object' ? Object.keys(events).join(', ') : events}`);
+            
+        } else {
+            console.log(`❌ Button not found: ${selector}`);
+        }
+    });
+    
+    console.log('\n=== QUICK FIXES ===');
+    console.log('1. Run: fixCTAButtons() - to force fix the buttons');
+    console.log('2. Add ?debug=1 to URL to see visual debugging');
+    console.log('3. Check console for any JavaScript errors');
+};
 
 // =====================================
 // PAGE INITIALIZATION (OPTIMIZED)
@@ -2133,23 +2317,6 @@ window.testCTAButtons = function() {
     console.log('debugClickIssues()');
     console.log('\n=== Or enable visual debug mode: ===');
     console.log('Add #debug to URL and refresh page');
-};
-
-// Add global debug function
-window.debugClickIssues = debugClickIssues;
-
-// Force click through any blocking elements
-window.forceButtonClick = function(buttonIndex = 0) {
-    const buttons = document.querySelectorAll('.cta-button');
-    const button = buttons[buttonIndex];
-    if (button) {
-        const href = button.getAttribute('href');
-        const target = document.querySelector(href);
-        if (target) {
-            console.log(`Force clicking button: ${button.textContent.trim()}`);
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    }
 };
 
 // Export functions for global access

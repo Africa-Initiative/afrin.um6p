@@ -88,28 +88,59 @@ body.loaded {
     padding: 0 2rem;
 }
 
+/* ===============================================
+   UM6P AFRICA INITIATIVE LOGO STYLING
+   =============================================== */
+
+/* Main logo container */
 .logo {
-    font-size: 1.8rem;
-    font-weight: bold;
     display: flex;
     align-items: center;
-    gap: 10px;
-    color: var(--primary-white);
+    gap: 12px;
     cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0.5rem 0;
 }
 
 .logo a {
-    color: var(--primary-white);
-    text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+    text-decoration: none;
     transition: all 0.3s ease;
+    padding: 0.25rem 0.5rem;
+    border-radius: 8px;
+    /* Ensure logo is always clickable */
+    position: relative;
+    z-index: 20;
 }
 
 .logo a:hover {
-    opacity: 0.9;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+.logo a:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.8);
+    outline-offset: 2px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Logo image styling */
+.logo img {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+    transition: all 0.3s ease;
+    filter: brightness(1) contrast(1.1);
+    /* Performance optimization */
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+.logo:hover img {
+    filter: brightness(1.1) contrast(1.2);
+    transform: scale(1.02) translateZ(0);
 }
 
 .nav-menu {
@@ -431,6 +462,44 @@ body.loaded {
     animation: slideInLeft 1s ease-out 0.6s both;
     position: relative;
     z-index: 15;
+}
+
+/* CTA Button Fixes for External Links */
+.news-cta,
+.gallery-preview-cta {
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
+}
+
+.news-cta .cta-button,
+.gallery-preview-cta .cta-button {
+    position: relative !important;
+    z-index: 20 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    isolation: isolate;
+    min-height: 44px;
+    min-width: 120px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Remove any pseudo-element interference */
+.news-cta .cta-button::before,
+.news-cta .cta-button::after,
+.gallery-preview-cta .cta-button::before,
+.gallery-preview-cta .cta-button::after {
+    pointer-events: none;
+}
+
+/* Fix for any potential overlay issues */
+.news-section::before,
+.news-section::after,
+.gallery-preview-section::before,
+.gallery-preview-section::after {
+    pointer-events: none;
 }
 
 .cta-button {
@@ -2523,6 +2592,33 @@ button:focus-visible,
     overscroll-behavior: contain;
 }
 
+/* Responsive logo sizing */
+@media (max-width: 1024px) {
+    .logo img {
+        height: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo {
+        gap: 8px;
+    }
+    
+    .logo img {
+        height: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        gap: 6px;
+    }
+    
+    .logo img {
+        height: 32px;
+    }
+}
+
 /* Mobile Responsiveness with Performance Optimizations */
 @media (max-width: 1200px) {
     .workstreams-integrated-layout {
@@ -3242,4 +3338,107 @@ html {
     body {
         overscroll-behavior: contain;
     }
+}
+
+/* Loading state for logo image */
+.logo img.loading {
+    opacity: 0.6;
+    filter: grayscale(100%);
+}
+
+.logo img.loaded {
+    opacity: 1;
+    filter: none;
+}
+
+.logo img.error {
+    display: none;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .logo-letter {
+        background: #000;
+        color: #fff;
+        border: 2px solid #fff;
+    }
+    
+    .logo-initiative {
+        color: #fff;
+        text-shadow: 2px 2px 0 #000;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .logo,
+    .logo a,
+    .logo img,
+    .logo-letter {
+        transition: none;
+        animation: none;
+    }
+    
+    .logo:hover,
+    .logo a:hover,
+    .logo:hover img,
+    .logo-letter:hover {
+        transform: none;
+    }
+}
+
+/* Print styles */
+@media print {
+    .logo {
+        color: #000 !important;
+    }
+    
+    .logo-letter {
+        background: #000 !important;
+        color: #fff !important;
+        box-shadow: none !important;
+    }
+    
+    .logo-initiative {
+        color: #000 !important;
+        text-shadow: none !important;
+    }
+}
+
+/* Dark theme adjustments */
+@media (prefers-color-scheme: dark) {
+    .logo-initiative {
+        color: #fff;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* Logo animation on page load */
+@keyframes logoFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.logo {
+    animation: logoFadeIn 0.6s ease-out;
+}
+
+/* Logo container for different contexts */
+.header .logo {
+    /* Header-specific logo styling */
+}
+
+.footer .logo {
+    /* Footer-specific logo styling if needed */
+    opacity: 0.9;
+}
+
+.footer .logo:hover {
+    opacity: 1;
 }

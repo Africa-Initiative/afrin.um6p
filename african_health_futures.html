@@ -120,18 +120,314 @@ body.loaded {
     cursor: pointer;
 }
 
-.logo a {
-    color: var(--primary-white);
-    text-decoration: none;
+/* ===============================================
+   UM6P AFRICA INITIATIVE LOGO STYLING
+   =============================================== */
+
+/* Main logo container */
+.logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+    cursor: pointer;
     transition: all 0.3s ease;
+    padding: 0.5rem 0;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 0.25rem 0.5rem;
+    border-radius: 8px;
+    /* Ensure logo is always clickable */
+    position: relative;
+    z-index: 20;
 }
 
 .logo a:hover {
-    opacity: 0.9;
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+.logo a:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.8);
+    outline-offset: 2px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Logo image styling */
+.logo img {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+    transition: all 0.3s ease;
+    filter: brightness(1) contrast(1.1);
+    /* Performance optimization */
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+.logo:hover img {
+    filter: brightness(1.1) contrast(1.2);
+    transform: scale(1.02) translateZ(0);
+}
+
+/* Alternative: CSS-only logo if image isn't available */
+.logo-text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.logo-um6p {
+    display: flex;
+    gap: 2px;
+}
+
+.logo-letter {
+    background: linear-gradient(135deg, #D7492A 0%, #ff6b35 100%);
+    color: white;
+    padding: 8px 10px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    border-radius: 4px;
+    min-width: 32px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(215, 73, 42, 0.3);
+    transition: all 0.3s ease;
+}
+
+.logo-letter:hover {
     transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(215, 73, 42, 0.4);
+}
+
+.logo-initiative {
+    color: var(--primary-white);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-left: 4px;
+    line-height: 1.2;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Logo with brand colors when on light backgrounds */
+.logo-light .logo-initiative {
+    color: var(--primary-black);
+    text-shadow: none;
+}
+
+.logo-light .logo-letter {
+    box-shadow: 0 2px 8px rgba(215, 73, 42, 0.2);
+}
+
+/* Fallback styling if image fails to load */
+.logo-fallback {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    background: linear-gradient(135deg, #D7492A 0%, #ff6b35 100%);
+    border-radius: 8px;
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(215, 73, 42, 0.3);
+    transition: all 0.3s ease;
+}
+
+.logo-fallback:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(215, 73, 42, 0.4);
+}
+
+.logo-fallback::before {
+    content: "🎓";
+    font-size: 1.4rem;
+    margin-right: 4px;
+}
+
+/* Responsive logo sizing */
+@media (max-width: 1024px) {
+    .logo img {
+        height: 40px;
+    }
+    
+    .logo-letter {
+        padding: 6px 8px;
+        font-size: 1.1rem;
+        min-width: 28px;
+    }
+    
+    .logo-initiative {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo {
+        gap: 8px;
+    }
+    
+    .logo img {
+        height: 35px;
+    }
+    
+    .logo-letter {
+        padding: 5px 7px;
+        font-size: 1rem;
+        min-width: 26px;
+    }
+    
+    .logo-initiative {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        gap: 6px;
+    }
+    
+    .logo img {
+        height: 32px;
+    }
+    
+    .logo-letter {
+        padding: 4px 6px;
+        font-size: 0.9rem;
+        min-width: 24px;
+    }
+    
+    .logo-initiative {
+        font-size: 1rem;
+    }
+    
+    /* On very small screens, consider showing just the letters */
+    .logo-initiative-full {
+        display: none;
+    }
+    
+    .logo-initiative-short::after {
+        content: "AI";
+        font-weight: 700;
+    }
+}
+
+/* Logo animation on page load */
+@keyframes logoFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.logo {
+    animation: logoFadeIn 0.6s ease-out;
+}
+
+/* Loading state for logo image */
+.logo img.loading {
+    opacity: 0.6;
+    filter: grayscale(100%);
+}
+
+.logo img.loaded {
+    opacity: 1;
+    filter: none;
+}
+
+.logo img.error {
+    display: none;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .logo-letter {
+        background: #000;
+        color: #fff;
+        border: 2px solid #fff;
+    }
+    
+    .logo-initiative {
+        color: #fff;
+        text-shadow: 2px 2px 0 #000;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .logo,
+    .logo a,
+    .logo img,
+    .logo-letter {
+        transition: none;
+        animation: none;
+    }
+    
+    .logo:hover,
+    .logo a:hover,
+    .logo:hover img,
+    .logo-letter:hover {
+        transform: none;
+    }
+}
+
+/* Print styles */
+@media print {
+    .logo {
+        color: #000 !important;
+    }
+    
+    .logo-letter {
+        background: #000 !important;
+        color: #fff !important;
+        box-shadow: none !important;
+    }
+    
+    .logo-initiative {
+        color: #000 !important;
+        text-shadow: none !important;
+    }
+}
+
+/* Dark theme adjustments */
+@media (prefers-color-scheme: dark) {
+    .logo-initiative {
+        color: #fff;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* Focus indicators for accessibility */
+.logo a:focus-visible {
+    outline: 3px solid rgba(255, 255, 255, 0.8);
+    outline-offset: 2px;
+    border-radius: 8px;
+}
+
+/* Logo container for different contexts */
+.header .logo {
+    /* Header-specific logo styling */
+}
+
+.footer .logo {
+    /* Footer-specific logo styling if needed */
+    opacity: 0.9;
+}
+
+.footer .logo:hover {
+    opacity: 1;
 }
 
 .nav-menu {
@@ -862,9 +1158,6 @@ body.loaded {
         display: flex;
     }
     
-    .logo {
-        font-size: 1.4rem;
-    }
 
     /* Article */
     .article-container {
@@ -1059,7 +1352,7 @@ body.loaded {
         <div class="nav-container">
             <div class="logo">
                 <a href="index.html" aria-label="UM6P Africa Initiative Homepage">
-                    UM6P - Africa Initiative
+                    <img src="images/logo.png" alt="UM6P Africa Initiative">
                 </a>
             </div>
             <nav role="navigation" aria-label="Main navigation">
